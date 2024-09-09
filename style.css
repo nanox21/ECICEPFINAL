@@ -169,7 +169,7 @@ body {
 
 
 /* Media query para pantallas de 6 pulgadas */
-@media only screen and (max-width:900px) {
+@media only screen and (max-width:800px) {
 
     body {
         margin-left: 0;
