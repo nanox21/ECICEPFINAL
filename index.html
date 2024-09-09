@@ -1,0 +1,1752 @@
+Mandrake Inside
+<!DOCTYPE html>
+<html lang="es">
+
+
+
+
+<div class="div1">
+
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Formulario de Patologías</title>
+    </head>
+    
+</div>
+
+<body class="bg-image" background="fondo.jpeg" blur>
+
+    <header class="headerMod">
+
+
+        <img src="logo.png" alt="Logo" class="logo">
+        <p class="titulo">Listado de patologías para estratificación ECICEP</p>
+        <img src="Tux.PNG" alt="tux" class="tux">
+     
+        </div>
+    </header>
+    
+    <div class="resultadocss">
+        <label class="totalclass">Total de puntos</label>
+        <span class="spancss" id="total"></span>
+        <div class="resultadoRiesgo" id="resultado">Resultado de Riesgo</div>
+    </div>
+     <button id="limpiar" class="boton">LIMPIAR</button>
+
+    </div>
+
+    <form id="patologiaForm">
+        <!-- Sección de Anemia -->
+        <div class="anemia">
+            <label><input type="checkbox" id="anemia" name="patologia" value="1"> Anemia Crónica</label><br>
+            <div id="anemia-options" class="hidden">
+                <label for="anemia-details"></label>
+                <select class="fondol" id="anemia-details" name="anemia-details">
+                    <option value="" selected>Selecciona una opción</option>
+                    <option value="Anemias por deficiencia de hierro">Anemias por deficiencia de hierro CIE10 D50</option> 
+                    <option value="Anemia por deficiencia de vitamina B12">Anemia por deficiencia de vitamina B12 CIE10 D51
+                    </option>
+                    <option value="Anemia por deficiencia de folatos">Anemia por deficiencia de folatos CIE10 D52</option>
+                    <option value="Otras anemias nutricionales">Otras anemias nutricionales CIE10 D53</option>
+                    <option value="Anemia debida a trastornos enzimáticos">Anemia debida a trastornos enzimáticos CIE10 D55
+                    </option>
+                    <option value="Talasemia">Talasemia CIE10 D56</option>
+                    <option value="Trastornos falciformes">Trastornos falciformes CIE10 D57</option>
+                    <option value="Otras anemias hemolíticas hereditarias">Otras anemias hemolíticas hereditarias CIE10 D58
+                    </option>
+                    <option value="Anemia hemolítica adquirida">Anemia hemolítica adquirida CIE10 D59</option>
+                    <option value="Aplasia adquirida, exclusiva de la serie roja (eritroblastopenia)">Aplasia adquirida,
+                        exclusiva de la serie roja (eritroblastopenia) CIE10 D60</option>
+                    <option value="Otras anemias aplásticas">Otras anemias aplásticas CIE10 D61</option>
+                    <option value="Anemia posthemorrágica aguda">Anemia posthemorrágica aguda CIE10 D62</option>
+                    <option value="Otras anemias">Otras anemias CIE10 D64</option>
+                </select>
+            </div> 
+
+
+                <!-- Sección de Arritmi
+        a -->
+                <div class="div2">
+                    <div class="arritmia">
+                        <label><input type="checkbox" id="arritmia" name="patologia" value="1"> Arritmia cardiaca/
+                            Taquicardia paroxística</label><br>
+                        <div id="arritmia-options" class="hidden">
+                            <label for="arritmia-details"></label>
+                            <select class="fondol" id="arritmia-details" class="arritmiacss" name="arritmia-details">
+                                <option value="" selected>Selecciona una opción</option>
+                                <option value="Arritmia por reentrada ventricular">Arritmia por reentrada ventricular CIE10 I47.0
+                                </option>
+                                <option value="Taquicardia supraventricular">Taquicardia supraventricular CIE10 I47.1</option>
+                                <option value="Taquicardia ventricular">Taquicardia ventricular CIE10 I47.2</option>
+                                <option value="Taquicardia paroxística, no especificada">Taquicardia paroxística, no
+                                    especificada CIE10 I47.9</option>
+                                <option value="Fibrilación y aleteo ventricular">Fibrilación y aleteo ventricular CIE10 I49.0
+                                </option>
+                                <option value="Arritmia cardíaca, no especificada">Arritmia cardíaca, no especificada CIE10 I49.9
+                                </option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>
+                                <input type="checkbox" id="ansiedad-checkbox" name="patologia"
+                                    value="1"> Ansiedad
+                            </label><br>
+                            <div id="ansiedad-options" class="hidden">
+                                <select class="fondol" id="ansiedad-details"
+                                    name="ansiedad-details">
+                                    <option value="" selected>Selecciona una opción</option>
+                                    <option value="Trastornos fóbicos de ansiedad">Trastornos fóbicos de ansiedad CIE10 F40
+                                    </option>
+                                    <option value="Otros trastornos de ansiedad">Otros trastornos de ansiedad CIE10 F41
+                                    </option>
+                                    <option value="Trastorno obsesivo-compulsivo">Trastorno obsesivo-compulsivo CIE10 F42
+                                    </option>
+                                </select>
+                            </div>
+                        <!-- Sección de Artritis -->
+                        <div>
+                            <label class="artritis"><input type="checkbox" id="artritis" name="patologia" value="1">
+                                Artritis reumatoídea</label><br>
+                            <div id="artritis-options" class="hidden">
+                                <label for="artritis-details"></label>
+                                <select class="fondol" id="artritis-details" name="artritis-details">
+                                    <option value="" selected>Selecciona una opción</option>
+                                    <option value="Artritis reumatoide seropositiva, (poliartropatias inflamatorias)">
+                                        Artritis reumatoide seropositiva, (poliartropatias inflamatorias) CIE10 M05</option>
+                                    <option value="Otras artritis reumatoides, (poliartropatias inflamatorias)">Otras
+                                        artritis reumatoides, (poliartropatias inflamatorias) CIE10 M06</option>
+                                </select>
+                            </div>
+
+
+                            <!-- Sección de Artrosis -->
+                            <div>
+                                <label><input type="checkbox" id="artrosis" name="patologia" value="1"> Artrosis de
+                                    rodilla,
+                                    cadera u otro tipo</label><br>
+                                <div id="artrosis-options" class="hidden">
+                                    <label for="artrosis-details"></label>
+                                    <select class="fondol" id="artrosis-details" name="artrosis-details">
+                                        <option value="" selected>Selecciona una opción</option>
+                                        <option value="Poliartrosis, (artrosis)">Poliartrosis, (artrosis) CIE10 M15</option>
+                                        <option value="Coxartrosis (artrosis de la cadera), (artrosis)">Coxartrosis
+                                            (artrosis de la cadera), (artrosis) CIE10 M16</option>
+                                        <option value="Gonartrosis (artrosis de la rodilla), (artrosis)">Gonartrosis
+                                            (artrosis de la rodilla), (artrosis)CIE10 M17</option>
+                                        <option
+                                            value="Artrosis de la primera articulación carpometacarpiana, (artrosis)">
+                                            Artrosis de la primera articulación carpometacarpiana, (artrosis) CIE10 M18</option>
+                                            <option value="Otras artrosis ,(artrosis)"> Otras artrosis ,(artrosis) CIE10 M19</option>
+                                    </select>
+                            </select>
+                                </div>
+                            </div>
+                                <!-- Sección de Asma -->
+                                <div>
+                                    <label><input type="checkbox" id="asma" name="patologia" value="1"> Asma</label><br>
+                                    <div id="asma-options" class="hidden">
+                                        <label for="asma-details"> </label>
+                                        <select class="fondol" id="asma-details" name="asma-details">
+                                            <option value="" selected>Selecciona una opción</option>
+                                            <option value="Asma">Asma CIE10 J45</option>
+                                            <option value="Estado Asmático">Estado Asmático CIE 10 J46</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Sección de Catarata / Retinopatía -->
+                                <div>
+                                    <label><input type="checkbox" id="catarata" name="patologia" value="1"> Catarata /
+                                        Retinopatía</label><br>
+                                    <div id="catarata-options" class="hidden">
+                                        <label for="catarata-details"> </label>
+                                        <select class="fondol" id="catarata-details" name="catarata-details">
+                                            <option value="" selected>Selecciona una opción</option>
+                                            <option value="Malformaciones congénitas del cristalino">Malformaciones
+                                                congénitas del cristalino CIE10 Q12</option>
+                                            <option value="Catarata senil">Catarata senil CIE10 H25</option>
+                                            <option value="Otras cataratas">Otras cataratas CIE10 H26</option>
+                                            <option
+                                                value="Cataratas y otros trastornos del cristalino en enfermedades clasificadas en otra parte">
+                                                Cataratas y otros trastornos del cristalino en enfermedades clasificadas
+                                                en
+                                                otra parte CIE10 H28</option>
+                                        </select>
+
+                                    </div>
+
+                                    <!-- Sección de Ceguera -->
+                                    <div>
+                                        <label><input type="checkbox" id="ceguera" name="patologia" value="1">
+                                            Ceguera</label><br>
+                                        <div id="ceguera-options" class="hidden">
+                                            <label for="ceguera-details"> </label>
+                                            <select class="fondol" id="ceguera-details" name="ceguera-details">
+                                                <option value="" selected>Selecciona una opción</option>
+                                                <option value="Ceguera y disminución de la agudeza visual">Ceguera y
+                                                    disminución de la agudeza visual CIE10 H54</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label><input type="checkbox" id="alcohol" name="patologia" value="1"> Consumo
+                                            perjudicial o dependiente de alcoholalcohol</label><br>
+                                        <div id="alcohol-options" class="hidden">
+                                            <label for="alcohol-details"> </label>
+                                            <select class="fondol" id="alcohol-details" name="alcohol-details">
+                                                <option value="" selected>Selecciona una opción</option>
+                                                <option
+                                                    value="Trastornos mentales y del comportamiento debidos al uso de alcohol">
+                                                    Trastornos mentales y del comportamiento debidos al uso de alcohol CIE10 F10
+                                                </option>
+                                                <option
+                                                    value="Trastornos mentales y del comportamiento debidos al uso de alcohol, uso nocivo">
+                                                    Trastornos mentales y del comportamiento debidos al uso de alcohol,
+                                                    uso
+                                                    nocivo CIE10 F10.1</option>
+                                                <option
+                                                    value="Trastornos mentales y del comportamiento debidos al uso de alcohol, síndrome de dependencia">
+                                                    Trastornos mentales y del comportamiento debidos al uso de alcohol,
+                                                    síndrome de dependencia CIE10 F10.2</option>
+                                                <option
+                                                    value="  Trastornos mentales y del comportamiento debidos al uso de alcohol, estado de abstinencia">
+                                                    Trastornos mentales y del comportamiento debidos al uso de alcohol, estado de abstinencia CIE10 F10.3
+                                                </option>
+                                                <option
+                                                value="Trastornos mentales y del comportamiento debidos al uso de alcohol, estado de abstinencia con delirio">
+                                                Trastornos mentales y del comportamiento debidos al uso de alcohol, estado de abstinencia con delirio CIE10 F10.4
+                                                </option>
+                                                <option value="Trastornos mentales y del comportamiento debidos al uso de alcohol, trastorno psicótico"> Trastornos mentales y del comportamiento debidos al uso de alcohol, trastorno psicótico CIE10 F10.5
+                                                </option>
+                                                <option value="Trastornos mentales y del comportamiento debidos al uso de alcohol, síndrome amnésico ">Trastornos mentales y del comportamiento debidos al uso de alcohol, síndrome amnésico CIE10 F10.6
+                                                </option>
+                                                <option value=" Trastornos mentales y del comportamiento debidos al uso de alcohol, trastorno psicótico residual y de comienzo tardío "> Trastornos mentales y del comportamiento debidos al uso de alcohol, trastorno psicótico residual y de comienzo tardío CIE 10 F10.7
+                                                </option>
+                                                <option
+                                               value=" Trastornos mentales y del comportamiento debidos al uso de alcohol, otros trastornos mentales y del comportamiento ">  Trastornos mentales y del comportamiento debidos al uso de alcohol, otros trastornos mentales y del comportamiento CIE10 F10.8
+                                                </option> 
+                                                <option
+                                                 value="Trastornos mentales y del comportamiento debidos al uso de alcohol, trastorno mental y del comportamiento, no especificado">  Trastornos mentales y del comportamiento debidos al uso de alcohol, trastorno mental y del comportamiento, no especificado CIE10 F10.9
+                                                </option>
+                                                <option
+                                                 value="Problemas relacionados con el uso del alcohol">Problemas relacionados con el uso del alcohol CIE10 Z72.1
+                                                </option>
+                                                <option
+                                                value="Intoxicación alcohólica severa">Intoxicación alcohólica severa  CIE10 Y91.2
+                                               </option>
+                                               <option
+                                               value="Intoxicación alcohólica muy severa">Intoxicación alcohólica muy severa  CIE10 <Y91 class="3"></Y91>
+                                              </option>
+                                               <option
+                                               value="Alcoholismo, nivel de intoxicación no especificado">Alcoholismo, nivel de intoxicación no especificado CIE10 Y91.9
+                                              </option>               
+                                              <option
+                                              value="Consulta para asesoría y vigilancia por abuso de alcohol">Consulta para asesoría y vigilancia por abuso de alcohol CIE10 Z71.4
+                                             </option>   
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <form id="patologiaForm">
+                                        <!-- Sección de Consumo de Drogas -->
+                                        <div>
+                                            <label><input type="checkbox" id="drogas" name="patologia" value="1">
+                                                Consumo
+                                                perjudicial o dependiente de droga como sustancia principal o poli
+                                                consumo</label><br>
+                                            <div id="drogas-options" class="hidden">
+                                                <label for="drogas-details"> </label>
+                                                <select class="fondol" id="drogas-details" name="drogas-details">
+                                                    <option value="" selected>Selecciona una opción</option>
+                                                    <option value="Problemas relacionados con el uso de drogas">
+                                                        Problemas
+                                                        relacionados con el uso de drogas CIE10 Z72.2</option>
+                                                    <option
+                                                        value="Trastornos mentales y del comportamiento debido al uso de opiáceos">
+                                                        Trastornos mentales y del comportamiento debido al uso de
+                                                        opiáceos CIE10 F11
+                                                    </option>
+                                                    <option
+                                                        value="Trastornos mentales y del comportamiento debido al uso de cannabinoides">
+                                                        Trastornos mentales y del comportamiento debido al uso de
+                                                        cannabinoides CIE10 F12</option>
+                                                    <option
+                                                        value= "Trastornos mentales y del comportamiento debidos al uso de sedantes o hipnóticos">
+                                                        Trastornos mentales y del comportamiento debidos al uso de sedantes o hipnóticos CIE10 F13</option>
+                                                    </option>
+
+                                                    <option
+                                                    value= "Trastornos mentales y del comportamiento debidos al uso de cocaína">
+                                                    Trastornos mentales y del comportamiento debidos al uso de cocaína CIE10 F14</option>
+                                                    </option>
+                                                    <option
+                                                    value= "Trastornos mentales y del comportamiento debidos al uso de otros estimulantes, incluida la cafeína">
+                                                    Trastornos mentales y del comportamiento debidos al uso de otros estimulantes, incluida la cafeína CIE10 F15</option>
+                                                    </option>
+                                                    <option
+                                                    value= "Trastornos mentales y del comportamiento debido al uso de alucinógenos">
+                                                    Trastornos mentales y del comportamiento debido al uso de alucinógenos CIE10 F16</option>
+                                                    </option>
+                                                    <option
+                                                    value= "Trastornos mentales y del comportamiento debidos al uso de disolventes volátiles">
+                                                    Trastornos mentales y del comportamiento debidos al uso de disolventes volátiles CIE10 F18</option>
+                                                    </option>
+                                                    <option
+                                                    value= "Trastornos mentales y del comportamiento debidos al uso de múltiples drogas y al uso de otras sustancias psicoactivas">
+                                                    Trastornos mentales y del comportamiento debidos al uso de múltiples drogas y al uso de otras sustancias psicoactivas CIE10 F19</option>
+                                                    </option>   <!-- Más opciones aquí -->
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+
+                                        <!-- Sección de Demencia -->
+                                        <div>
+                                            <label><input type="checkbox" id="demencia" name="patologia" value="2">
+                                                Demencia</label><br>
+                                            <div id="demencia-options" class="hidden">
+                                                <label for="demencia-details"> </label>
+                                                <select class="fondol" id="demencia-details" name="demencia-details">
+                                                    <option value="" selected>Selecciona una opción</option>
+                                                    <option value="Demencia en la enfermedad de Alzheimer (G30+)">
+                                                        Demencia
+                                                        en la enfermedad de Alzheimer (G30+) CIE10 F00</option>
+                                                    <option value="Demencia vascular">Demencia vascular F01</option>
+                                                    <option value="Demencia en otras enfermedades clasificadas en otra parte">
+                                                        Demencia en otras enfermedades clasificadas en otra parte CIE10 F02</option>
+                                                <option value="Demencia no especificada">
+                                                    Demencia no especificada CIE10 F3.X</option>
+                                            <option value="Demencia no especificada">
+                                                Demencia no especificada CIE10 F3.X</option> 
+                                        </select>
+                                            </div>
+                                        </div>
+
+                                        <!-- Sección de Depresión Grave -->
+                                      <!-- Sección de Depresión Grave, Grave con ideación suicida, refractaria y sin psicosis -->
+                                      <div>
+                                        <label>
+                                            <input type="checkbox" id="depresion" name="patologia" value="2">
+                                            Depresión (Grave, Grave con ideación suicida, refractaria y con psicosis)
+                                        </label><br>
+                                        <div id="depresion-options" class="hidden">
+                                            <label for="depresion-details"></label>
+                                            <select class="fondol" id="depresion-details" name="depresion-details">
+                                                <option value="" selected>Selecciona una opción</option>
+                                                <option value="Trastorno depresivo recurrente, episodio depresivo grave presente sin síntomas psicóticos">
+                                                    Trastorno depresivo recurrente, episodio depresivo grave presente sin síntomas psicóticos CIE10 F33.2
+                                                </option>
+                                                
+                                            </select>
+                                        </div>
+                                    </div>
+
+<!-- Sección de Depresión con Psicosis -->
+<div>
+    <label>
+        <input type="checkbox" id="depresion-psicosis" name="patologia" value="2">
+        Depresión (Grave, Grave con ideación suicida, refractaria y con psicosis)
+    </label><br>
+    <div id="depresion-psicosis-options" class="hidden">
+        <label for="depresion-psicosis-details"></label>
+        <select class="fondol" id="depresion-psicosis-details" name="depresion-psicosis-details">
+            <option value="" selected>Selecciona una opción</option>
+            <option value="Trastorno depresivo recurrente, episodio depresivo grave presente con síntomas psicóticos">
+                Trastorno depresivo recurrente, episodio depresivo grave presente con síntomas psicóticos CIE F33.3
+            </option>
+        </select>
+    </div>
+</div>
+
+<!-- Sección de Depresión Leve -->
+<div>
+    <label>
+        <input type="checkbox" id="depresion-leve" name="patologia" value="1">
+        Depresión leve o moderada
+    </label><br>
+    <div id="depresion-leve-options" class="hidden">
+        <label for="depresion-leve-details"></label>
+        <select class="fondol" id="depresion-leve-details" name="depresion-leve-details">
+            <option value="" selected>Selecciona una opción</option>
+            <option value="Trastorno depresivo recurrente actualmente en remisión">
+                Trastorno depresivo recurrente actualmente en remisión CIE10 F33.4
+            </option>
+            <option value="Otros trastornos depresivos recurrentes">Otros trastornos depresivos recurrentes CIE10 33.8</option>
+            <option value="Trastorno depresivo recurrente, no especificado">Trastorno depresivo recurrente, no especificado CIE10 33.9</option>
+
+        </select>
+    </div>
+</div>
+
+                                        <!-- Sección de Diabetes -->
+                                        <div>
+                                            <label><input type="checkbox" id="diabetes" name="patologia" value="2">
+                                                Diabetes
+                                                mellitus</label><br>
+                                            <div id="diabetes-options" class="hidden">
+                                                <label for="diabetes-details"> </label>
+                                                <select class="fondol" id="diabetes-details" name="diabetes-details">
+                                                    <option value="" selected>Selecciona una opción</option>
+                                                    <option value="Diabetes mellitus insulinodependiente">Diabetes
+                                                        mellitus
+                                                        insulinodependiente CIE10 E10</option>
+                                                    <option value="Diabetes mellitus no insulinodependiente">Diabetes
+                                                        mellitus no insulinodependiente CIE10 E11</option>
+                                                    <option value="Diabetes mellitus asociada con desnutrición"> Diabetes mellitus asociada con desnutrición CIE10 E12</option>
+                                                    <option value="Otras Diabetes mellitus especificadas"> Otras Diabetes especificadas CIE10 E13</option>
+                                                    <option value="Diabetes mellitus no especificadas">Diabetes mellitus no especificadas CIE10 E14</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <!-- Sección de Dificultades Socioeconómicas -->
+                                        <div>
+                                            <label><input type="checkbox" id="socioeconomicas" name="patologia"
+                                                    value="1">
+                                                Dificultades socioeconómicas o psicosociales</label><br>
+                                            <div id="socioeconomicas-options" class="hidden">
+                                                <label for="socioeconomicas-details"> </label>
+                                                <select class="fondol" id="socioeconomicas-details"
+                                                    name="socioeconomicas-details">
+                                                    <option value="" selected>Selecciona una opción</option>
+                                                    <option
+                                                        value="Problemas relacionados con la educación y la alfabetización">
+                                                        Problemas relacionados con la educación y la alfabetización CIE10 Z55
+                                                    </option>
+                                                    <option
+                                                    value="Problemas relacionados con el empleo y el desempleo">
+                                                    Problemas relacionados con el empleo y el desempleo CIE10 Z56
+                                                    </option>
+                                                    <option
+                                                    value="Exposición a factores de riesgo ocupacional">
+                                                    Exposición a factores de riesgo ocupacional CIE10 Z57
+                                                    </option>
+                                                    <option
+                                                    value="Problemas relacionados con el ambiente físico">
+                                                    Problemas relacionados con el ambiente físico CIE10 Z58
+                                                    </option>
+                                                    <option
+                                                    value="Problemas relacionados con el ambiente social">
+                                                    Problemas relacionados con el ambiente social CIE10 Z60
+                                                    </option>
+                                                    <option value="Problemas relacionados con hechos negativos en la niñez">Problemas relacionados con hechos negativos en la niñez CIE10 Z61 </option>
+                                                    <option value="Otros problemas relacionados con la crianza del niño">Otros problemas relacionados con la crianza del niño CIE10 Z62 </option>
+                                                    <option value="Otros problemas relacionados con el grupo primario de apoyo, inclusive circunstancias familiares">Otros problemas relacionados con el grupo primario de apoyo, inclusive circunstancias familiares CIE10 Z63</option>
+                                                    <option value="Problemas relacionados con ciertas circunstancias psicosociales">Problemas relacionados con ciertas circunstancias psicosociales CIE10 Z64</option>
+                                                    <option value="Problemas relacionados con otras circunstancias psicosociales">Problemas relacionados con otras circunstancias psicosociales CIE10 Z65</option>
+                                                    </select>
+                                                    </div>
+                                        </div>
+                                        <form id="patologiaForm">
+                                            <!-- Sección de Dislipidemias -->
+                                            <div>
+                                                <label><input type="checkbox" id="dislipidemias" name="patologia"
+                                                        value="1">
+                                                    Dislipidemias</label><br>
+                                                <div id="dislipidemias-options" class="hidden">
+                                                    <label for="dislipidemias-details"> </label>
+                                                    <select class="fondol" id="dislipidemias-details"
+                                                        name="dislipidemias-details">
+                                                        <option value="" selected>Selecciona una opción</option>
+                                                        <option value="Dislipidemia">Dislipidemia CIE10 E78</option>
+                                                        <option
+                                                            value="Trastorno del metabolismo de las lipoproteínas y otras lipidemias">
+                                                            Trastorno del metabolismo de las lipoproteínas y otras
+                                                            Dislipidemias CIE10 E78</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <!-- Sección de Dolor neuropático / Fibromialgia -->
+                                            <div>
+                                                <label><input type="checkbox" id="dolor-neuropatico" name="patologia"
+                                                        value="1"> Dolor neuropático / fibromialgia</label><br>
+                                                <div id="dolor-neuropatico-options" class="hidden">
+                                                    <label for="dolor-neuropatico-details"></label>
+                                                    <select class="fondol" id="dolor-neuropatico-details"
+                                                        name="dolor-neuropatico-details">
+                                                        <option value="" selected>Selecciona una opción</option>
+                                                        <option value="Trastornos del nervio trigémino">Trastornos del
+                                                            nervio trigémino CIE10 G50</option>
+                                                        <option value="Fibromialgia">Fibromialgia CIE10 M79.7</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <!-- Sección de Enfermedad cerebrovascular / ACV / AVE -->
+                                            <div>
+                                                <label><input type="checkbox" id="cerebrovascular" name="patologia"
+                                                        value="2"> Enfermedad cerebrovascular / ACV / AVE</label><br>
+                                                <div id="cerebrovascular-options" class="hidden">
+                                                    <label for="cerebrovascular-details"></label>
+                                                    <select class="fondol" id="cerebrovascular-details"
+                                                        name="cerebrovascular-details">
+                                                        <option value="" selected>Selecciona una opción</option>
+                                                        <option value="Accidente vascular encefálico agudo, no especificado como hemorrágico o isquémico">
+                                                            Accidente vascular encefálico agudo, no especificado como hemorrágico o isquémico CIE10 I64</option>
+                                                        <option value="Otras enfermedades cerebrovasculares">Otras enfermedades cerebrovasculares CIE10 I67</option>
+                                                        <option value="Disección de arterias cerebrales, sin ruptura">Disección de arterias cerebrales, sin ruptura CIE10 I67.0</option>
+                                                        <option value="Aneurisma cerebral, sin ruptura">Aneurisma cerebral, sin ruptura CIE10 I67.1</option>
+                                                        <option value="Aterosclerosis cerebral">Aterosclerosis cerebral CIE10 I67.2</option>
+                                                        <option value="Leucoencefalopatía vascular progresiva">Leucoencefalopatía vascular progresiva CIE10 I67.3</option>
+                                                        <option value="Encefalopatía hipertensiva">Encefalopatía hipertensiva CIE10 I67.4</option>
+                                                        <option value="Enfermedad de Moyamoya">Enfermedad de Moyamoya CIE10 I67.5</option>
+                                                        <option value="Arteritis cerebral, no clasificada en otra parte">Arteritis cerebral, no clasificada en otra parte CIE10 I67.7</option>
+                                                        <option value="Otras enfermedades cerebrovasculares especificadas">Otras enfermedades cerebrovasculares especificadas CIE10 I67.8</option>
+                                                        <option value="Enfermedad cerebro vascular, no especificada">Enfermedad cerebro vascular, no especificada CIE10 I67.9</option>
+                                                        <option value="Trastornos cerebrovasculares en enfermedades clasificadas en otra parte">Trastornos cerebrovasculares en enfermedades clasificadas en otra parte CIE10 I68</option>
+                                                        <option value="Angiopatía cerebral amiloide">Angiopatía cerebral amiloide CIE10 I68.0</option>
+                                                        <option value="Arteritis cerebral en enfermedades infecciosas y parasitaria clasificadas en otra parte">Arteritis cerebral en enfermedades infecciosas y parasitaria clasificadas en otra parte CIE10 I68.1</option>
+                                                        <option value="Arteritis cerebral en otras enfermedades clasificadas en otra parte">Arteritis cerebral en otras enfermedades clasificadas en otra parte CIE10 I68.2</option>
+                                                        <option value="Síndromes vasculares encefálicos en enfermedades cerebrovasculares">Síndromes vasculares encefálicos en enfermedades cerebrovasculares CIE10 G46/option>
+                                                        <option value="Síndrome de la arteria cerebral media">Síndrome de la arteria cerebral media CIE10 G46.0</option>
+                                                        <option value="Síndrome de la arteria cerebral anterior">Síndrome de la arteria cerebral anterior CIE10 G46.1</option>
+                                                        <option value="Síndrome de la arteria cerebral posterior">Síndrome de la arteria cerebral posterior CIE10 G46.2</option>
+                                                        <option value="Síndromes apopléticos del tallo encefálico">Síndromes apopléticos del tallo encefálico CIE10 G46.3</option>
+                                                        <option value="Síndrome de infarto cerebeloso">Síndrome de infarto cerebeloso CIE10 G46.4</option>
+                                                        <option value="Síndrome lacunar motor puro">Síndrome lacunar motor puro CIE10 G46.5</option>
+                                                        <option value="Síndrome lacunar sensorial puro">Síndrome lacunar sensorial puro CIE10 G46.6</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <!-- Sección de Enfermedad Hepática -->
+                                            <div>
+                                                <label><input type="checkbox" id="enfermedad-hepatica-checkbox" name="patologia" value="1"> 
+                                                    Enfermedad Hepática</label><br>
+                                                <div id="enfermedad-hepatica-options" class="hidden">
+                                                    <select class="fondol" id="enfermedad-hepatica-details" name="enfermedad-hepatica-details">
+                                                        <option value="" selected>Selecciona una opción</option>
+                                                        <option value="Hepatitis viral crónica">Hepatitis viral crónica CIE10 B18</option>
+                                                        <option value="Enfermedad alcohólica del hígado">Enfermedad alcohólica del hígado CIE10 K70</option>
+                                                        <option value="Enfermedad toxina del hígado">Enfermedad toxina del hígado CIE10 K71</option>
+                                                        <option value="Hepatitis crónicas, no clasificadas en otra parte">Hepatitis crónicas, no clasificadas en otra parte CIE10 K73</option>
+                                                        <option value="Fibrosis y cirrosis del hígado">Fibrosis y cirrosis del hígado CIE10 K74</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <!-- Sección de Enfermedad Pulmonar Obstructiva Crónica (EPOC) -->
+                                            <div>
+                                                <label><input type="checkbox" id="epoc-checkbox" name="patologia" value="1">
+                                                Enfermedad pulmonar obstructiva crónica (EPOC)</label><br>
+                                                <div id="epoc-options" class="hidden">
+                                                    <select class="fondol" id="epoc-details" name="epoc-details">
+                                                        <option value="" selected>Selecciona una opción</option>
+                                                        <option value="Bronquitis crónica simple y mucopurulenta">Bronquitis crónica simple y mucopurulenta CIE10 J41</option>
+                                                        <option value="Bronquitis crónica no especificada">Bronquitis crónica no especificada CIE10 J42</option>
+                                                        <option value="Enfisema">Enfisema CIE10 J43</option>
+                                                        <option value="Otras enfermedades pulmonares obstructivas crónicas">Otras enfermedades pulmonares obstructivas crónicas CIE10 J44</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <!-- Sección de Enfermedad Renal Crónica -->
+                                            <div>
+                                                <label><input type="checkbox" id="enfermedad-renal-checkbox" name="patologia" value="1"> Enfermedad renal crónica</label><br>
+                                                <div id="enfermedad-renal-options" class="hidden">
+                                                    <select class="fondol" id="enfermedad-renal-details" name="enfermedad-renal-details">
+                                                        <option value="" selected>Selecciona una opción</option>
+                                                        <option value="Otras enfermedades renales tubulointersticales">Otras enfermedades renales tubulointersticales CIE10 N15 </option>
+                                                        <option value="Insuficiencia renal no especificada">Insuficiencia renal no especificada CIE10 N19 </option>
+                                                        <option value="Enfermedad renal hipertensiva">Enfermedad renal hipertensiva CIE10 I12 </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <!-- Sección de Enfermedad Renal Crónica Avanzada -->
+                                            <div>
+                                                <label><input type="checkbox" id="enfermedad-renal-avanzada-checkbox" name="patologia" value="2"> Enfermedad renal crónica avanzada</label><br>
+                                                <div id="enfermedad-renal-avanzada-options" class="hidden">
+                                                    <select class="fondol" id="enfermedad-renal-avanzada-details" name="enfermedad-renal-avanzada-details">
+                                                        <option value="" selected>Selecciona una opción</option>
+                                                        <option value="Enfermedad renal crónica Etapa 4">Enfermedad renal crónica Etapa 4 CIE10 N18.4 </option>
+                                                        <option value="Insuficiencia renal terminal">Insuficiencia renal terminal CIE10 N18</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            </div>
+                                            <form id="patologiaForm">
+                                                <!-- Sección de Enfermedades cardiovasculares -->
+                                                <div>
+                                                    <label>
+                                                        <input type="checkbox"
+                                                            id="enfermedades-cardiovasculares-checkbox" name="patologia"
+                                                            value="2"> Enfermedades cardiovasculares / IAM/
+                                                        cardiopatía isquémica
+                                                    </label><br>
+                                                    <div id="enfermedades-cardiovasculares-options" class="hidden">
+                                                        <select class="fondol"
+                                                            id="enfermedades-cardiovasculares-details"
+                                                            name="enfermedades-cardiovasculares-details">
+                                                            <option value="" selected>Selecciona una opción</option>
+                                                            <option value="Complicación y descripciones mal definidas de enfermedades cardíaca">Complicación y descripciones mal definidas de enfermedades cardíaca CIE10 I51</option>
+                                                            <option value="Otros trastornos cardíacos en enfermedades clasificadas en otra parte">Otros trastornos cardíacos en enfermedades clasificadas en otra parte CIE10 I52</option>
+                                                            <option value="Enfermedad cardiaca hipertensiva">Enfermedad cardiaca hipertensiva CIE10 I11</option>
+                                                            <option value="Angina de pecho">Angina de pecho CIE10 I20</option>
+                                                            <option value="Infarto agudo al miocardio">Infarto agudo al miocardio CIE10 I21</option>
+                                                            <option value="Infarto subsecuente del miocardio">Infarto subsecuente del miocardio CIE10 I22</option>
+                                                            <option value="Enfermedad isquemica crónica del corazón">Enfermedad isquemica crónica del corazón CIE10 I25</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Sección de Enteritis crónica / Crohn -->
+                                                <div>
+                                                    <label>
+                                                        <input type="checkbox" id="enteritis-checkbox" name="patologia"
+                                                            value="1"> Enteritis crónica / colitis ulcerosa / Crohn
+                                                    </label><br>
+                                                    <div id="enteritis-options" class="hidden">
+                                                        <select class="fondol" id="enteritis-details"
+                                                            name="enteritis-details">
+                                                            <option value="" selected>Selecciona una opción</option>
+                                                            <option value="Enfermedad de Crohn">Enfermedad de Crohn CIE10 K50</option>
+                                                            <option value="Colitis ulcerativa">Colitis ulcerativa CIE10 K51</option>
+                                                            <option value="Otras colitis y gastroenteritis no infecciosas">Otras colitis y gastroenteritis no infecciosas CIE10 K52</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Sección de Epilepsia -->
+                                                <div>
+                                                    <label>
+                                                        <input type="checkbox" id="epilepsia-checkbox" name="patologia"
+                                                            value="1"> Epilepsia
+                                                    </label><br>
+                                                    <div id="epilepsia-options" class="hidden">
+                                                        <select class="fondol" id="epilepsia-details"
+                                                            name="epilepsia-details">
+                                                            <option value="" selected>Selecciona una opción</option>
+                                                            <option value="Epilepsia">Epilepsia CIE10 G40</option>
+                                                         </select>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Sección de Esclerosis múltiple -->
+                                                <div>
+                                                    <label>
+                                                        <input type="checkbox" id="esclerosis-multiple-checkbox"
+                                                            name="patologia" value="1"> Esclerosis múltiple
+                                                    </label><br>
+                                                    <div id="esclerosis-multiple-options" class="hidden">
+                                                        <select class="fondol" id="esclerosis-multiple-details"
+                                                            name="esclerosis-multiple-details">
+                                                        <option value="" selected>Selecciona una opción</option>
+                                                        <option value="Esclerosis múltiple">Esclerosis múltiple CIE10 G35
+                                                        </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Sección de Esquizofrenia -->
+                                                <div>
+                                                    <label>
+                                                        <input type="checkbox" id="esquizofrenia-checkbox"
+                                                            name="patologia" value="1"> Esquizofrenia
+                                                    </label><br>
+                                                    <div id="esquizofrenia-options" class="hidden">
+                                                        <select class="fondol" id="esquizofrenia-details"
+                                                            name="esquizofrenia-details">
+                                                        <option value="" selected>Selecciona una opción</option>
+                                                        <option value="Esquizofrenia">Esquizofrenia CIE10 F20</option>
+                                                        <option value="Trastornos esquizotípico">Trastornos esquizotípico CIE10 F21</option>
+                                                        <option value="Trastornos delirantes persistentes">Trastornos delirantes persistentes CIE10 F22</option>
+                                                        <option value="Trastornos psicóticos agudos y transitorios">Trastornos psicóticos agudos y transitorios CIE10 F23</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Sección de Fibrilación auricular -->
+                                                <div>
+                                                    <label>
+                                                        <input type="checkbox" id="fibrilacion-checkbox"
+                                                            name="patologia" value="1"> Fibrilación auricular / flutter
+                                                    </label><br>
+                                                    <div id="fibrilacion-options" class="hidden">
+                                                        <select class="fondol" id="fibrilacion-details"
+                                                            name="fibrilacion-details">
+                                                            <option value="" selected>Selecciona una opción</option>
+                                                            <option value="Fibrilación y aleteo ventricular">Fibrilación y aleteo ventricular CIE10 I49.0</option>
+                                                            <option value="Arritmia cardíaca, no especificada">Arritmia cardíaca, no especificada CIE10 I49.9</option>
+                                                            <option value="Fibrilación auricular persistente">Fibrilaciónauricular persistente CIE10 I481</option>
+                                                            <option value="Fibrilación auricular crónica">Fibrilación auricular crónica CIE10 I482</option>
+                                                            <option value="Aleteo auricular típico">Aleteo auricular típico CIE10 I483</option>
+                                                            <option value="Aleteo auricular Atípico">Aleteo auricular Atípico CIE10 I484</option>
+                                                            <option value="Fibrilación y aleteo auricular, no especificado">Fibrilación y aleteo auricular, no especificado CIE10 I489</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Sección de Función limitada -->
+                                                <div>
+                                                    <label>
+                                                        <input type="checkbox" id="funcion-limitada-checkbox"
+                                                            name="patologia" value="2"> Función limitada / discapacidad
+                                                        /
+                                                        dependencia
+                                                    </label><br>
+                                                    <div id="funcion-limitada-options" class="hidden">
+                                                        <select class="fondol" id="funcion-limitada-details"
+                                                            name="funcion-limitada-details">
+                                                            <option value="" selected>Selecciona una opción</option>
+                                                            <option value="Problemas relacionados con dependencia del prestador de servicios">Problemas relacionados con dependencia del prestador de servicios CIE10 Z74</option>
+                                                            <option value="Dependencia de maquinas y dispositivos capasitantes, no clasificadas en otra parte">Dependencia de maquinas y dispositivos capasitantes, no clasificadas en otra parte CIE10 Z99</option>
+                                                            <option value="Anormalidades de la marcha y de la movilidad">Anormalidades de la marcha y de la movilidad CIE10 R26</option>
+
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Sección de Glaucoma -->
+                                                <div>
+                                                    <label>
+                                                        <input type="checkbox" id="glaucoma-checkbox" name="patologia"
+                                                            value="1"> Glaucoma
+                                                    </label><br>
+                                                    <div id="glaucoma-options" class="hidden">
+                                                        <select class="fondol" id="glaucoma-details"
+                                                            name="glaucoma-details">
+                                                            <option value="" selected>Selecciona una opción</option>
+                                                            <option value="Glaucoma">Glaucoma CIE10 H40</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Sección de Hipertensión -->
+                                                <div>
+                                                    <label>
+                                                        <input type="checkbox" id="hipertension-checkbox"
+                                                            name="patologia" value="1"> Hipertensión
+                                                    </label><br>
+                                                    <div id="hipertension-options" class="hidden">
+                                                        <select class="fondol" id="hipertension-details"
+                                                            name="hipertension-details">
+                                                            <option value="" selected>Selecciona una opción</option>
+                                                            <option value="Enfermedad renal hipertensiva">Enfermedad renal hipertensiva CIE10 I12</option>
+                                                            <option value="Enfermedad cardiorrenal hipertensiva">Enfermedad cardiorrenal hipertensiva CIE10 I13</option>
+                                                            <option value="Hipertensión esencial">Hipertensión esencial CIE10 I10</option>
+                                                            <option value="Enfermedad cardiaca hipertensiva">Enfermedad cardiaca hipertensiva CIE10 I11</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Sección de Hipertrofia prostática benigna -->
+                                                <div>
+                                                    <label>
+                                                        <input type="checkbox" id="hipertrofia-prostatica-checkbox"
+                                                            name="patologia" value="1"> Hipertrofia prostática benigna
+                                                    </label><br>
+                                                    <div id="hipertrofia-prostatica-options" class="hidden">
+                                                        <select class="fondol" id="hipertrofia-prostatica-details"
+                                                            name="hipertrofia-prostatica-details">
+                                                            <option value="" selected>Selecciona una opción</option>
+                                                            <option value="Hiperplasia de la próstata">Hiperplasia de la
+                                                                próstata CIE10 N40</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                </div>
+                                <div class="div3"> <!-- Sección de Hiperuricemia -->
+                                    <div>
+                                        <label>
+                                            <input type="checkbox" id="hiperuricemia-checkbox" name="patologia"
+                                                value="1">
+                                            Hiperuricemia
+                                        </label><br>
+                                        <div id="hiperuricemia-options" class="hidden">
+                                            <select class="fondol" id="hiperuricemia-details"
+                                                name="hiperuricemia-details">
+                                                <option value="" selected>Selecciona una opción</option>
+                                                <option value="Gota">Gota CIE10 M10</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!-- Sección de VIH / SIDA -->
+                                    <div>
+                                        <label>
+                                            <input type="checkbox" id="vih-sida-checkbox" name="patologia" value="1">
+                                            Infección por VIH / SIDA
+                                        </label><br>
+                                        <div id="vih-sida-options" class="hidden">
+                                            <select class="fondol" id="vih-sida-details" name="vih-sida-details">
+                                                <option value="" selected>Selecciona una opción</option>
+                                                <option value="Enfermedades por virus de la inmunodeficiencia humana ( vih) resultante en otras afecciones">Enfermedades por virus de la inmunodeficiencia humana ( vih) resultante en otras afecciones CIE10 B21</option>
+                                                <option value="Enfermedad por virus de la inmunodeficiencia humana (vih), resultante en otras enfermedades especificadas">Enfermedad por virus de la inmunodeficiencia humana (vih), resultante en otras enfermedades especificadas CIE10 B22</option>
+                                                <option value="Enfermedad por virus de la inmunodeficiencia humana (vih) , resultante en otras afecciones">Enfermedad por virus de la inmunodeficiencia humana (vih) , resultante en otras afecciones CIE10 B23</option>
+                                                <option value="Enfermedad por virus de la inmunodeficiencia humana (vih), sin otra especificación.">Enfermedad por virus de la inmunodeficiencia humana (vih), sin otra especificación. CIE10 B24</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!-- Sección de Insuficiencia cardíaca -->
+                                    <div>
+                                        <label>
+                                            <input type="checkbox" id="insuficiencia-cardiaca-checkbox" name="patologia"
+                                                value="1"> Insuficiencia cardíaca
+                                        </label><br>
+                                        <div id="insuficiencia-cardiaca-options" class="hidden">
+                                            <select class="fondol" id="insuficiencia-cardiaca-details"
+                                                name="insuficiencia-cardiaca-details">
+                                                <option value="" selected>Selecciona una opción</option>
+                                                <option value="Insuficiencia cardíaca">Insuficiencia cardíaca CIE10 I50</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!-- Sección de Isquemia cerebral transitoria -->
+                                    <div>
+                                        <label>
+                                            <input type="checkbox" id="isquemia-cerebral-checkbox" name="patologia"
+                                                value="1"> Isquemia cerebral transitoria (TIA)
+                                        </label><br>
+                                        <div id="isquemia-cerebral-options" class="hidden">
+                                            <select class="fondol" id="isquemia-cerebral-details"
+                                                name="isquemia-cerebral-details">
+                                            <option value="" selected>Selecciona una opción</option>
+                                            <option value="Ataques de isquemia cerebral transitoria y síndromes afines">Ataques de isquemia cerebral transitoria y síndromes afines CIE10 G45</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!-- Sección de Lupus -->
+                                    <div>
+                                        <label>
+                                            <input type="checkbox" id="lupus-checkbox" name="patologia" value="1"> Lupus
+                                        </label><br>
+                                        <div id="lupus-options" class="hidden">
+                                            <select class="fondol" id="lupus-details" name="lupus-details">
+                                                <option value="" selected>Selecciona una opción</option>
+                                                <option value="Lupus eritematoso sistémico">Lupus eritematoso sistémico CIE10 M32</option>
+                                                <option value="Lupus eritematoso sistémico, inducido por drogas">Lupus eritematoso sistémico, inducido por drogas CIE10 M32.0</option>
+                                                <option value="Lupus eritematoso sistémico con compromiso de órganos o sistemas">Lupus eritematoso sistémico con compromiso de órganos o sistemas CIE10 M32.1</option>
+                                                <option value="Otras formas de lupus eritematoso sistémico">Otras formas de lupus eritematoso sistémico CIE10 M32.8</option>
+                                                <option value="Lupus eritematoso sistémico, sin otra especificación">Lupus eritematoso sistémico, sin otra especificación CIE10 M32.9</option>
+                                                <option value="Lupus eritematoso sistémico, sin otra especificación">Lupus eritematoso sistémico, sin otra especificaciónCIE10 M32.9</option>
+                                                <option value="Lupus eritematoso">Lupus eritematoso CIE10 L93</option>
+                                                <option value="Lupus eritematoso discoide">Lupus eritematoso discoide CIE10 L93.0</option>
+                                                <option value="Lupus eritematoso cutáneo subagudo">Lupus eritematoso cutáneo subagudo CIE10 L93.1</option>
+                                                <option value="Otros lupus eritematosos localizados">Otros lupus eritematosos localizados CIE10 L93.2</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <form id="patologiaForm">
+                                        <!-- Sección de Malignidad -->
+                                        <div>
+                                            <label>
+                                                <input type="checkbox" id="malignidad-checkbox" name="patologia"
+                                                    value="1">
+                                                Malignidad
+                                            </label><br>
+                                            <div id="malignidad-options" class="hidden">
+                                                <select class="fondol" id="malignidad-details"
+                                                    name="malignidad-details">
+                                                    <option value="" selected>Selecciona una opción</option>
+                                                    <option value="Cáncer del canal cervical">Cáncer del canal cervical CIE10 C53
+                                                    </option>
+                                                    <option value="Tumor Sólido">Tumor Sólido CIE10 C80</option>
+                                                    <option value="Otras neoplasias malignas de la piel">Otras
+                                                        neoplasias
+                                                        malignas de la piel CIE10 C44</option>
+                                                    <option
+                                                        value="Tumor maligno del labio, (de la cavidad bucal y de la faringe)">
+                                                        Tumor maligno del labio, (de la cavidad bucal y de la faringe) CIE10 C00
+                                                    </option>
+                                                    <option
+                                                        value="Tumor maligno del labio, (de la cavidad bucal y de la faringe)">
+                                                        Tumor maligno del labio, (de la cavidad bucal y de la faringe) CIE10 C01
+                                                    </option>
+                                                    <option
+                                                        value="Tumor maligno de otras partes y de las no especificadas de la lengua, (de la cavidad bucal y de la faringe)">
+                                                        Tumor maligno de otras partes y de las no especificadas de la
+                                                        lengua, (de la cavidad bucal y de la faringe) CIE10 C02</option>
+                                                    <option
+                                                        value="Tumor maligno de la encía, (de la cavidad bucal y de la faringe)">
+                                                        Tumor maligno de la encía, (de la cavidad bucal y de la faringe) CIE10 C03
+                                                    </option>
+                                                    <option
+                                                        value="Tumor maligno del piso de la boca, (de la cavidad bucal y de la faringe)">
+                                                        Tumor maligno del piso de la boca, (de la cavidad bucal y de la
+                                                        faringe) CIE10 C04</option>
+                                                    <option
+                                                        value="Tumor maligno del paladar, (de la cavidad bucal y de la faringe)">
+                                                        Tumor maligno del paladar, (de la cavidad bucal y de la faringe) CIE10 C05
+                                                    </option>
+                                                    <option
+                                                        value="Tumor maligno de otras partes y de las no especificadas de la boca, (de la cavidad bucal y de la faringe)">
+                                                        Tumor maligno de otras partes y de las no especificadas de la
+                                                        boca,
+                                                        (de la cavidad bucal y de la faringe) CIE10 C06</option>
+                                                    <option
+                                                        value="Tumor maligno de otras glándulas salivales mayores y de las no especificadas, (de la cavidad bucal y de la faringe)">
+                                                        Tumor maligno de otras glándulas salivales mayores y de las no
+                                                        especificadas, (de la cavidad bucal y de la faringe) CIE10 C08</option>
+                                                    <option
+                                                        value="Tumor maligno de la amígdala, (de la cavidad bucal y de la faringe)">
+                                                        Tumor maligno de la amígdala, (de la cavidad bucal y de la
+                                                        faringe)CIE10 C09
+                                                    </option>
+                                                    <option
+                                                        value="Tumor maligno de la orofaringe, (de la cavidad bucal y de la faringe)">
+                                                        Tumor maligno de la orofaringe, (de la cavidad bucal y de la
+                                                        faringe) CIE10 C10</option>
+                                                    <option
+                                                        value="Tumor maligno de la nasofaringe, (de la cavidad bucal y de la faringe)">
+                                                        Tumor maligno de la nasofaringe, (de la cavidad bucal y de la
+                                                        faringe) CIE10 C11</option>
+                                                    <option
+                                                        value="Tumor maligno del seno piriforme,(de la cavidad bucal y de la faringe)">
+                                                        Tumor maligno del seno piriforme,(de la cavidad bucal y de la
+                                                        faringe) CIE10 C12</option>
+                                                    <option
+                                                        value="Tumor maligno de la hipofaringe, (de la cavidad bucal y de la faringe)">
+                                                        Tumor maligno de la hipofaringe, (de la cavidad bucal y de la
+                                                        faringe)CIE10 C13</option>
+                                                    <option
+                                                        value="Tumor maligno de otros sitios y de los mal definidos del labio, (de la cavidad bucal y de la faringe)">
+                                                        Tumor maligno de otros sitios y de los mal definidos del labio,
+                                                        (de
+                                                        la cavidad bucal y de la faringe) CIE10 C14</option>
+                                                    <option
+                                                        value="Tumor maligno del esófago, (de los órganos digestivos)">
+                                                        Tumor maligno del esófago, (de los órganos digestivos) CIE10 C15</option>
+                                                    <option
+                                                        value="Tumor maligno del estómago, (de los órganos digestivos)">
+                                                        Tumor maligno del estómago, (de los órganos digestivos) CIE10 C16</option>
+                                                    <option
+                                                        value="Tumor maligno del intestino delgado, (de los órganos digestivos)">
+                                                        Tumor maligno del intestino delgado, (de los órganos digestivos) CIE10 C17
+                                                    </option>
+                                                    <option
+                                                        value="Tumor maligno del colon, (de los órganos digestivos)">
+                                                        Tumor maligno del colon, (de los órganos digestivos) CIE10 C18</option>
+                                                    <option
+                                                        value="Tumor maligno de la unión rectosigmoidea, (de los órganos digestivos)">
+                                                        Tumor maligno de la unión rectosigmoidea, (de los órganos
+                                                        digestivos) CIE10 C19</option>
+                                                    <option
+                                                        value="Tumor maligno del recto, (de los órganos digestivos)">
+                                                        Tumor maligno del recto, (de los órganos digestivos) CIE10 C20</option>
+                                                    <option
+                                                        value="Tumor maligno del ano y del conducto anal, (de los órganos digestivos)">
+                                                        Tumor maligno del ano y del conducto anal, (de los órganos
+                                                        digestivos) CIE10 C21</option>
+                                                    <option
+                                                        value="Tumor maligno del hígado y de las vías biliares intrahepáticas, (de los órganos digestivos)">
+                                                        Tumor maligno del hígado y de las vías biliares intrahepáticas,
+                                                        (de
+                                                        los órganos digestivos) CIE10 C22</option>
+                                                    <option
+                                                        value="Tumor maligno de la vesícula biliar, (de los órganos digestivos)">
+                                                        Tumor maligno de la vesícula biliar, (de los órganos digestivos) CIE10 C23
+                                                    </option>
+                                                    <option
+                                                        value="Tumor maligno de otras partes y de las no especificadas de las biliares, (de los órganos digestivos)">
+                                                        Tumor maligno de otras partes y de las no especificadas de las
+                                                        biliares, (de los órganos digestivos) CIE10 C24</option>
+                                                    <option
+                                                        value="Tumor maligno del páncreas, (de los órganos digestivos)">
+                                                        Tumor maligno del páncreas, (de los órganos digestivos) CIE10 C25</option>
+                                                    <option
+                                                        value="Tumor maligno de otros sitios y de los mal definidos de los órganos digestivos, (de los órganos digestivos)">
+                                                        Tumor maligno de otros sitios y de los mal definidos de los
+                                                        órganos
+                                                        digestivos, (de los órganos digestivos) CIE10 C26</option>
+                                                    <option
+                                                        value="Tumor maligno de las fosas nasales y del oído medio, (de los órganos respiratorios e intratoracicos)">
+                                                        Tumor maligno de las fosas nasales y del oído medio, (de los
+                                                        órganos
+                                                        respiratorios e intratoracicos) CIE10 C30</option>
+                                                    <option
+                                                        value="Tumor maligno de la laringe, (de los órganos respiratorios e intratoracicos)">
+                                                        Tumor maligno de la laringe, (de los órganos respiratorios e
+                                                        intratoracicos) CIE10 C32</option>
+                                                    <option
+                                                        value="Tumor maligno de la tráquea, (de los órganos respiratorios e intratoracicos)">
+                                                        Tumor maligno de la tráquea, (de los órganos respiratorios e
+                                                        intratoracicos) CIE10 C33</option>
+                                                    <option
+                                                        value="Tumor maligno de los bronquios y del pulmón, (de los órganos respiratorios e intratoracicos)">
+                                                        Tumor maligno de los bronquios y del pulmón, (de los órganos
+                                                        respiratorios e intratoracicos) CIE10 C34</option>
+                                                    <option
+                                                        value="Tumor maligno del timo, (de los órganos respiratorios e intratoracicos)">
+                                                        Tumor maligno del timo, (de los órganos respiratorios e
+                                                        intratoracicos) CIE10 C37 </option>
+                                                    <option
+                                                        value="Tumor maligno del corazón, del mediastino y de la pleura, (de los órganos respiratorios e intratoracicos)">
+                                                        Tumor maligno del corazón, del mediastino y de la pleura, (de
+                                                        los
+                                                        órganos respiratorios e intratoracicos) CIE10 C38</option>
+                                                    <option
+                                                        value="Tumor maligno de otros sitios y de los mal definidos del sistema respiratorio y de los órganos intratorácicos">
+                                                        Tumor maligno de otros sitios y de los mal definidos del sistema
+                                                        respiratorio y de los órganos intratorácicos CIE10 C39</option>
+                                                    <option
+                                                        value="Tumor maligno de los huesos y de los cartígalos articulares de los miembros, (de los huesos y de los cartigalos articulares)">
+                                                        Tumor maligno de los huesos y de los cartígalos articulares de
+                                                        los
+                                                        miembros, (de los huesos y de los cartigalos articulares) CIE10 C40
+                                                    </option>
+                                                    <option
+                                                        value="Tumor maligno de los huesos y de los cartílagos articulares de otros sitios y de sitios no especificados, (de los huesos y cartílagos articulares)">
+                                                        Tumor maligno de los huesos y de los cartílagos articulares de
+                                                        otros
+                                                        sitios y de sitios no especificados, (de los huesos y cartílagos
+                                                        articulares) CIE10 C41</option>
+                                                    <option value="Melanoma maligno de la piel">Melanoma maligno de la
+                                                        piel CIE10 C43
+                                                    </option>
+                                                    <option
+                                                        value="Mesotelioma, (de los tejidos mesoteliales y de los tejidos blandos)">
+                                                        Mesotelioma, (de los tejidos mesoteliales y de los tejidos
+                                                        blandos) CIE10 C45
+                                                    </option>
+                                                    <option
+                                                        value="Sarcoma de kaposi, (de los tejidos mesoteliales y de los tejidos blandos)">
+                                                        Sarcoma de kaposi, (de los tejidos mesoteliales y de los tejidos
+                                                        blandos) CIE10 C46</option>
+                                                    <option
+                                                        value="Tumor maligno de los nervios periféricos y del sistema nervioso autónomo, (de los tejidos mesoteliales y de los tejidos blandos)">
+                                                        Tumor maligno de los nervios periféricos y del sistema nervioso
+                                                        autónomo, (de los tejidos mesoteliales y de los tejidos blandos) CIE10 C47
+                                                    </option>
+                                                    <option
+                                                        value="Tumor maligno del peritoneo y del retroperritoneo, (de los tejidos mesoteliales y de los tejidos blandos)">
+                                                        Tumor maligno del peritoneo y del retroperritoneo, (de los
+                                                        tejidos
+                                                        mesoteliales y de los tejidos blandos) CIE10 C48</option>
+                                                    <option
+                                                        value="Tumor maligno de otros tejidos conjuntivos y de tejidos blandos, (de los tejidos mesoteliales y de los tejidos blandos)">
+                                                        Tumor maligno de otros tejidos conjuntivos y de tejidos blandos,
+                                                        (de
+                                                        los tejidos mesoteliales y de los tejidos blandos) CIE10 C49</option>
+                                                    <option value="Tumor maligno ( de la mama)">Tumor maligno ( de la
+                                                        mama)CIE10 C50</option>
+                                                    <option
+                                                        value="Tumor maligno de la vulva, (de los órganos genitales femenino)">
+                                                        Tumor maligno de la vulva, (de los órganos genitales femenino) CIE10 C51
+                                                    </option>
+                                                    <option
+                                                        value="Tumor maligno de la vagina, ( de los órganos genetital femeninos)">
+                                                        Tumor maligno de la vagina, ( de los órganos genetital 
+                                                        femeninos) CIE10 C52
+                                                    </option>
+                                                    <option
+                                                        value="Tumor maligno del cuello del útero, (de los órganos genitales femeninos)">
+                                                        Tumor maligno del cuello del útero, (de los órganos genitales
+                                                        femeninos) CIE10 C53</option>
+                                                    <option
+                                                        value="Tumor melagros del cuerpo del útero, (de los órganos genitales femeninos), (de los órganos genitales femeninos)">
+                                                        Tumor melagros del cuerpo del útero, (de los órganos genitales femeninos) CIE10 C54</option>
+                                                    <option
+                                                        value="Tumor maligno del útero, parte no especificada, (de los órganos genitales femeninos)">
+                                                        Tumor maligno del útero, parte no especificada, (de los órganos
+                                                        genitales femeninos) CIE10 C55</option>
+                                                    <option value="Tumor maligno del ovario">Tumor maligno del ovario CIE10 C56
+                                                    </option>
+                                                    <option
+                                                        value="Tumor maligno de otros órganos genitales femeninos y de los no especificados, (de los órganos genitales femeninos)">
+                                                        Tumor maligno de otros órganos genitales femeninos y de los no
+                                                        especificados, (de los órganos genitales femeninos) CIE10 C57</option>
+                                                    <option
+                                                        value="Tumor maligno de la placenta, (de los órganos genitales femeninos)">
+                                                        Tumor maligno de la placenta, (de los órganos genitales
+                                                        femeninos) CIE10 C58
+                                                    </option>
+                                                    <option
+                                                        value="Tumor maligno del pene, ( de los órganos genitales masculinos)">
+                                                        Tumor maligno del pene, ( de los órganos genitales masculinos) CIE10 C60
+                                                    </option>
+                                                    <option
+                                                        value="Tumor maligno de la próstata, ( de los órganos genitales masculinos)">
+                                                        Tumor maligno de la próstata, ( de los órganos genitales
+                                                        masculinos) CIE10 C61
+                                                    </option>
+                                                    <option
+                                                        value="Tumor maligno del testículo, ( de los órganos genitales masculinos)">
+                                                        Tumor maligno del testículo, ( de los órganos genitales
+                                                        masculinos) CIE10 C62
+                                                    </option>
+                                                    <option
+                                                        value="Tumor maligno de otros órganos genitales masculinos y de los no especificados, ( de los órganos genitales masculinos)">
+                                                        Tumor maligno de otros órganos genitales masculinos y de los no
+                                                        especificados, ( de los órganos genitales masculinos) CIE10 C63</option>
+                                                    <option
+                                                        value="Tumor maligno del riñón, excepto de la pelvis renal, ( de las vías urinarias)">
+                                                        Tumor maligno del riñón, excepto de la pelvis renal, ( de las
+                                                        vías
+                                                        urinarias) CIE10 C64</option>
+                                                    <option
+                                                        value="Tumor maligno de la pelvis renal, ( de las vías urinarias)">
+                                                        Tumor maligno de la pelvis renal, ( de las vías urinarias) CIE10 C65
+                                                    </option>
+                                                    <option value="Tumor maligno del uréter, ( de las vías urinarias)">
+                                                        Tumor
+                                                        maligno del uréter, ( de las vías urinarias) CIE10 C66</option>
+                                                    <option
+                                                        value="Tumor maligno de la vejiga urinaria, ( de las vías urinarias)">
+                                                        Tumor maligno de la vejiga urinaria, ( de las vías urinarias) CIE10 67
+                                                    </option>
+                                                    <option
+                                                        value="Tumor maligno de otros órganos unitarios y de los no especificados">
+                                                        Tumor maligno de otros órganos unitarios y de los no
+                                                        especificados CIE10 C68
+                                                    </option>
+                                                    <option
+                                                        value="Tumor maligno del ojo y sus anexos, (del encéfalo y de otras partes del sistema nervioso central)">
+                                                        Tumor maligno del ojo y sus anexos, (del encéfalo y de otras
+                                                        partes
+                                                        del sistema nervioso central) CIE10 C69</option>
+                                                    <option value="Tumor maligno de las meninges">Tumor maligno de las
+                                                        meninges CIE10 C70</option>
+                                                    <option value="Tumor maligno del encéfalo">Tumor maligno del
+                                                        encéfalo CIE10 C71
+                                                    </option>
+                                                    <option
+                                                        value="Tumor maligno de la medula espinal, de los nervios craneales y de otras partes del sistema nervioso central">
+                                                        Tumor maligno de la medula espinal, de los nervios craneales y
+                                                        de
+                                                        otras partes del sistema nervioso central CIE10 C72</option>
+                                                    <option
+                                                        value="Tumor maligno de la glándula tiroides, (de la glándula tiroides y de otras glándulas endocrinas)">
+                                                        Tumor maligno de la glándula tiroides, (de la glándula tiroides
+                                                        y de
+                                                        otras glándulas endocrinas) CIE10 C73</option>
+                                                    <option
+                                                        value="Tumor maligno de la glándula suprarrenal, (de la glándula tiroides y de otras glándulas endocrinas)">
+                                                        Tumor maligno de la glándula suprarrenal, (de la glándula
+                                                        tiroides y
+                                                        de otras glándulas endocrinas) CIE10 C74</option>
+                                                    <option
+                                                        value="Tumor maligno de otras glándulas endocrinas y de estructuras afines, (de la glándula tiroides y de otras glándulas endocrinas)">
+                                                        Tumor maligno de otras glándulas endocrinas y de estructuras
+                                                        afines,
+                                                        (de la glándula tiroides y de otras glándulas endocrinas) CIE10 C75
+                                                    </option>
+                                                    <option
+                                                        value="Tumor maligno de otros sitios y de sitios mal definidos, (de sitios mal definidos, secundarios y de sitios no especificados)">
+                                                        Tumor maligno de otros sitios y de sitios mal definidos, (de
+                                                        sitios
+                                                        mal definidos, secundarios y de sitios no especificados) CIE10 C76
+                                                    </option>
+                                                    <option
+                                                        value="Tumor maligno secundario y el no especificado de los ganglios linfáticos, (de sitios mal definidos, secundarios y de sitios no especificados)">
+                                                        Tumor maligno secundario y el no especificado de los ganglios
+                                                        linfáticos, (de sitios mal definidos, secundarios y de sitios no
+                                                        especificados) CIE10 C77</option>
+                                                    <option
+                                                        value="Tumor maligno secundario de los órganos respiratorios y digestivos, (de sitios mal definidos, secundarios y de sitios no especificados)">
+                                                        Tumor maligno secundario de los órganos respiratorios y
+                                                        digestivos,
+                                                        (de sitios mal definidos, secundarios y de sitios no
+                                                        especificados) CIE10 C78
+                                                    </option>
+                                                    <option
+                                                        value="Tumor maligno secundario de otros sitios, (de sitios mal definidos, secundarios y de sitios no especificados)">
+                                                        Tumor maligno secundario de otros sitios, (de sitios mal
+                                                        definidos,
+                                                        secundarios y de sitios no especificados) CIE10 C79</option>
+                                                    <option
+                                                        value="Tumor maligno de sitios no especificados, (de sitios mal definidos, secundarios y de sitios no especificados)">
+                                                        Tumor maligno de sitios no especificados, (de sitios mal
+                                                        definidos,
+                                                        secundarios y de sitios no especificados) CIE10 C80</option>
+                                                    <option
+                                                        value="Enfermedad de hodgkin, ( del tejido linfático, de los órganos hematopoyeticos y de tejidos afines)">
+                                                        Enfermedad de hodgkin, ( del tejido linfático, de los órganos
+                                                        hematopoyeticos y de tejidos afines) CIE10 C81</option>
+                                                    <option
+                                                        value="Linfoma no-hodgkin folicular ( nodular) , (de sitios mal definidos, secundarios y de sitios no especificados)">
+                                                        Linfoma no-hodgkin folicular ( nodular) , (de sitios mal
+                                                        definidos,
+                                                        secundarios y de sitios no especificados) CIE10 C82</option>
+                                                    <option
+                                                        value="Linfoma no-hodgkin difuso, (de sitios mal definidos, secundarios y de sitios no especificados)">
+                                                        Linfoma no-hodgkin difuso, (de sitios mal definidos, secundarios
+                                                        y
+                                                        de sitios no especificados) CIE10 C83</option>
+                                                    <option
+                                                        value="Linfoma de célula t, periférico y cutáneo, (de sitios mal definidos, secundarios y de sitios no especificados)">
+                                                        Linfoma de célula t, periférico y cutáneo, (de sitios mal
+                                                        definidos,
+                                                        secundarios y de sitios no especificados) CIE10 C84</option>
+                                                    <option
+                                                        value="Linfoma no-hodgkin de otro tipo y el no especificado, (de sitios mal definidos, secundarios y de sitios no especificados)">
+                                                        Linfoma no-hodgkin de otro tipo y el no especificado, (de sitios
+                                                        mal
+                                                        definidos, secundarios y de sitios no especificados) CIE10 C85</option>
+                                                    <option
+                                                        value="Enfermedades inmunoproliferativas maligna, (de sitios mal definidos, secundarios y de sitios no especificados)">
+                                                        Enfermedades inmunoproliferativas maligna, (de sitios mal
+                                                        definidos,
+                                                        secundarios y de sitios no especificados) CIE10 C88</option>
+                                                    <option
+                                                        value="Mieloma múltiple y tumores malignos de células plasmáticas, (de sitios mal definidos, secundarios y de sitios no especificados)">
+                                                        Mieloma múltiple y tumores malignos de células plasmáticas, (de
+                                                        sitios mal definidos, secundarios y de sitios no especificados) CIE10 C90
+                                                    </option>
+                                                    <option
+                                                        value="Leucemia linfoide, (de sitios mal definidos, secundarios y de sitios no especificados)">
+                                                        Leucemia linfoide, (de sitios mal definidos, secundarios y de
+                                                        sitios
+                                                        no especificados) CIE10 C91</option>
+                                                    <option
+                                                        value="Leucemia mieloide, (de sitios mal definidos, secundarios y de sitios no especificados)">
+                                                        Leucemia mieloide, (de sitios mal definidos, secundarios y de
+                                                        sitios
+                                                        no especificados)Item 2.2 CIE10 C92</option>
+                                                    <option
+                                                        value="Leucemia monocitica, (de sitios mal definidos, secundarios y de sitios no especificados)">
+                                                        Leucemia monocitica, (de sitios mal definidos, secundarios y de
+                                                        sitios no especificados) CIE10 C93</option>
+                                                    <option
+                                                        value="Otras leucemias de tipo celular especificado, (de sitios mal definidos, secundarios y de sitios no especificados)">
+                                                        Otras leucemias de tipo celular especificado, (de sitios mal
+                                                        definidos, secundarios y de sitios no especificados) CIE10 C94</option>
+                                                    <option
+                                                        value="Leucemia de células de tipo no especificado, (de sitios mal definidos, secundarios y de sitios no especificados)">
+                                                        Leucemia de células de tipo no especificado, (de sitios mal
+                                                        definidos, secundarios y de sitios no especificados) CIE10 C95</option>
+                                                    <option
+                                                        value="Otros tumores malignos y los no especificados del tejido linfático, de los órganos hematopoyeticos y de tejidos afines,">
+                                                        Otros tumores malignos y los no especificados del tejido
+                                                        linfático,
+                                                        de los órganos hematopoyeticos y de tejidos afines, CIE10 C96</option>
+                                                    <option
+                                                        value="Tumor maligno , (primario), de sitios múltiples independientes.">
+                                                        Tumor maligno , (primario), de sitios múltiples independientes CIE10 C97
+                                                    </option>
+                                                    <option
+                                                        value="Carcinoma in situ de la cavidad bucal, del esófago y del estómago">
+                                                        Carcinoma in situ de la cavidad bucal, del esófago y del
+                                                        estómago CIE10 D00</option>
+                                                    <option
+                                                        value="Carcinoma in situ de otros órganos digestivos y de los no especificados">
+                                                        Carcinoma in situ de otros órganos digestivos y de los no
+                                                        especificados CIE10 D01</option>
+                                                    <option
+                                                        value="Carcinoma in situ del sistema respiratorio y del oído medio">
+                                                        Carcinoma in situ del sistema respiratorio y del oído medio CIE10 D02
+                                                    </option>
+                                                    <option value="Melanoma in situ">Melanoma in situ CIE10 D03</option>
+                                                    <option value="Carcinoma in situ de la piel">Carcinoma in situ de la
+                                                        piel CIE10 D04</option>
+                                                    <option value="Carcinoma in situ de la mama">Carcinoma in situ de la
+                                                        mama CIE10 D05</option>
+                                                    <option value="Carcinoma in situ del cuello del útero">Carcinoma in
+                                                        situ
+                                                        del cuello del útero CIE10 D06</option>
+                                                    <option
+                                                        value="Carcinoma in situ de otros órganos genitales y de los no especificados">
+                                                        Carcinoma in situ de otros órganos genitales y de los no
+                                                        especificadosItem 2.5 CIE10 D07</option>
+                                                    <option
+                                                        value="Carcinoma in situ de otros sitios y de los no especificados">
+                                                        Carcinoma in situ de otros sitios y de los no especificados CIE10 D09
+                                                    </option>
+                                                    <option value="Tumor benigno de la boca y de la faringe">Tumor
+                                                        benigno
+                                                        de la boca y de la faringe Item 2.7 CIE10 D10</option>
+                                                    <option
+                                                        value="Tumor benigno de las glándulas salivales mayores">
+                                                        Tumor benigno de las glándulas salivales mayores CIE10 D11
+                                                    </option>
+                                                    
+                                                    <option
+                                                        value="Tumor benigno del colon, del recto, del conducto anal y del ano">
+                                                        Tumor benigno del colon, del recto, del conducto anal y del ano CIE10 D12</option>
+                                                        <option
+                                                        value="Tumor benigno de otras partes y de las mal definidas del sistema digestivo">
+                                                        Tumor benigno de otras partes y de las mal definidas del sistema
+                                                        digestivo CIE10 D13</option>
+                                                    <option
+                                                        value="Tumor benigno del oído medio y del sistema respiratorio">
+                                                        Tumor benigno del oído medio y del sistema respiratorio CIE10 D14</option>
+                                                    <option
+                                                        value="Tumor benigno de otros órganos intratorácicos y de los no especificado">
+                                                        Tumor benigno de otros órganos intratorácicos y de los no
+                                                        especificado CIE10 D15</option>
+                                                    <option value="Tumor benigno del hueso y del cartílago articular">
+                                                        Tumor
+                                                        benigno del hueso y del cartílago articular CIE10 D16</option>
+                                                    <option value="Tumores benignos lipomatosos">Tumores benignos
+                                                        lipomatosos</option>
+                                                    <option value="Hemangioma y linfangioma de cualquier sitio">
+                                                        Hemangioma y
+                                                        linfangioma de cualquier sitio CIE10 D18</option>
+                                                    <option value="Tumores benignos del tejido mesotelial">Tumores
+                                                        benignos
+                                                        del tejido mesotelial CIE10 D19</option>
+                                                    <option
+                                                        value="Tumor benigno del tejido blando del peritoneo y del retroperitoneo">
+                                                        Tumor benigno del tejido blando del peritoneo y del
+                                                        retroperitoneo CIE10 D20
+                                                    </option>
+                                                    <option
+                                                        value="Otros tumores del tejido conjuntivo y de los tejidos blandos">
+                                                        Otros tumores del tejido conjuntivo y de los tejidos blandos CIE10 D21
+                                                    </option>
+                                                    <option value="Nevo melanocítico">Nevo melanocítico CIE10 D22</option>
+                                                    <option value="Otros tumores benignos de la piel">Otros tumores
+                                                        benignos
+                                                        de la piel CIE10 D23</option>
+                                                    <option value="Tumor benigno de la mama">Tumor benigno de la mama CIE10 D24
+                                                    </option>
+                                                    <option value="Leiomioma del útero">Leiomioma del útero CIE10 D25</option>
+                                                    <option value="Otros tumores benignos del útero">Otros tumores
+                                                        benignos
+                                                        del útero CIE10 D26</option>
+                                                    <option value="Tumor benigno del ovario">Tumor benigno del ovario CIE10 D27
+                                                    </option>
+                                                    <option
+                                                        value="Tumor benigno de otros órganos genitales femeninos y de los no especificados">
+                                                        Tumor benigno de otros órganos genitales femeninos y de los no
+                                                        especificados CIE10 D28</option>
+                                                    <option value="Tumor benigno de los órganos genitales masculinos">Tumor benigno de los órganos genitales masculinos CIE10 D29</option>
+                                                    <option value="Tumor benigno de los órganos urinarios">Tumor benigno de los órganos urinarios CIE10 D30</option>
+
+                                                    <option value="Tumor benigno del ojo y sus anexos">Tumor benigno del
+                                                        ojo
+                                                        y sus anexos CIE10 D31</option>
+                                                    <option value="Tumores benignos de las meninges">Tumores benignos de
+                                                        las
+                                                        meninges CIE10 D32</option>
+                                                    <option
+                                                        value="Tumor benigno del encéfalo y de otras partes del sistema nervioso central">
+                                                        Tumor benigno del encéfalo y de otras partes del sistema
+                                                        nervioso
+                                                        central CIE10 D33</option>
+                                                    <option value="Tumor benigno de la glándula tiroides">Tumor benigno
+                                                        de
+                                                        la glándula tiroides CIE10 D34</option>
+                                                    <option
+                                                        value="Tumor benigno de otras glándulas endocrinas y de las no especificadas">
+                                                        Tumor benigno de otras glándulas endocrinas y de las no
+                                                        especificadas CIE10 D35</option>
+                                                    <option
+                                                        value="Tumor benigno de otros sitios y de los no especificados">
+                                                        Tumor benigno de otros sitios y de los no especificados CIE10 D36</option>
+                                                    <option
+                                                        value="Tumor de comportamiento incierto o desconocido de la cavidad bucal y de los órganos digestivos">
+                                                        Tumor de comportamiento incierto o desconocido de la cavidad
+                                                        bucal y
+                                                        de los órganos digestivos CIE10 D37</option>
+                                                    <option
+                                                        value="Tumor de compartimiento incierto o desconocido del oído medio y de los órganos respiratorios e intratorácicos">
+                                                        Tumor de compartimiento incierto o desconocido del oído medio y
+                                                        de
+                                                        los órganos respiratorios e intratorácicos CIE10 D38</option>
+                                                    <option
+                                                        value="Tumor de comportamiento incierto o desconocido de los órganos genitales femeninos">
+                                                        Tumor de comportamiento incierto o desconocido de los órganos
+                                                        genitales femeninos CIE10 D39</option>
+                                                    <option
+                                                        value="Tumor de comportamiento incierto o desconocido de los órganos genitales masculinos">
+                                                        Tumor de comportamiento incierto o desconocido de los órganos
+                                                        genitales masculinos CIE10 D40</option>
+                                                    <option
+                                                        value="Tumor de comportamiento incierto o desconocido de los órganos urinarios">
+                                                        Tumor de comportamiento incierto o desconocido de los órganos
+                                                        urinarios CIE10 D41</option>
+                                                    <option
+                                                        value="Tumor de comportamiento incierto o desconocido de las meninges">
+                                                        Tumor de comportamiento incierto o desconocido de las meninges CIE10 D42
+                                                    </option>
+                                                    <option
+                                                        value="Tumor de comportamiento incierto o desconocido del encéfalo y del sistema nervioso central">
+                                                        Tumor de comportamiento incierto o desconocido del encéfalo y
+                                                        del
+                                                        sistema nervioso central CIE10 D43</option>
+                                                    <option
+                                                        value="Tumor de comportamiento incierto o desconocido de las glándulas endocrinas">
+                                                        Tumor de comportamiento incierto o desconocido de las glándulas
+                                                        endocrinas CIE10 D44</option>
+                                                    <option value="Policitemia vera">Policitemia vera CIE10 D45</option>
+                                                    <option value="Síndromes mielodisplásicos">Síndromes
+                                                        mielodisplásicos CIE10 D46
+                                                    </option>
+                                                    <option
+                                                        value="Otros tumores de comportamiento incierto o desconocido del tejido linfático, de los órganos hematopoyéticos y de tejidos afines">
+                                                        Otros tumores de comportamiento incierto o desconocido del
+                                                        tejido
+                                                        linfático, de los órganos hematopoyéticos y de tejidos afines CIE10 D47
+                                                    </option>
+                                                    <option
+                                                        value="Tumor de comportamiento incierto o desconocido de otros sitios y de los no especificados">
+                                                        Tumor de comportamiento incierto o desconocido de otros sitios y
+                                                        de
+                                                        los no especificados CIE10 D48</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="div3">
+                                    <form id="patologiaForm">
+                                        <!-- Sección de Maltrato -->
+                                        <div>
+                                            <label>
+                                                <input type="checkbox" id="maltrato-checkbox" name="patologia"
+                                                    value="1">
+                                                Maltrato físico / psicológico / violencia intrafamiliar/Abuso
+                                                Sexual/ideación e intento suicida
+                                            </label><br>
+                                            <div id="maltrato-options" class="hidden">
+                                                <select class="fondol" id="maltrato-details" name="maltrato-details">
+                                                    <option value="" selected>Selecciona una opción</option>
+                                                    <option value="Síndromes del maltrato">Síndromes del maltrato CIE10 T74
+                                                    </option>
+                                                    <option value="Otros síndrome de maltrato">Otros síndrome de
+                                                        maltrato CIE10 Y07
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <!-- Sección de Obesidad -->
+                                        <div>
+                                            <label>
+                                                <input type="checkbox" id="obesidad-checkbox" name="patologia"
+                                                    value="1">
+                                                Obesidad 
+                                            </label><br>
+                                            <div id="obesidad-options" class="hidden">
+                                                <select class="fondol" id="obesidad-details" name="obesidad-details">
+                                                    <option value="" selected>Selecciona una opción</option>
+                                                    <option value="Obesidad">Obesidad CIE10 E66</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <!-- Sección de Otros trastornos de Salud Mental -->
+                                        <div>
+                                            <label>
+                                                <input type="checkbox" id="otros-trastornos-checkbox" name="patologia"
+                                                    value="1"> Otros trastornos de Salud Mental
+                                            </label><br>
+                                            <div id="otros-trastornos-options" class="hidden">
+                                                <select class="fondol" id="otros-trastornos-details"
+                                                    name="otros-trastornos-details">
+                                                    <option value="" selected>Selecciona una opción</option>
+                                                    <option value="Trastornos de los hábitos y de los impulsos">
+                                                        Trastornos
+                                                        de los hábitos y de los impulsos CIE10 F63</option>
+                                                    <option value="Trastornos de la identidad de género">Trastornos de
+                                                        la
+                                                        identidad de género CIE10 F64</option>
+                                                        <option value="Trastornos de la preferencia sexual">Trastornos de la preferencia sexual CIE10 F65</option>
+                                                        <option value="Trastornos psicológicos y del comportamiento asociados con el desarrollo y con la orientación sexual ">Trastornos psicológicos y del comportamiento asociados con el desarrollo y con la orientación sexual CIE10 F66</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <!-- Sección de Parkinsonismo -->
+                                        <div>
+                                            <label>
+                                                <input type="checkbox" id="parkinsonismo-checkbox" name="patologia"
+                                                    value="1"> Parkinsonismo
+                                            </label><br>
+                                            <div id="parkinsonismo-options" class="hidden">
+                                                <select class="fondol" id="parkinsonismo-details"
+                                                    name="parkinsonismo-details">
+                                                    <option value="" selected>Selecciona una opción</option>
+                                                    <option value="Enfermedad de Parkinson">Enfermedad de Parkinson CIE10 G20
+                                                    </option>
+                                                    <option value="Parkinsonismo secundario">Parkinsonismo secundario CIE10 G21
+                                                    </option>
+                                                    <option value="Parkinsonismo en enfermedades clasificadas en otra parte">Parkinsonismo en enfermedades clasificadas en otra parte CIE10 G22
+                                                    </option>
+                                                    <option value="Otras enfermedades degenerativas de los núcleos de la base">Otras enfermedades degenerativas de los núcleos de la base CIE10 G23
+                                                    </option>
+                                                    <option value="Distonía">Distonía CIE10 G24
+                                                    </option>
+                                                    <option value="Otros trastornos extrapiramidales y del movimiento">Otros trastornos extrapiramidales y del movimiento CIE10 G25
+                                                    </option>
+                                                    <option value="Trastornos extrapiramidales y del movimiento en enfermedades clasificadas en otra parte">Trastornos extrapiramidales y del movimiento en enfermedades clasificadas en otra parte CIE10 G26
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label>
+                                                <input type="checkbox" id="hipoacusia-checkbox" name="patologia"
+                                                    value="1"> Presbiacusia/hipoacusia
+                                            </label><br>
+                                            <div id="hipoacusia-options" class="hidden">
+                                                <select class="fondol" id="hipoacusia-details"
+                                                    name="hipoacusia-details">
+                                                    <option value="" selected>Selecciona una opción</option>
+                                                    <option value="Hipoacusia conductiva y neurosensorial">Hipoacusia conductiva y neurosensorial CIE10 H90
+                                                    </option>
+                                                    <option value="Otras hipoacusias">Otras hipoacusias CIE10 H91
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+
+                                        <!-- Sección de Retraso Mental -->
+                                        <div>
+                                            <label>
+                                                <input type="checkbox" id="retraso-mental-checkbox" name="patologia"
+                                                    value="1"> Retraso Mental
+                                            </label><br>
+                                            <div id="retraso-mental-options" class="hidden">
+                                                <select class="fondol" id="retraso-mental-details"
+                                                    name="retraso-mental-details">
+                                                    <option value="" selected>Selecciona una opción</option>
+                                                    <option value="Retraso mental leve">Retraso mental leve CIE10 F70</option>
+                                                    <option value="Retraso mental moderado">Retraso mental moderado CIE10 F71</option>
+                                                    <option value="Retraso mental grave">Retraso mental grave CIE10 F72</option>
+                                                    <option value="Retraso mental profundo">Retraso mental profundo CIE10 F73</option>
+                                                    <option value="Otros tipos de Retraso mental">Otros tipos de Retraso mental CIE10 F78</option>
+                                                    <option value="Retraso mental no especificado">Retraso mental no especificado CIE10 F79</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <!-- Sección de Tabaquismo -->
+                                        <div>
+                                            <label>
+                                                <input type="checkbox" id="tabaquismo-checkbox" name="patologia"
+                                                    value="1">
+                                                Tabaquismo
+                                            </label><br>
+                                            <div id="tabaquismo-options" class="hidden">
+                                                <select class="fondol" id="tabaquismo-details"
+                                                    name="tabaquismo-details">
+                                                    <option value="" selected>Selecciona una opción</option>
+                                                    <option
+                                                        value="Trastornos mentales y del comportamiento debidos al uso de tabaco">
+                                                        Trastornos mentales y del comportamiento debidos al uso de
+                                                        tabaco CIE10 F17.1
+                                                    </option>
+                                                    <option
+                                                    value="Trastornos mentales y del comportamiento debidos al uso de tabaco, síndrome de dependencia">
+                                                    Trastornos mentales y del comportamiento debidos al uso de tabaco, síndrome de dependencia CIE10 F17.2
+                                                </option>
+                                                <option
+                                                value="Trastornos mentales y del comportamiento debidos al uso de tabaco, estado de abstinencia">
+                                                Trastornos mentales y del comportamiento debidos al uso de tabaco, estado de abstinencia CIE10 F17.3
+                                                 </option>
+                                                <option
+                                                value="Trastornos mentales y del comportamiento debidos al uso de tabaco, estado de abstinencia con delirio">
+                                                Trastornos mentales y del comportamiento debidos al uso de tabaco, estado de abstinencia con delirio CIE10 F17.4
+                                                </option>
+                                                <option
+                                                value="Trastornos mentales y del comportamiento debidos al uso de tabaco, trastorno psicótico">
+                                                Trastornos mentales y del comportamiento debidos al uso de tabaco, trastorno psicótico CIE10 F17.5
+                                                </option>
+                                                <option
+                                                value="Trastornos mentales y del comportamiento debidos al uso de tabaco, síndrome amnésico">
+                                                Trastornos mentales y del comportamiento debidos al uso de tabaco, síndrome amnésico CIE10 F17.6
+                                                </option>
+                                                <option
+                                                value="Trastornos mentales y del comportamiento debidos al uso de tabaco, trastorno psicótico residual y de comienzo tardío">
+                                                Trastornos mentales y del comportamiento debidos al uso de tabaco, trastorno psicótico residual y de comienzo tardío CIE10 F17.7
+                                                </option>
+                                                <option
+                                                value="Trastornos mentales y del comportamiento debidos al uso de tabaco, otros trastornos mentales y del comportamiento">
+                                                Trastornos mentales y del comportamiento debidos al uso de tabaco, otros trastornos mentales y del comportamiento CIE10 F17.8
+                                                </option>
+                                                <option
+                                                value="Trastornos mentales y del comportamiento debidos al uso de tabaco, trastorno mental y del comportamiento, no especificado">
+                                                Trastornos mentales y del comportamiento debidos al uso de tabaco, trastorno mental y del comportamiento, no especificado CIE10 F17.9
+                                                </option>
+                                                <option
+                                                value="Tabaco y nicotina">
+                                                Tabaco y nicotina CIE10 T65.2
+                                                </option>
+                                                <option
+                                                value="Consulta para asesoría por abuso de tabaco">
+                                                Consulta para asesoría por abuso de tabaco CIE10 Z71.6
+                                                </option>
+                                                <option
+                                                value="Problemas relacionados con el uso del tabaco">
+                                                Problemas relacionados con el uso del tabaco CIE10 Z72.0
+                                                </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                     
+                                        </div>
+                                        <div>
+                                        <!-- Sección de Trastornos de la personalidad -->
+                                        <div>
+                                            <label>
+                                                <input type="checkbox" id="trastorno-personalidad-checkbox"
+                                                    name="patologia" value="1"> Trastorno de la personalidad
+                                            </label><br>
+                                            <div id="trastorno-personalidad-options" class="hidden">
+                                                <select class="fondol" id="trastorno-personalidad-details"
+                                                    name="trastorno-personalidad-details">
+                                                    <option value="" selected>Selecciona una opción</option>
+                                                    <option value="Otros trastornos de la personalidad y del comportamiento en adultos">Otros trastornos de la personalidad y del comportamiento en adultos CIE10 F68</option>
+                                                    <option value="Trastornos de la personalidad y del comportamiento en adultos, no especificados">Trastornos de la personalidad y del comportamiento en adultos, no especificados CIE10 F69</option>
+                                                    <option value="Trastornos específicos de la personalidad">Trastornos específicos de la personalidad CIE10 F60</option>
+                                                    <option value="Trastornos mixtos y otros trastornos de la personalidad">Trastornos mixtos y otros trastornos de la personalidad CIE10 F61</option>
+                                                    <option value="Cambios perdurables de la personalidad, no atribuibles a lesión o a enfermedad cerebral">Cambios perdurables de la personalidad, no atribuibles a lesión o a enfermedad cerebral CIE10 F62</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <!-- Sección de Trastornos alimentarios -->
+                                        <div>
+                                            <label>
+                                                <input type="checkbox" id="trastornos-alimentarios-checkbox"
+                                                    name="patologia" value="1"> Trastornos alimentarios
+                                            </label><br>
+                                            <div id="trastornos-alimentarios-options" class="hidden">
+                                                <select class="fondol" id="trastornos-alimentarios-details"
+                                                    name="trastornos-alimentarios-details">
+                                                    <option value="" selected>Selecciona una opción</option>
+                                                    <option value="Trastornos de la ingestión de alimentos"> Trastornos de la ingestión de alimentos CIE10 F50</option>
+                                                    <option value="Anorexia nerviosa">Anorexia nerviosa CIE10 F50.0</option>
+                                                    <option value="Anorexia nerviosa atípica">Anorexia nerviosa atípica CIE10 F50.1</option>
+                                                    <option value="Bulimia nerviosa">Bulimia nerviosa CIE10 F50.2</option>
+                                                    <option value="Bulimia nerviosa atípica">Bulimia nerviosa atípica CIE10 F50.3</option>
+                                                    <option value="Hiperfagia asociada con otras alteraciones psicológicas">Hiperfagia asociada con otras alteraciones psicológicas CIE10 F50.4</option>
+                                                    <option value="Vómitos asociados con otras alteraciones psicológicas">Vómitos asociados con otras alteraciones psicológicas CIE10 F50.5</option>
+                                                    <option value="Otros trastornos de la ingestión de alimentos">Otros trastornos de la ingestión de alimentos CIE10 F50.8</option>
+                                                    <option value="Trastorno de la ingestión de alimentos, no especificado">Trastorno de la ingestión de alimentos, no especificado CIE10 F50.9</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <!-- Sección de Otros defectos de la coagulación -->
+                                        <div>
+                                            <label>
+                                                <input type="checkbox" id="otros-defectos-de-la-coagulacion-checkbox" name="patologia" value="1"> Otros defectos de la coagulación
+                                            </label><br>
+                                            <div id="otros-defectos-de-la-coagulacion-options" class="hidden">
+                                                <select class="fondol" id="otros-defectos-de-la-coagulacion-details" name="otros-defectos-de-la-coagulacion-details">
+                                                    <option value="" selected>Selecciona una opción</option>
+                                                    <option value="Otros defectos de la coagulación">Otros defectos de la coagulación CIE10 D68</option>
+                                                    <option value="Púrpura y otras afecciones hemorrágicas">Púrpura y otras afecciones hemorrágicas CIE10 D69</option>
+                                                    <option value="Otras enfermedades de la sangre y de los órganos hematopoyéticos">Otras enfermedades de la sangre y de los órganos hematopoyéticos CIE10 D68</option>
+                                                    <option value="Otros trastornos de la sangre y de los órganos hematopoyéticos en enfermedades clasificadas en otra parte">Otros trastornos de la sangre y de los órganos hematopoyéticos en enfermedades clasificadas en otra parte CIE10 D77</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <!-- Sección de Trastornos del sueño -->
+                                        <div>
+                                            <label>
+                                                <input type="checkbox" id="trastornos-sueño-checkbox" name="patologia"
+                                                    value="1"> Trastornos del Sueño
+                                            </label><br>
+                                            <div id="trastornos-sueño-options" class="hidden">
+                                                <select class="fondol" id="trastornos-sueño-details"
+                                                    name="trastornos-sueño-details">
+                                                    <option value="" selected>Selecciona una opción</option>
+                                                    <option value="Trastornos no orgánicos del sueño">Trastornos no
+                                                        orgánicos del sueño CIE10 F51</option>
+                                                    <option value="Trastornos del sueño">Trastornos 
+                                                             del sueño CIE10 G47</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <!-- Sección de Trastornos tiroideos -->
+                                        <div>
+                                            <label>
+                                                <input type="checkbox" id="trastornos-tiroideos-checkbox"
+                                                    name="patologia" value="1"> Trastornos Tiroídeos
+                                            </label><br>
+                                            <div id="trastornos-tiroideos-options" class="hidden">
+                                                <select class="fondol" id="trastornos-tiroideos-details"
+                                                    name="trastornos-tiroideos-details">
+                                                    <option value="" selected>Selecciona una opción</option>
+                                                    <option value="Trastornos tiroideos vinculados a deficiencia de yodo y afecciones relacionadas">Trastornos tiroideos vinculados a deficiencia de yodo y afecciones relacionadas CIE10 E01</option>
+                                                    <option value="Hipotiroidismo subclínico por deficiencia de yodo">Hipotiroidismo subclínico por deficiencia de yodo CIE10 E02</option>
+                                                    <option value="Hipotiroidismo">Hipotiroidismo CIE10 E03</option>
+                                                    <option value="Tirotoxicosis (hipertiroidismo)">Tirotoxicosis (hipertiroidismo) CIE10 E05</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <!-- Sección de Tuberculosis -->
+                                        <div>
+                                            <label>
+                                                <input type="checkbox" id="tuberculosis-checkbox" name="patologia"
+                                                    value="1"> Tuberculosis
+                                            </label><br>
+                                            <div id="tuberculosis-options" class="hidden">
+                                                <select class="fondol" id="tuberculosis-details"
+                                                    name="tuberculosis-details">
+                                                    <option value="" selected>Selecciona una opción</option>
+                                                    <option value="Tuberculosis respiratoria,confirmada bacteriológica e histológicamente">Tuberculosis respiratoria,confirmada bacteriológica e histológicamente CIE10 A15
+                                                    </option>
+                                                    <option value="Tuberculosis del sistema nervioso">Tuberculosis del sistema nervioso CIE10 A17
+                                                    </option>
+                                                    <option value="Tuberculosis de otros órganos">Tuberculosis de otros órganos CIE10 A18
+                                                    </option>
+                                                    <option value="Tuberculosis miliar">Tuberculosis miliar CIE10 A19
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <form id="patologiaForm">
+                                            <!-- Sección de Úlcera Crónica de la Piel -->
+                                            <div>
+                                                <label>
+                                                    <input type="checkbox" id="ulcera-cronica-checkbox" name="patologia"
+                                                        value="1">
+                                                    Úlcera Crónica de la Piel
+                                                </label><br>
+                                                <div id="ulcera-cronica-options" class="hidden">
+                                                    <select class="fondol" id="ulcera-cronica-details"
+                                                        name="ulcera-cronica-details">
+                                                        <option value="" selectedn>Selecciona una opción</option>
+                                                        <option value="Venas varicosas de los miembros inferiores">Venas
+                                                            varicosas de los miembros inferiores CIE10 I83</option>
+                                                        <option
+                                                            value="Venas varicosas de los miembros inferiores con úlcera">
+                                                            Venas varicosas de los miembros inferiores con úlcera CIE10 I83.0
+                                                        </option>
+                                                        <option
+                                                            value="Venas varicosas de los miembros inferiores con inflamación">
+                                                            Venas varicosas de los miembros inferiores con inflamación CIE10 I83.1
+                                                        </option>
+                                                        <option
+                                                            value="Venas varicosas de los miembros inferiores con úlcera e inflamación">
+                                                            Venas varicosas de los miembros inferiores con úlcera e
+                                                            inflamación CIE10 I83.2</option>
+                                                        <option
+                                                            value="Venas varicosas de los miembros inferiores sin úlcera ni inflamación">
+                                                            Venas varicosas de los miembros inferiores sin úlcera ni
+                                                            inflamación CIE10 I83.9</option>
+                                                        <option
+                                                            value="Úlcera de miembro inferior, no clasificada en otra parte">
+                                                            Úlcera de miembro inferior, no clasificada en otra parte
+                                                        </option>
+                                                        <option
+                                                            value="Úlcera crónica de la piel, no clasificada en otra parte">
+                                                            Úlcera crónica de la piel, no clasificada en otra parte CIE10 L97
+                                                        </option>
+                                                        <option
+                                                            value="Ulcera crónica de la piel, no clasificada en otra parte">
+                                                            Ulcera crónica de la piel, no clasificada en otra parte  CIE10 L98.4
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <script src="app.js"></script>
+                                            <!-- Sección del Total de puntos -->
+
+                                </div>
+                                <button id="limpiar" class="boton">LIMPIAR</button>
+
+                            </form>
+
+                            <footer class="footer">
+                                Powered by E.U Mandrake.
+                                <a href="mailto:nanox21@gmail.com" target="_blank">📨Contacto</a>
+                            </footer>
+                        </div>
+                    </div>
+                </div>
+        </div>
