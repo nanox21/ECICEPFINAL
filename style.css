@@ -207,3 +207,10 @@ body {
     }
 
 }
+body {
+    background-color: var(--Fondo);
+    color: var(--letra);
+    margin-left: 50px;
+    font-size: medium;
+
+}
