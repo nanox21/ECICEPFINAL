@@ -5,6 +5,7 @@
     --Fondo: #27374D;
     --letra: #DDE6ED;
 }
+
 /* Reset CSS */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -32,7 +33,6 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
 }
-
 
 
 
@@ -85,8 +85,9 @@ margin-left:30%;
 body {
     background-color: var(--Fondo);
     color: var(--letra);
-    margin-left: 130px;
+    
     font-size: medium;
+    padding-left: 100px;
 
 }
 
@@ -129,7 +130,9 @@ body {
     margin-left: 30%;
 
 }
-
+.pauta{
+    color:white;
+}
 
 .logo {
     margin-left: 10%;
@@ -137,7 +140,36 @@ body {
     position: absolute;
     top: 10px;
     right: 15px;
-    padding-right: 14%;
+    padding-right: 10%;
+}
+.button-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-left:40%;
+    border-radius: 60px;
+
+}
+.button1-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;    
+    border-radius: 60px;
+    margin-left: 73%;}
+
+.button-link:hover {
+    background-color: #0056b3;
+}
+.button1-link:hover {
+    background-color: #0056b3;
 }
 
 .tux {
@@ -146,7 +178,7 @@ body {
     align-self: right;
     width: 70px;
     height: 70px;
-    padding-left: 16%;
+    padding-left: 14%;
 }
 
 .footer {
@@ -169,7 +201,7 @@ body {
 
 
 /* Media query para pantallas de 6 pulgadas */
-@media only screen and (max-width:320px) {
+@media only screen and (max-width:900px) {
 
     body {
         margin-left: 0;
@@ -221,19 +253,9 @@ body {
         margin-left: 5px;
     }
 
-    .logo {
-        margin-left: 10%;
-        height: 35px;
-        width: 35px;
-        position: absolute;
-        top: 10px;
-        right: 15px;
-        padding-right: 14%;
-    }
+
     
-    .tux {
-      display:none;
-    } 
+   
     
      
 
@@ -248,3 +270,5 @@ body {
 .titulo{
     font-size: medium;
 }
+
+
