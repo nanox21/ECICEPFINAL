@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="sytle.css">
+ 
+<body>
+    <header class="headerMod"> 
+        <div> 
+        <img src="logo.png" alt="Logo" class="logo">
+        <p class="titulo">Evaluación de Riesgo 👣 DM</p>
+        <img src="Tux.PNG" alt="tux" class="tux">
+        </div>
+    </header>
+   <div>
+    <a href="/pauta/index.html" target="_blank" class="button-link">Pauta Ingreso y control Ecicep</a>
+    <a href="/index.html" target="_blank" class="button-link">Calculadora ECICEP</a>
+
+
+    <form id="evaluacionForm">
+        <label>¿Tiene el usuario amputación o úlcera activa?</label><br>
+        <input type="radio" id="ulceraSi" name="ulceraPieOAmputacion" value="si">
+        <label for="ulceraSi">Sí</label><br>
+        <input type="radio" id="ulceraNo" name="ulceraPieOAmputacion" value="no">
+        <label for="ulceraNo">No</label><br><br>
+
+        <label>¿Sensibilidad protectora alterada?</label><br>
+        <input type="radio" id="sensibilidadSi" name="sensibilidadProtectora" value="si">
+        <label for="sensibilidadSi">Sí</label><br>
+        <input type="radio" id="sensibilidadNo" name="sensibilidadProtectora" value="no">
+        <label for="sensibilidadNo">No</label><br><br>
+
+        <label>¿Tiene el usuario enfermedad arterial periférica?</label><br>
+        <input type="radio" id="EAPSi" name="EAP" value="si">
+        <label for="EAPSi">Sí</label><br>
+        <input type="radio" id="EAPNo" name="EAP" value="no">
+        <label for="EAPNo">No</label><br><br>
+
+        <label>¿Tiene el usuario deformidad?</label><br>
+        <input type="radio" id="DEFSi" name="DEF" value="si">
+        <label for="DEFSi">Sí</label><br>
+        <input type="radio" id="DEFNo" name="DEF" value="no">
+        <label for="DEFNo">No</label><br><br>
+ 
+        <button class="boton" type="button" onclick="evaluarRiesgo()">Evaluar Riesgo</button>
+        <button class="botonLimpiar" type="button" onclick="limpiarFormulario()">Limpiar</button>
+    </form>
+    <div class="interespacio"> </div>
+<p class="labelresultado">Resultado</p>
+<div class="espacioresultado">
+    <div class="resultado" id="resultado"></div>
+    </div>
+    <footer class="footer">
+        Powered by E.U Mandrake.
+        <a href="mailto:nanox21@gmail.com" target="_blank">📨Contacto</a>
+    </footer>
+
+    <script src="app.js"></script>
+     
+ </body>
+</html>
