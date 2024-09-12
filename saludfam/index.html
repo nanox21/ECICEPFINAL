@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SALUFAM</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #e0f7fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2102bd;
+            font-weight: normal;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            font-size: 16px;
+            color: #01579b;
+        }
+
+        select {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #81d4fa;
+            font-size: 16px;
+            background-color: #e1f5fe;
+            color: #01579b;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #0277bd;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #01579b;
+        }
+
+        .btn-limpiar {
+            background-color: #81d4fa;
+            margin-top: 10px;
+        }
+
+        .tux {
+            position: absolute;
+            top: 8px;
+            align-self: right;
+            width: 70px;
+            height: 70px;
+            padding-left: 14%;
+        }
+
+
+        .logo {
+            margin-left: 10%;
+            height: 70px;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            padding-right: 10%;
+        }
+
+        #resultado {
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.5em;
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+            /* Oculto inicialmente */
+        }
+
+        .alto-riesgo {
+            color: #ed0909;
+            background-color: #ffebee;
+        }
+
+        .bajo-riesgo {
+            color: #4fc3f7;
+            background-color: #e3f2fd;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            select,
+            button {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<header class="headerMod">
+    <div>
+        <img src="logo.png" alt="Logo" class="logo">
+        <h1 class="titulo">SALUFAM</h1>
+        <img src="Tux.PNG" alt="tux" class="tux">
+    </div>
+</header>
+
+<body>
+    <div id="resultado"></div>
+    <div class="container">
+        <form id="saluFamForm">
+            <label for="pregunta1">1. Estamos de acuerdo en cómo deben actuar los miembros de nuestra familia.</label>
+            <select id="pregunta1">
+                <option value="0">No sabe</option>
+                <option value="1">Nunca</option>
+                <option value="2">Pocas veces</option>
+                <option value="3">Algunas veces</option>
+                <option value="4">Muchas veces</option>
+                <option value="5">Siempre</option>
+            </select>
+
+            <label for="pregunta2">2. Estamos de acuerdo en las cosas importantes para nuestra familia.</label>
+            <select id="pregunta2">
+                <option value="0">No sabe</option>
+                <option value="1">Nunca</option>
+                <option value="2">Pocas veces</option>
+                <option value="3">Algunas veces</option>
+                <option value="4">Muchas veces</option>
+                <option value="5">Siempre</option>
+            </select>
+
+            <label for="pregunta3">3. Sabemos qué queremos lograr como familia en el futuro.</label>
+            <select id="pregunta3">
+                <option value="0">No sabe</option>
+                <option value="1">Nunca</option>
+                <option value="2">Pocas veces</option>
+                <option value="3">Algunas veces</option>
+                <option value="4">Muchas veces</option>
+                <option value="5">Siempre</option>
+            </select>
+
+            <!-- Repite para todas las preguntas hasta la número 13 -->
+            <label for="pregunta4">4. Intentemos mirar el lado positivo de las cosas.</label>
+            <select id="pregunta4">
+                <option value="0">No sabe</option>
+                <option value="1">Nunca</option>
+                <option value="2">Pocas veces</option>
+                <option value="3">Algunas veces</option>
+                <option value="4">Muchas veces</option>
+                <option value="5">Siempre</option>
+            </select>
+
+            <label for="pregunta5">5. Intentamos olvidar nuestros problemas por un tiempo cuando parecen
+                insuperables.</label>
+            <select id="pregunta5">
+                <option value="0">No sabe</option>
+                <option value="1">Nunca</option>
+                <option value="2">Pocas veces</option>
+                <option value="3">Algunas veces</option>
+                <option value="4">Muchas veces</option>
+                <option value="5">Siempre</option>
+            </select>
+            <label for="pregunta6">6. Cuando hay un problema logramos ver los aspectos positivos y negativos.
+            </label>
+            <select id="pregunta6">
+                <option value="0">No sabe</option>
+                <option value="1">Nunca</option>
+                <option value="2">Pocas veces</option>
+                <option value="3">Algunas veces</option>
+                <option value="4">Muchas veces</option>
+                <option value="5">Siempre</option>
+            </select>
+            <label for="pregunta7">7. Cada uno de nosotros en la familia es capaz de escuchar las dos versiones de una
+                historia.
+            </label>
+            <select id="pregunta7">
+                <option value="0">No sabe</option>
+                <option value="1">Nunca</option>
+                <option value="2">Pocas veces</option>
+                <option value="3">Algunas veces</option>
+                <option value="4">Muchas veces</option>
+                <option value="5">Siempre</option>
+            </select>
+            <label for="pregunta8">8. En nuestra familia tenemos al menos un día en que realizamos alguna actividad
+                todos juntos.
+
+            </label>
+            <select id="pregunta8">
+                <option value="0">No sabe</option>
+                <option value="1">Nunca</option>
+                <option value="2">Pocas veces</option>
+                <option value="3">Algunas veces</option>
+                <option value="4">Muchas veces</option>
+                <option value="5">Siempre</option>
+            </select>
+            <label for="pregunta9">9. Podemos pedir ayuda a alguien de afuera de nuestra familia si lo necesitamos
+
+            </label>
+            <select id="pregunta9">
+                <option value="0">No sabe</option>
+                <option value="1">Nunca</option>
+                <option value="2">Pocas veces</option>
+                <option value="3">Algunas veces</option>
+                <option value="4">Muchas veces</option>
+                <option value="5">Siempre</option>
+            </select>
+            <label for="pregunta10">10. Podemos confiar en el apoyo de los demás cuando algo va mal.
+            </label>
+            <select id="pregunta10">
+                <option value="0">No sabe</option>
+                <option value="1">Nunca</option>
+                <option value="2">Pocas veces</option>
+                <option value="3">Algunas veces</option>
+                <option value="4">Muchas veces</option>
+                <option value="5">Siempre</option>
+            </select>
+            <label for="pregunta11">11. A nuestros amigos o familiares les gusta visitarnos.
+
+            </label>
+            <select id="pregunta11">
+                <option value="0">No sabe</option>
+                <option value="1">Nunca</option>
+                <option value="2">Pocas veces</option>
+                <option value="3">Algunas veces</option>
+                <option value="4">Muchas veces</option>
+                <option value="5">Siempre</option>
+            </select>
+            <label for="pregunta12">12. Hacemos un esfuerzo por ayudar a nuestros parientes cuando lo necesitan.
+            </label>
+            <select id="pregunta12">
+                <option value="0">No sabe</option>
+                <option value="1">Nunca</option>
+                <option value="2">Pocas veces</option>
+                <option value="3">Algunas veces</option>
+                <option value="4">Muchas veces</option>
+                <option value="5">Siempre</option>
+            </select>
+            <label for="pregunta13">13. Nuestros amigos y familiares nos ayudarán si lo necesitamos.
+            </label>
+            <select id="pregunta13">
+                <option value="0">No sabe</option>
+                <option value="1">Nunca</option>
+                <option value="2">Pocas veces</option>
+                <option value="3">Algunas veces</option>
+                <option value="4">Muchas veces</option>
+                <option value="5">Siempre</option>
+            </select>
+            <div id="resultado"></div>
+
+
+
+
+            <button type="button" onclick="calcularPromedio()">Calcular Promedio</button>
+            <button type="button" class="btn-limpiar" onclick="limpiarFormulario()">Limpiar Formulario</button>
+        </form>
+
+        <div id="resultado"></div> <!-- Espacio para mostrar el resultado -->
+    </div>
+
+    <script>
+        function calcularPromedio() {
+            const totalPreguntas = 13;
+            let suma = 0;
+
+            for (let i = 1; i <= totalPreguntas; i++) {
+                let valor = parseInt(document.getElementById('pregunta' + i).value);
+                suma += valor;
+            }
+
+            let promedio = (suma / totalPreguntas).toFixed(2);
+            let resultadoDiv = document.getElementById('resultado');
+
+            if (promedio <= 3.6) {
+                resultadoDiv.innerHTML = 'Promedio: ' + promedio + ' - Alto riesgo de vulnerabilidad';
+                resultadoDiv.className = 'alto-riesgo';
+            } else if (promedio >= 3.8) {
+                resultadoDiv.innerHTML = 'Promedio: ' + promedio + ' - Bajo riesgo de vulnerabilidad';
+                resultadoDiv.className = 'bajo-riesgo';
+            }
+
+            resultadoDiv.style.display = 'block'; // Muestra el resultado cuando se hace el cálculo
+
+            // Desplazarse hacia la parte superior de la página
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        function limpiarFormulario() {
+            document.getElementById('saluFamForm').reset(); // Limpia el formulario
+            let resultadoDiv = document.getElementById('resultado');
+            resultadoDiv.innerHTML = ''; // Borra el contenido del resultado
+            resultadoDiv.style.display = 'none'; // Oculta el resultado
+        }
+    </script>
+</body>
+
+</html>
