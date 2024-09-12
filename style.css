@@ -217,7 +217,7 @@ body {
     margin-right: 20px;
 }
 
-nav ul li a {
+.nav ul li a {
     color: white;
     text-decoration: none;
     padding: 10px 20px;
@@ -225,13 +225,13 @@ nav ul li a {
     font-weight: bold;
 }
 
-nav ul li a:hover {
+.nav ul li a:hover {
     background-color: #3eb529;
     border-radius: 5px;
 }
 
 /* Estilos para el submenú */
-nav ul ul {
+.nav ul ul {
     display: none;  /* Ocultar el submenú por defecto */
     position: absolute;
     top: 100%;
@@ -242,22 +242,22 @@ nav ul ul {
     list-style: none;
 }
 
-nav ul ul li {
+.nav ul ul li {
     /* Eliminar ancho fijo */
 }
 
-nav ul ul li a {
+.nav ul ul li a {
     padding: 10px;
     border-bottom: 1px solid #333;
     white-space: nowrap; /* Evitar que el texto se divida en varias líneas */
 }
 
-nav ul ul li a:hover {
+.nav ul ul li a:hover {
     background-color: #575757;
 }
 
 /* Mostrar el submenú al pasar el ratón */
-nav ul li:hover > ul {
+.nav ul li:hover > ul {
     display: block;
 }
 /* Media query para pantallas de 6 pulgadas */
