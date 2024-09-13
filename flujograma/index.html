@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flujograma Ecicep Cesfam Los Álamos</title>
+   
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .button-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            border-radius: 60px;
+        }
+
+
+        .button-link:hover {
+            background-color: #0056b3;
+        }
+
+
+        body,
+        html {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        /* Barra fija superior */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+            z-index: 1000;
+        }
+
+        /* Botones de zoom */
+        .zoom-controls {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1001;
+        }
+
+        .zoom-controls button {
+            font-size: 18px;
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        /* Contenedor de la imagen, ocupa toda la pantalla */
+        .container {
+            position: absolute;
+            top: 60px;
+            /* Deja espacio para la barra */
+            left: 0;
+            width: 100%;
+            height: calc(100% - 60px);
+            /* Resta el tamaño de la barra */
+            overflow: hidden;
+            cursor: grab;
+        }
+
+        .container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            /* La imagen ocupará todo el contenedor manteniendo su proporción */
+            cursor: grab;
+            transform: translate(0px, 0px) scale(1);
+            /* Zoom inicial */
+            transition: transform 0.3s ease;
+        }
+
+        .container img:active {
+            cursor: grabbing;
+        }
+    </style>
+</head>
+
+<body>
+   
+    <!-- Barra de título fija -->
+    <div class="navbar">        <a href="/index.html" target="_blank" class="button-link">Calculadora ECICEP</a>
+
+        Flujograma Ecicep Cesfam Los Álamos
+    </div>
+    <div>
+    </div>
+    <!-- Botones de zoom -->
+    <div class="zoom-controls">
+        <button id="zoom-in">Zoom +</button>
+        <button id="zoom-out">Zoom -</button>
+    </div>
+
+    <!-- Contenedor de la imagen -->
+    <div class="container" id="container">
+        <img src="flujo.png" alt="Flujograma Ecicep Cesfam Los Álamos" id="image">
+    </div>
+
+    <script>
+        const img = document.getElementById('image');
+        const zoomInBtn = document.getElementById('zoom-in');
+        const zoomOutBtn = document.getElementById('zoom-out');
+        const container = document.getElementById('container');
+
+        let isDragging = false;
+        let startX, startY, currentX = 0, currentY = 0;
+        let scale = 1;  // Nivel de zoom inicial
+
+        // Detectar el inicio del arrastre
+        img.addEventListener('mousedown', (e) => {
+            if (e.button === 0) { // Solo si el botón izquierdo está presionado
+                isDragging = true;
+                startX = e.clientX;
+                startY = e.clientY;
+                img.style.transition = 'none';  // Desactiva la transición mientras se arrastra
+            }
+        });
+
+        // Detectar el final del arrastre
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+            img.style.transition = 'transform 0.3s ease';  // Reactiva la transición al soltar
+        });
+
+        // Detectar el movimiento del ratón y arrastrar la imagen
+        document.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                const dx = e.clientX - startX + currentX;
+                const dy = e.clientY - startY + currentY;
+
+                // Limitar el arrastre para que la imagen no salga del contenedor
+                const [newX, newY] = limitPosition(dx, dy);
+
+                img.style.transform = `translate(${newX}px, ${newY}px) scale(${scale})`;
+
+                // Actualizar las posiciones actuales
+                currentX = newX;
+                currentY = newY;
+            }
+        });
+
+        // Función para hacer zoom in
+        zoomInBtn.addEventListener('click', () => {
+            scale += 0.1;  // Aumenta el zoom
+            const [newX, newY] = limitPosition(currentX, currentY);
+            img.style.transform = `translate(${newX}px, ${newY}px) scale(${scale})`;
+        });
+
+        // Función para hacer zoom out
+        zoomOutBtn.addEventListener('click', () => {
+            if (scale > 0.2) {  // Evita que el zoom sea demasiado pequeño
+                scale -= 0.1;  // Disminuye el zoom
+                const [newX, newY] = limitPosition(currentX, currentY);
+                img.style.transform = `translate(${newX}px, ${newY}px) scale(${scale})`;
+            }
+        });
+
+        // Limitar la posición de la imagen para que no salga del contenedor
+        function limitPosition(x, y) {
+            const imgRect = img.getBoundingClientRect();
+            const containerRect = container.getBoundingClientRect();
+
+            // Limitar en el eje X
+            const minX = containerRect.width - imgRect.width * scale;
+            const maxX = 0;
+            x = Math.max(minX, Math.min(x, maxX));
+
+            // Limitar en el eje Y
+            const minY = containerRect.height - imgRect.height * scale;
+            const maxY = 0;
+            y = Math.max(minY, Math.min(y, maxY));
+
+            return [x, y];
+        }
+    </script>
+
+</body>
+
+</html>
