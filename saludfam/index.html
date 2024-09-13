@@ -305,41 +305,52 @@
     </div>
 
     <script>
-      function calcularPromedio() {
+  function calcularPromedio() {
     const totalPreguntas = 13;
     let suma = 0;
-    let preguntasContestadas = 0; // Para contar cuántas preguntas fueron contestadas
+    let todasRespondidas = true; // Bandera para verificar si todas las preguntas están respondidas
 
     for (let i = 1; i <= totalPreguntas; i++) {
         let valor = document.getElementById('pregunta' + i).value;
-        
-        // Solo sumar si la opción seleccionada no es la opción por defecto
-        if (valor !== "") {
-            suma += parseInt(valor);
-            preguntasContestadas++; // Solo contar preguntas con respuestas válidas
+
+        // Verificar si alguna pregunta tiene seleccionada la opción por defecto
+        if (valor === "") {
+            todasRespondidas = false;
+            break; // Si encontramos una pregunta sin respuesta, salimos del bucle
         }
+
+        suma += parseInt(valor); // Sumar los valores de las respuestas seleccionadas
     }
 
-    // Calcular el promedio solo con las preguntas contestadas
-    let promedio = (suma / preguntasContestadas).toFixed(2);
     let resultadoDiv = document.getElementById('resultado');
 
-    if (promedio <= 3.6) {
-        resultadoDiv.innerHTML = 'Promedio: ' + promedio + ' - Alto riesgo de vulnerabilidad';
-        resultadoDiv.className = 'alto-riesgo';
-    } else if (promedio >= 3.8) {
-        resultadoDiv.innerHTML = 'Promedio: ' + promedio + ' - Bajo riesgo de vulnerabilidad';
-        resultadoDiv.className = 'bajo-riesgo';
+    if (!todasRespondidas) {
+        // Mostrar un mensaje de error si alguna pregunta no ha sido respondida
+        resultadoDiv.innerHTML = 'Por favor, selecciona una opción en todas las preguntas.';
+        resultadoDiv.className = 'alto-riesgo'; // Puedes cambiar el estilo aquí si quieres
+        resultadoDiv.style.display = 'block'; // Mostrar el mensaje de error
+    } else {
+        // Si todas las preguntas están respondidas, calcula el promedio
+        let promedio = (suma / totalPreguntas).toFixed(2);
+
+        if (promedio <= 3.6) {
+            resultadoDiv.innerHTML = 'Promedio: ' + promedio + ' - Alto riesgo de vulnerabilidad';
+            resultadoDiv.className = 'alto-riesgo';
+        } else if (promedio >= 3.8) {
+            resultadoDiv.innerHTML = 'Promedio: ' + promedio + ' - Bajo riesgo de vulnerabilidad';
+            resultadoDiv.className = 'bajo-riesgo';
+        }
+
+        resultadoDiv.style.display = 'block'; // Mostrar el resultado cuando se hace el cálculo
+
+        // Desplazar a la parte superior de la página
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     }
-
-    resultadoDiv.style.display = 'block'; // Mostrar el resultado
-
-    // Desplazar a la parte superior de la página
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
 }
+   
     </script>
 </body>
 
