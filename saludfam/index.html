@@ -325,10 +325,8 @@
     let resultadoDiv = document.getElementById('resultado');
 
     if (!todasRespondidas) {
-        // Mostrar un mensaje de error si alguna pregunta no ha sido respondida
-        resultadoDiv.innerHTML = 'Por favor, selecciona una opción en todas las preguntas.';
-        resultadoDiv.className = 'alto-riesgo'; // Puedes cambiar el estilo aquí si quieres
-        resultadoDiv.style.display = 'block'; // Mostrar el mensaje de error
+        // Mostrar una alerta si alguna pregunta no ha sido respondida
+        alert('Por favor, selecciona una opción en todas las preguntas antes de calcular el promedio.');
     } else {
         // Si todas las preguntas están respondidas, calcula el promedio
         let promedio = (suma / totalPreguntas).toFixed(2);
