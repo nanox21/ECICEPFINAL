@@ -48,23 +48,22 @@
             color: #01579b;
         }
 
-        button {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            margin-top: 20px;
-            background-color: #0277bd;
-            color: white;
-            font-size: 16px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
+      .button-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    border-radius: 60px;
+}
 
-        button:hover {
-            background-color: #01579b;
-        }
+
+.button-link:hover {
+    background-color: #0056b3;
+}
+
 
         .btn-limpiar {
             background-color: #81d4fa;
@@ -138,6 +137,11 @@
 <body>
     <div id="resultado"></div>
     <div class="container">
+           <h1>Evaluación Familiar SaluFam</h1>
+        <div>
+            <a href="/index.html" target="_blank" class="button-link">Calculadora ECICEP</a>
+        </div>
+        <form id="saluFamForm">
         <form id="saluFamForm">
             <label for="pregunta1">1. Estamos de acuerdo en cómo deben actuar los miembros de nuestra familia.</label>
             <select id="pregunta1">
