@@ -1,3 +1,18 @@
+
+
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    alert('Guardar imágenes está deshabilitado en esta página.');
+});
+document.addEventListener('copy', function(e) {
+    e.preventDefault();
+    alert('El copiado de texto está deshabilitado en esta página.');
+});
+
+
+
+
+
 window.onload = function () {
     var mensaje = "Esta calculadora no reemplaza el criterio clínico y su uso es de responsabilidad del operador. Si está de acuerdo, presione 'Continuar'.";
     if (confirm(mensaje)) {
