@@ -1,0 +1,127 @@
+/* Estilos generales */
+body {
+    font-family: 'Lato', Arial, sans-serif;
+    background-color: #121212; /* Fondo oscuro */
+    color: #e0e0e0; /* Color de texto claro */
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* Títulos y texto */
+h1, h2, h3, h4, h5, h6 {
+    font-family: Arial, sans-serif;
+    color: #64b5f6; /* Color azul para títulos */
+    margin-left: 4cm; /* Borde de 4cm desde la izquierda */
+    margin-right: 4cm; /* Borde de 4cm desde la derecha */
+}
+
+h1 {
+    font-size: 36px; /* Aumento del 400% */
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-size: 36px; /* Aumento del 400% */
+    margin-bottom: 25px;
+}
+
+h3 {
+    font-size: 36px; /* Aumento del 400% */
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 24px; /* Aumento del 400% */
+    margin-bottom: 20px;
+    text-align: justify; /* Justificado completo del texto */
+    margin-left: 4cm; /* Borde de 4cm desde la izquierda */
+    margin-right: 4cm; /* Borde de 4cm desde la derecha */
+}
+
+/* Enlaces */
+a {
+    color: #64b5f6;
+    text-decoration: none;
+    font-size: 24px; /* Aumento del 400% */
+}
+
+a:hover {
+    color: #90caf9;
+}
+
+/* Encabezado */
+header {
+    background-color: #1f1f1f; /* Fondo del encabezado */
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid #333;
+}
+
+/* Navegación */
+nav {
+    background: #333;
+    color: #fff;
+    padding: 10px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Contenido principal */
+main {
+    padding: 20px;
+}
+
+/* Imágenes */
+img {
+    max-width: 75%;
+
+    display: block;
+    margin: 0 auto;
+}
+
+/* Secciones */
+section {
+    margin-bottom: 40px; /* Mayor espacio entre secciones */
+}
+
+/* Pie de página */
+footer {
+    background-color: #1f1f1f;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    border-top: 2px solid #333;
+    font-size: 24px; /* Aumento del 400% */
+}
+
+.button-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    border-radius: 60px;
+
+    }
+
+.button-link:hover {
+    background-color: #0056b3;
+}
