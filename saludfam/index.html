@@ -305,6 +305,16 @@
     </div>
 
     <script>
+        
+
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    alert('Guardar imágenes está deshabilitado en esta página.');
+});
+document.addEventListener('copy', function(e) {
+    e.preventDefault();
+    alert('El copiado de texto está deshabilitado en esta página.');
+});
   function calcularPromedio() {
     const totalPreguntas = 13;
     let suma = 0;
