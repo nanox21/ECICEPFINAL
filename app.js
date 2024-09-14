@@ -1,3 +1,17 @@
+
+
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    alert('Guardar imágenes está deshabilitado en esta página.');
+});
+document.addEventListener('copy', function(e) {
+    e.preventDefault();
+    alert('El copiado de texto está deshabilitado en esta página.');
+});
+
+
+
+
 window.onload = function () {
     // Comprobar si la alerta ya se mostró anteriormente
     if (!localStorage.getItem('alertaMostrada')) {
