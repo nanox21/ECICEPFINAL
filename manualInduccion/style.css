@@ -90,12 +90,24 @@ main {
 /* Imágenes */
 .img {
     max-width: 60%;
-
     display: block;
     margin: 0 auto;
 }
-
-/* Secciones */
+.img6{
+    max-width: 40%;
+    display: block;
+    margin: 0 auto;
+}
+.img7{
+    max-width: 40%;
+    display: block;
+    margin: 0 auto;
+}
+.img8{
+    max-width: 40%;
+    display: block;
+    margin: 0 auto;
+}/* Secciones */
 section {
     margin-bottom: 40px; /* Mayor espacio entre secciones */
 }
