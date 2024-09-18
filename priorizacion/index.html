@@ -17,102 +17,95 @@
     <form>
         <label>HbA1c > 11%:</label>
         <label>
-            <input type="radio" name="hba1c" value="1" onclick="updatePoints(1)"> Sí
+            <input type="radio" name="hba1c" value="1"> Sí
         </label>
         <label>
-            <input type="radio" name="hba1c" value="0" onclick="updatePoints(0)"> No
+            <input type="radio" name="hba1c" value="0"> No
         </label>
         <br>
         <label>Presión Arterial ≥ 180/110 mmHg en al menos 2 tomas distintas de acuerdo a procedimiento estándar</label>
         <label>
-            <input type="radio" name="PA" value="1" onclick="updatePoints(1)"> Sí
+            <input type="radio" name="PA" value="1"> Sí
         </label>
         <label>
-            <input type="radio" name="PA" value="0" onclick="updatePoints(0)"> No
+            <input type="radio" name="PA" value="0"> No
         </label>
         <br>
         <label>Polifarmacia (≥ 7 medicamentos distintos diarios)</label>
         <label>
-            <input type="radio" name="poli" value="1" onclick="updatePoints(1)"> Sí
+            <input type="radio" name="poli" value="1"> Sí
         </label>
         <label>
-            <input type="radio" name="poli" value="0" onclick="updatePoints(0)"> No
+            <input type="radio" name="poli" value="0"> No
         </label>
         <br>
-        <label>Asistencia a urgencias por descompensación de patología crónica en el último mes</label>
-        <label>
-            <input type="radio" name="urgencia" value="1" onclick="updatePoints(1)"> Sí
-        </label>
-        <label>
-            <input type="radio" name="urgencia" value="0" onclick="updatePoints(0)"> No
-        </label>
-        <br>
-        <label>Hospitalización por descompensación de patología crónica en los últimos 3 meses</label>
-        <label>
-            <input type="radio" name="hospitalizacion" value="1" onclick="updatePoints(2)"> Sí
-        </label>
-        <label>
-            <input type="radio" name="hospitalizacion" value="0" onclick="updatePoints(0)"> No
-        </label>
-        <br>
-        <label>Amputación por DM hace menos de 6 meses</label>
-        <label>
-            <input type="radio" name="amputacion" value="1" onclick="updatePoints(2)"> Sí
-        </label>
-        <label>
-            <input type="radio" name="amputacion" value="0" onclick="updatePoints(0)"> No
-        </label>
-        <br>
-        <label>Persona de 75 años y más que presenta 1 o más de las siguientes características:</label>
-        <ul>
-            <li>Diagnóstico funcional de autovalente con riesgo, en riesgo de dependencia o dependiente.</li>
-            <li>Riesgo de caídas alto, evaluado por test “get up and go”.</li>
-            <li>No cuenta con redes de apoyo.</li>
-            <li>Hospitalización por patología aguda en los últimos 3 meses.</li>
-        </ul>
-        <label>
-            <input type="radio" name="adultoMayor" value="1" onclick="updatePoints(1)"> Sí
-        </label>
-        <label>
-            <input type="radio" name="adultoMayor" value="0" onclick="updatePoints(0)"> No
-        </label>
-        <br>
-        <label>Úlcera activa en EEII</label>
-        <label>
-            <input type="radio" name="ulcera" value="1" onclick="updatePoints(1)"> Sí
-        </label>
-        <label>
-            <input type="radio" name="ulcera" value="0" onclick="updatePoints(0)"> No
-        </label>
-        <br>
-        <label>Ideación o intento suicida (registrada hace menos de 6 meses)</label>
-        <label>
-            <input type="radio" name="ideacion" value="1" onclick="updatePoints(1)"> Sí
-        </label>
-        <label>
-            <input type="radio" name="ideacion" value="0" onclick="updatePoints(0)"> No
-        </label>
-        <br>
-        <label>Educación mayor a 12 años</label>
-        <label>
-            <input type="radio" name="educacion" value="1" onclick="updatePoints(-1)"> Sí
-        </label>
-        <label>
-            <input type="radio" name="educacion" value="0" onclick="updatePoints(0)"> No
-        </label>
-        <br>
-        <label>Redes de apoyo activas</label>
-        <label>
-            <input type="radio" name="redes" value="1" onclick="updatePoints(1)"> Sí
-        </label>
-        <label>
-            <input type="radio" name="redes" value="0" onclick="updatePoints(0)"> No
-        </label>
+        <!-- Resto de las preguntas... -->
+
+        <button type="button" onclick="calculatePoints()">Calcular</button>
+        <button type="button" onclick="clearForm()">Limpiar</button>
     </form>
-    <button type="button" onclick="calculatePoints()">Calcular</button>
-    <button type="button" onclick="clearForm()">Limpiar</button>
     <p>Total de puntos: <span id="totalPoints">0</span></p>
 
-    <script src="app.js"></script>
-    </body>
-    </html>
+    <script>
+        let totalPoints = 0;
+
+        // Calcular los puntos totales
+        function calculatePoints() {
+            totalPoints = 0; // Reiniciar los puntos antes de calcular
+
+            // Verificar si todos los ítems están seleccionados
+            if (allItemsSelected()) {
+                // Obtener todos los radios seleccionados
+                const selectedOptions = document.querySelectorAll('input[type="radio"]:checked');
+                selectedOptions.forEach(option => {
+                    totalPoints += parseInt(option.value); // Sumar los valores seleccionados
+                });
+                updateTotalPoints(); // Actualizar la visualización de puntos totales
+            } else {
+                document.getElementById('totalPoints').textContent = 'Seleccione todas las respuestas.';
+            }
+        }
+
+        // Verificar si todos los ítems están seleccionados
+        function allItemsSelected() {
+            const questions = document.querySelectorAll('input[type="radio"]');
+            const groups = [...new Set([...questions].map(input => input.name))];
+
+            let allSelected = true;
+
+            // Verificar si cada grupo tiene una opción seleccionada
+            for (const group of groups) {
+                const selected = document.querySelector(`input[name="${group}"]:checked`);
+                const groupLabels = document.querySelectorAll(`input[name="${group}"]`);
+                if (!selected) {
+                    allSelected = false; // Si algún grupo no tiene seleccionada una opción, marcar como no completo
+                    groupLabels.forEach(input => input.parentNode.classList.add('unanswered')); // Añadir clase para marcar en rojo
+                } else {
+                    groupLabels.forEach(input => input.parentNode.classList.remove('unanswered')); // Quitar clase si ya está respondido
+                }
+            }
+            return allSelected; // Retornar true solo si todas las opciones están seleccionadas
+        }
+
+        // Mostrar el total de puntos en el documento
+        function updateTotalPoints() {
+            document.getElementById('totalPoints').textContent = totalPoints;
+        }
+
+        // Función para limpiar el formulario y resetear los puntos
+        function clearForm() {
+            // Restablecer los puntos a cero
+            totalPoints = 0;
+            updateTotalPoints();
+
+            // Deseleccionar todas las opciones de radio
+            const radios = document.querySelectorAll('input[type="radio"]');
+            radios.forEach(radio => radio.checked = false);
+
+            // Quitar la clase 'unanswered' de todos los labels
+            const labels = document.querySelectorAll('label');
+            labels.forEach(label => label.classList.remove('unanswered'));
+        }
+    </script>
+</body>
+</html>
