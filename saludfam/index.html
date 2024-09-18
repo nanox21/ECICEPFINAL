@@ -48,22 +48,20 @@
             color: #01579b;
         }
 
-      .button-link {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #007BFF;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 16px;
-    border-radius: 60px;
-}
+        .button-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            border-radius: 60px;
+        }
 
-
-.button-link:hover {
-    background-color: #0056b3;
-}
-
+        .button-link:hover {
+            background-color: #0056b3;
+        }
 
         .btn-limpiar {
             background-color: #81d4fa;
@@ -78,7 +76,6 @@
             height: 70px;
             padding-left: 14%;
         }
-
 
         .logo {
             margin-left: 10%;
@@ -108,6 +105,12 @@
         .bajo-riesgo {
             color: #4fc3f7;
             background-color: #e3f2fd;
+        }
+
+        /* Nueva clase para destacar campos sin respuesta */
+        .sin-respuesta {
+            border: 2px solid #ed0909;
+            background-color: #ffebee;
         }
 
         @media (max-width: 600px) {
@@ -281,8 +284,7 @@
                 <option value="4">Muchas veces</option>
                 <option value="5">Siempre</option>
             </select>
-            <label for="pregunta13">13. Nuestros amigos y familiares nos ayudarán si lo necesitamos.
-            </label>
+            <label for="pregunta13">13. Nuestros amigos y familiares nos ayudarán si lo necesitamos.</label>
             <select id="pregunta13">
                 <option value="" selected>Selecciona una opción </option>
                 <option value="0">No sabe</option>
@@ -292,75 +294,85 @@
                 <option value="4">Muchas veces</option>
                 <option value="5">Siempre</option>
             </select>
-            <div id="resultado"></div>
 
-
-
+            <div id="resultado" aria-live="polite"></div> <!-- Añadido aria-live para accesibilidad -->
 
             <button type="button" onclick="calcularPromedio()">Calcular Promedio</button>
             <button type="button" class="btn-limpiar" onclick="limpiarFormulario()">Limpiar Formulario</button>
         </form>
-
-        <div id="resultado"></div> <!-- Espacio para mostrar el resultado -->
     </div>
 
     <script>
-        
-
-document.addEventListener('contextmenu', function(e) {
-    e.preventDefault();
- });
-document.addEventListener('copy', function(e) {
-    e.preventDefault();
- });
-  function calcularPromedio() {
-    const totalPreguntas = 13;
-    let suma = 0;
-    let todasRespondidas = true; // Bandera para verificar si todas las preguntas están respondidas
-
-    for (let i = 1; i <= totalPreguntas; i++) {
-        let valor = document.getElementById('pregunta' + i).value;
-
-        // Verificar si alguna pregunta tiene seleccionada la opción por defecto
-        if (valor === "") {
-            todasRespondidas = false;
-            break; // Si encontramos una pregunta sin respuesta, salimos del bucle
-        }
-
-        suma += parseInt(valor); // Sumar los valores de las respuestas seleccionadas
-    }
-
-    let resultadoDiv = document.getElementById('resultado');
-
-    if (!todasRespondidas) {
-        // Mostrar una alerta si alguna pregunta no ha sido respondida
-        alert('Por favor, selecciona una opción en todas las preguntas antes de calcular el promedio.');
-    } else {
-        // Si todas las preguntas están respondidas, calcula el promedio
-        let promedio = (suma / totalPreguntas).toFixed(2);
-
-        if (promedio <= 3.6) {
-            resultadoDiv.innerHTML = 'Promedio: ' + promedio + ' - Alto riesgo de vulnerabilidad';
-            resultadoDiv.className = 'alto-riesgo';
-        } else if (promedio >= 3.8) {
-            resultadoDiv.innerHTML = 'Promedio: ' + promedio + ' - Bajo riesgo de vulnerabilidad';
-            resultadoDiv.className = 'bajo-riesgo';
-        }
-
-        resultadoDiv.style.display = 'block'; // Mostrar el resultado cuando se hace el cálculo
-
-        // Desplazar a la parte superior de la página
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
+        document.addEventListener('contextmenu', function (e) {
+            e.preventDefault();
         });
-    }
-}
-   
+        document.addEventListener('copy', function (e) {
+            e.preventDefault();
+        });
+
+        function calcularPromedio() {
+            const totalPreguntas = 13;
+            let suma = 0;
+            let todasRespondidas = true;
+
+            for (let i = 1; i <= totalPreguntas; i++) {
+                let selectElement = document.getElementById('pregunta' + i);
+                let valor = selectElement.value;
+
+                // Verificar si alguna pregunta no ha sido respondida
+                if (valor === "") {
+                    todasRespondidas = false;
+                    selectElement.classList.add('sin-respuesta'); // Aplicar la clase para destacar
+                } else {
+                    selectElement.classList.remove('sin-respuesta'); // Remover la clase si se ha respondido
+                    suma += parseInt(valor);
+                }
+            }
+
+            let resultadoDiv = document.getElementById('resultado');
+
+            if (!todasRespondidas) {
+                // Mostrar una alerta si alguna pregunta no ha sido respondida
+                alert('Por favor, selecciona una opción en todas las preguntas antes de calcular el promedio.');
+            } else {
+                // Si todas las preguntas están respondidas, calcula el promedio
+                let promedio = (suma / totalPreguntas).toFixed(2);
+
+                if (promedio <= 3.6) {
+                    resultadoDiv.innerHTML = 'Promedio: ' + promedio + ' - Alto riesgo de vulnerabilidad';
+                    resultadoDiv.className = 'alto-riesgo';
+                } else if (promedio >= 3.8) {
+                    resultadoDiv.innerHTML = 'Promedio: ' + promedio + ' - Bajo riesgo de vulnerabilidad';
+                    resultadoDiv.className = 'bajo-riesgo';
+                } else {
+                    resultadoDiv.innerHTML = 'Promedio: ' + promedio + ' - Riesgo moderado';
+                    resultadoDiv.className = ''; // O alguna clase para riesgo moderado
+                }
+
+                resultadoDiv.style.display = 'block';
+
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        function limpiarFormulario() {
+            const totalPreguntas = 13;
+            for (let i = 1; i <= totalPreguntas; i++) {
+                let selectElement = document.getElementById('pregunta' + i);
+                selectElement.value = "";
+                selectElement.classList.remove('sin-respuesta'); // Remover la clase de error
+            }
+            document.getElementById('resultado').style.display = 'none';
+        }
     </script>
+
+    <footer class="footer">
+        Powered by E.U Mandrake.
+        <a href="mailto:nanox21@gmail.com" target="_blank">📨Contacto</a>
+    </footer>
 </body>
-  <footer class="footer">
-                                Powered by E.U Mandrake.
-                                <a href="mailto:nanox21@gmail.com" target="_blank">📨Contacto</a>
-                            </footer>
+
 </html>
