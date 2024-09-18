@@ -17,22 +17,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    font-size: 24px; /* Aumento del 400% */
+    font-size: 36px; /* Aumento del 400% */
     margin-bottom: 30px;
 }
 
 h2 {
-    font-size:18px; /* Aumento del 400% */
+    font-size:24px; /* Aumento del 400% */
     margin-bottom: 25px;
 }
 
 h3 {
-    font-size: 16px; /* Aumento del 400% */
+    font-size: 24px; /* Aumento del 400% */
     margin-bottom: 20px;
 }
 
 p {
-    font-size: 14px; /* Aumento del 400% */
+    font-size: 20px; /* Aumento del 400% */
     margin-bottom: 20px;
     text-align: justify; /* Justificado completo del texto */
     margin-left: 4cm; /* Borde de 4cm desde la izquierda */
