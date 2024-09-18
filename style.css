@@ -32,6 +32,7 @@ time, mark, audio, video {
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
+    color:white;
 }
 
 
@@ -99,7 +100,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    color: var(--Titulo);
+    color:white;
     text-decoration-style: solid;
 }
 
