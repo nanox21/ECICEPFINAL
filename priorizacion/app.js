@@ -26,13 +26,13 @@ function allItemsSelected() {
 
     // Verificar si cada grupo tiene una opción seleccionada
     for (const group of groups) {
-        const groupLabel = document.querySelector(`input[name="${group}"]`).closest('label');
         const selected = document.querySelector(`input[name="${group}"]:checked`);
+        const groupLabels = document.querySelectorAll(`input[name="${group}"]`);
         if (!selected) {
             allSelected = false; // Si algún grupo no tiene seleccionada una opción, marcar como no completo
-            groupLabel.classList.add('unanswered'); // Añadir clase para marcar en rojo
+            groupLabels.forEach(input => input.parentNode.classList.add('unanswered')); // Añadir clase para marcar en rojo
         } else {
-            groupLabel.classList.remove('unanswered'); // Quitar clase si ya está respondido
+            groupLabels.forEach(input => input.parentNode.classList.remove('unanswered')); // Quitar clase si ya está respondido
         }
     }
     return allSelected; // Retornar true solo si todas las opciones están seleccionadas
