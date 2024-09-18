@@ -40,13 +40,73 @@
         </label>
         <br>
         <!-- Resto de las preguntas... -->
-
+          <label>Hospitalización por descompensación de patología crónica en los últimos 3 meses</label>
+        <label>
+            <input type="radio" name="hospitaliacion" value="2"> Sí
+        </label>
+        <label>
+            <input type="radio" name="hospitalizácion" value="0"> No
+        </label>
+        <br>
+            <label>Amputación por DM hace menos de 6 mese</label>
+        <label>
+            <input type="radio" name="amputacion" value="2"> Sí
+        </label>
+        <label>
+            <input type="radio" name="amputacion" value="0"> No
+        </label>
+        
+        <br>
+        
+  <label>Persona de 75 años y más que presenta 1 o más de las siguientes características:
+<li>Diagnóstico funcional de autovalente con riesgo, en riesgo de dependencia o dependiente
+<li>Riesgo de caídas alto, evaluado por test “get up and go”.
+<li>No cuenta con redes de apoyo
+<li<Hospitalización por patología aguda en los últimos 3 meses</label></li>
+        <label>
+            <input type="radio" name="adultoMayor" value="1"> Sí
+        </label>
+        <label>
+            <input type="radio" name="AdultoMayor" value="0"> No
+        </label>
+        <br>
+        <label>Úlcera activa en EEII </label>
+        <label>
+            <input type="radio" name="ulcera" value="1"> Sí
+        </label>
+        <label>
+            <input type="radio" name="ulcera" value="0"> No
+        </label>
+        <br>
+        <label>Ideación o intento suicida (registrada hace menos de 6 meses)</label>
+        <label>
+            <input type="radio" name="ideacion" value="1"> Sí
+        </label>
+        <label>
+            <input type="radio" name="ideacion" value="0"> No
+        </label>
+        <br>
+        <label>Educación mayor a 12 años</label>
+        <label>
+            <input type="radio" name="educacion" value="-1"> Sí
+        </label>
+        <label>
+            <input type="radio" name="educacion" value="0"> No
+        </label>
+        <br>
+        <label>Redes de apoyo activas</label>
+        <label>
+            <input type="radio" name="redes" value="-1"> Sí
+        </label>
+        <label>
+            <input type="radio" name="redes" value="0"> No
+        </label>
+        <br>
         <button type="button" onclick="calculatePoints()">Calcular</button>
         <button type="button" onclick="clearForm()">Limpiar</button>
     </form>
     <p>Total de puntos: <span id="totalPoints">0</span></p>
-
-    <script>
+<script>
         let totalPoints = 0;
 
         // Calcular los puntos totales
@@ -107,5 +167,7 @@
             labels.forEach(label => label.classList.remove('unanswered'));
         }
     </script>
+
+     
 </body>
 </html>
