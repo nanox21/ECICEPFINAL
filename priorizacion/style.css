@@ -1,0 +1,100 @@
+/* Estilo general para un look oscuro */
+body {
+    background-color: #1e1e1e;
+    color: #f1f1f1;
+    font-family: 'Arial', sans-serif;
+    
+    padding: 0;
+    margin-left: 3cm;
+    margin-right:3cm;
+}
+
+/* Añadir márgenes laterales */
+main {
+    margin-left: 3cm;
+margin-right:3cm;
+}
+
+/* Estilos del encabezado */
+.headerMod {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    justify-content: space-between;
+    background-color: #333;
+    margin-bottom: 20px;
+}
+
+.headerContent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.logo, .tux {
+    height: 60px;
+    margin-right: 15px;
+}
+
+h1 {
+    flex: 1;
+    text-align: center;
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+/* Estilos del formulario */
+form {
+    background-color: #292929;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+label, li {
+    display: block;
+    margin: 10px 0;
+    font-size: 1em;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Estilos para las preguntas no respondidas */
+.unanswered {
+    color: red;
+}
+
+/* Ajuste de margen inferior */
+p {
+    margin-top: 20px;
+    font-size: 1.2em;
+}
+.button-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    border-radius: 60px;
+}
+
+
+.button-link:hover {
+    background-color: #0056b3;
+}
