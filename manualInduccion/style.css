@@ -1,8 +1,15 @@
 /* Estilos generales */
+:root {
+
+
+    --Titulo: hsl(98, 93%, 62%);
+    --Fondo: #27374D;
+    --letra: #DDE6ED;
+}
 body {
     font-family: 'Lato', Arial, sans-serif;
-    background-color: #121212; /* Fondo oscuro */
-    color: #e0e0e0; /* Color de texto claro */
+    background-color: #27374D; /* Fondo oscuro */
+    color: #DDE6ED; /* Color de texto claro */
     margin: 0;
     padding: 0;
     line-height: 1.6;
@@ -11,7 +18,7 @@ body {
 /* Títulos y texto */
 h1, h2, h3, h4, h5, h6 {
     font-family: Arial, sans-serif;
-    color: #64b5f6; /* Color azul para títulos */
+    color: #DDE6ED; /* Color azul para títulos */
     margin-left: 4cm; /* Borde de 4cm desde la izquierda */
     margin-right: 4cm; /* Borde de 4cm desde la derecha */
 }
