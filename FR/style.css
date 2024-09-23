@@ -1,0 +1,176 @@
+
+
+body {
+    background-color: #0d0d0d; /* Fondo oscuro */
+    color: #e0e0e0; /* Texto claro para buen contraste */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Estilo del enlace de la calculadora */
+.button-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 12px;
+    margin-left:40%;
+    border-radius: 60px;
+
+}
+
+
+.button-link:hover {
+    background-color: #0056b3;
+}
+
+
+/* Estilo del header */
+.headerMod {
+    background-color: #1a1a1a; /* Fondo del header más oscuro */
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 1px solid #444;
+}
+
+.headerMod img {
+    height: 50px;
+}
+
+.headerMod h1 {
+    color: #ffcc00; /* Texto dorado elegante */
+    font-size: 24px;
+    text-align: center;
+    flex-grow: 1;
+}
+
+/* Estilos del contenedor */
+.container {
+    width: 90%;
+    max-width: 800px;
+    background-color: #1c1c1c; /* Fondo oscuro del contenedor */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Sombra sutil */
+    margin-top: 20px;
+    overflow-y: auto;
+    max-height: calc(100vh - 150px);
+}
+
+/* Títulos de las categorías */
+h2 {
+    color: #ca33f8;
+    font-size: 22px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #444;
+    padding-bottom: 5px;
+}
+
+.mayor {
+    color: #e90404; /* Rojo para riesgos mayores */
+}
+
+.mediomabientales {
+    color: #65e53b; /* Amarillo dorado para riesgos intermedios */
+}
+
+.biomedicos-option {
+    color: #4dd0e1; /* Azul claro para riesgos menores */
+}
+
+/* Estilo de los labels */
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 18px;
+}
+
+/* Estilos de los botones */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 12px;
+    margin-left:40%;
+    border-radius: 60px;
+
+}
+
+.btn:hover {
+    background-color: #555555; /* Cambio sutil de color al hacer hover */
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Estilos del resultado */
+.result {
+    display: none;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: 1px solid #444;
+}
+
+.low-risk {
+    background-color: #40ef1d; /* Verde para bajo riesgo */
+    color: white;
+}
+
+.intermediate-risk {
+    background-color: #ffeb3b; /* Amarillo para riesgo intermedio */
+    color: black;
+}
+
+.high-risk {
+    background-color: #f44336; /* Rojo para alto riesgo */
+    color: white;
+}
+
+.result p {
+    margin: 0;
+    font-size: 18px;
+}
+
+/* Logo y elementos visuales */
+.logo {
+    height: 70px;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+}
+
+.tux {
+    position: absolute;
+    top: 8px;
+    align-self: right;
+    width: 70px;
+    height: 70px;
+    padding-left: 14%;
+}
+
+/* Ajustes de responsive design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 20px;
+    }
+
+    .container {
+        padding: 15px;
+    }
+}
