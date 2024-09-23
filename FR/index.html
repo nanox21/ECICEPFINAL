@@ -5,159 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Matriz de Riesgos</title>
-       <div id="result" class="result">
-            <h3>Resultado:</h3>
-            <p id="risk-level"></p>
-            <p id="recommendation"></p>
-        </div>
+    <link rel="stylesheet" href="style.css">
+
+    <div id="result" class="result">
+        <h3>Resultado:</h3>
+        <p id="risk-level"></p>
+        <p id="recommendation"></p>
+    </div>
     <style>
-        body {
-            background-color: #121212;
-            color: #f0f0f0;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .button-link {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #007BFF;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 16px;
-            border-radius: 60px;
-        }
-
-
-        .button-link:hover {
-            background-color: #0056b3;
-        }
-
-        .logo {
-            position: absolute;
-            top: 8px;
-            align-self: right;
-            width: 70px;
-            height: 90px;
-            padding-left: 14%;
-        }
-
- 
-
-        .headerMod {
-            background-color: #1c1c1c;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-        }
-
-        .headerMod img {
-            height: 50px;
-        }
-
-        .headerMod .titulo {
-            color: #ffcc00;
-            font-size: 18px;
-            text-align: center;
-            flex-grow: 1;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 800px;
-            background-color: #1c1c1c;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            margin-top: 20px;
-            overflow-y: auto;
-            max-height: calc(100vh - 150px);
-            /* Ajustar el tamaño para hacer espacio para el header */
-        }
-
-        h1 {
-            margin-left: 20%;
-            text-align: center;
-            color: #ffcc00;
-            
-        }
-
-        .mayor {
-            margin-top: 20px;
-            color: #f90b0b;
-        }
-
-        .intermedio {
-            margin-top: 20px;
-            color: rgb(228, 228, 92);
-        }
-
-        .menor {
-            margin-top: 20px;
-            color: rgb(92, 228, 214);
-        }
-
-        .risk-category {
-            margin: 20px 0;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        .button-container {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .btn {
-            background-color: #ffcc00;
-            border: none;
-            color: #121212;
-            padding: 10px 20px;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-
-        .btn:hover {
-            background-color: #ffaa00;
-        }
-
-        .result {
-            display: none;
-            padding: 15px;
-            margin-top: 20px;
-            border-radius: 5px;
-        }
-
-        .result p {
-            margin: 0;
-        }
-
-        .low-risk {
-            background-color: #00ff00;
-            color: black;
-        }
-
-        .intermediate-risk {
-            background-color: #ffff00;
-            color: black;
-        }
-
-        .high-risk {
-            background-color: #ff0000;
-            color: white;
-        }
+        /* El estilo es el mismo que en tu ejemplo anterior */
+        /* Aquí puedes mantener el mismo estilo que ya has implementado */
     </style>
 </head>
 
@@ -171,86 +28,128 @@
     <div class="container">
         <a href="https://nanox21.github.io/ECICEPFINAL/" target="_blank" class="button-link">
             Calculadora ECICEP</a>
-           <button class="btn" onclick="calculateRisk()">Calcular Riesgo</button>
-            <button class="btn" onclick="resetForm()">Limpiar</button>
 
-        <h2 class="mayor">Factores de Riesgo Mayor</h2>
-        <div class="risk-category">
-            <label><input type="checkbox" class="risk-major"> Bebedor(a) problema ¿quién?</label>
-            <label><input type="checkbox" class="risk-major"> Extrema pobreza o vulnerabilidad</label>
-            <label><input type="checkbox" class="risk-major"> Consumo de sustancias o drogas</label>
-            <label><input type="checkbox" class="risk-major"> Conducta suicida</label>
-            <label><input type="checkbox" class="risk-major"> Embarazo no deseado</label>
-            <label><input type="checkbox" class="risk-major"> Depresión severa</label>
-            <label><input type="checkbox" class="risk-major"> Cesantía por más de 6 meses </label>
-            <label><input type="checkbox" class="risk-major"> Uniones de parejas inestables </label>
-            <label><input type="checkbox" class="risk-major">Trastorno de la conducta alimentaria</label>
-            <label><input type="checkbox" class="risk-major">Trabajo infantil</label>
-            <label><input type="checkbox" class="risk-major"> VIF física , psicológica</label>
-            <label><input type="checkbox" class="risk-major"> Patologías psiquiátricas sin tratamiento o
-                descompensadas</label>
-            <label><input type="checkbox" class="risk-major"> Prostitución infantil</label>
-            <label><input type="checkbox" class="risk-major"> Deserción escolar</label>
-            <label><input type="checkbox" class="risk-major"> Menores al cuidado de menores</label>
-            <label><input type="checkbox" class="risk-major"> Promiscuidad</label>
-            <label><input type="checkbox" class="risk-major"> Menor sin regularización de la tuición</label>
-            <label><input type="checkbox" class="risk-major"> Maltrato infantil</label>
-            <label><input type="checkbox" class="risk-major"> Delincuencia o conflicto con la justicia de uno o más
-                miembros de la familia</label>
-
+        <h2 class="mayor">Riesgos psicosociales</h2>
+        <div id="psicosocial-options">
+            <div class="psicosocial-category">
+                <label><input type="checkbox" class="risk-psicosocial" value="2"> Bebedor(a) problema ¿quién?</label>
+                <label><input type="checkbox" class="risk-psicosocial" value="3"> Jefe hogar cesante</label>
+                <label><input type="checkbox" class="risk-psicosocial" value="2"> Hacinamiento</label>
+                <label><input type="checkbox" class="risk-psicosocial" value="2"> Adolescente Embarazada</label>
+                <label><input type="checkbox" class="risk-psicosocial" value="1"> Deficiente vías de comunicación</label>
+                <label><input type="checkbox" class="risk-psicosocial" value="3"> VIF-Sexual</label>
+                <label><input type="checkbox" class="risk-psicosocial" value="2"> Jefe de hogar solo</label>
+                <label><input type="checkbox" class="risk-psicosocial" value="3"> Delincuencia</label>
+                <label><input type="checkbox" class="risk-psicosocial" value="2"> Duelo reciente</label>
+            </div>
         </div>
 
-        <h2 class="intermedio">Factores de Riesgo Intermedio</h2>
-        <div class="risk-category">
-            <label><input type="checkbox" class="risk-intermediate">Cesantía temporal (menos de 6 meses)</label>
-            <label><input type="checkbox" class="risk-intermediate">Problema de normas y límites familiares</label>
-            <label><input type="checkbox" class="risk-intermediate">Grupo familiar con jefe(a) hogar solo</label>
-            <label><input type="checkbox" class="risk-intermediate">Analfabetismo de madre o cuidadora</label>
-            <label><input type="checkbox" class="risk-intermediate">Deficiente calidad de la vivienda </label>
-            <label><input type="checkbox" class="risk-intermediate">Discapacidad física o mental </label>
-            <label><input type="checkbox" class="risk-intermediate">Hacinamiento y promiscuidad </label>
-            <label><input type="checkbox" class="risk-intermediate">Duelo reciente </label>
-            <label><input type="checkbox" class="risk-intermediate">Crisis no normativa</label>
-            <label><input type="checkbox" class="risk-intermediate">Contaminación intra domiciliaria </label>
-            <label><input type="checkbox" class="risk-intermediate">Tabaquismo</label>
-            <label><input type="checkbox" class="risk-intermediate">Episodio depresivo mod-leve</label>
-            <label><input type="checkbox" class="risk-intermediate">IRA a repetición en menores 2 años</label>
-            <label><input type="checkbox" class="risk-intermediate">Enfermedad grave o terminal</label>
-            <label><input type="checkbox" class="risk-intermediate">Prostitución (adulto)</label>
-            <label><input type="checkbox" class="risk-intermediate">Adulto mayor discapacitado a cargo de niños y/o
-                adolescentes</label>
-            <label><input type="checkbox" class="risk-intermediate">Embarazo en adolescente que vive con uno o ambos
-                padres</label>
+        <h2 class="biomedico-option">Factores de Riesgo Biomédico</h2>
+        <div id="biomedico-options">
+            <div class="biomedico-category">
+                <label><input type="checkbox" class="risk-biomedico" value="1"> Niño con malnutrición por déficit</label>
+                <label><input type="checkbox" class="risk-biomedico" value="1"> Niño con riesgo DSM</label>
+                <label><input type="checkbox" class="risk-biomedico" value="2"> Niño con retraso DSM</label>
+                <label><input type="checkbox" class="risk-biomedico" value="3"> VIH-SIDA</label>
+                <label><input type="checkbox" class="risk-biomedico" value="2"> Adulto mayor con malnutrición</label>
+                <label><input type="checkbox" class="risk-biomedico" value="1"> Patología Crónica</label>
+                <label><input type="checkbox" class="risk-biomedico" value="3"> PAD y CP /CPU/ Dependencia Severa</label>
+                <label><input type="checkbox" class="risk-biomedico" value="2"> Patología de salud mental</label>
+            </div>
         </div>
 
-        <h2 class="menor">Factores de Riesgo Menor</h2>
-        <div class="risk-category">
-            <label><input type="checkbox" class="risk-minor">Foco cercano contaminación ambiental</label>
-            <label><input type="checkbox" class="risk-minor">Madre o cuidadora con educación</label>
-            <label><input type="checkbox" class="risk-minor">Patología crónica (HTA, DM, EPOC, otras)</label>
-            <label><input type="checkbox" class="risk-minor">Inestabilidad laboral</label>
-            <label><input type="checkbox" class="risk-minor">Educación básica incompleta</label>
-            <label><input type="checkbox" class="risk-minor">Inadecuado saneamiento básico </label>
-            <label><input type="checkbox" class="risk-minor">Estrés laboral</label>
-            <label><input type="checkbox" class="risk-minor">Trastorno nutricional : (obesidad, dislipidemia,
-                desnutrición)</label>
-            <label><input type="checkbox" class="risk-minor">Ausencia de espacios de recreación y esparcimiento</label>
-            <label><input type="checkbox" class="risk-minor">Adulto mayor a cargo de niños</label>
-            <label><input type="checkbox" class="risk-minor">Crisis normativa y/o adolescentes</label>
-            <label><input type="checkbox" class="risk-minor">Embarazo en adolescentes </label>
-            <label><input type="checkbox" class="risk-minor">Cuidador con síndrome del cuidador</label>
-
+        <h2 class="mediomabientales">Factores de Riesgo Medioambientales</h2>
+        <div id="medioambiental-options">
+            <div class="medioambiental-category">
+                <label><input type="checkbox" class="risk-medioambiental" value="2"> Sin agua potable</label>
+                <label><input type="checkbox" class="risk-medioambiental" value="1"> Carencia de alcantarillado</label>
+                <label><input type="checkbox" class="risk-medioambiental" value="2"> Mala calidad vivienda</label>
+                <label><input type="checkbox" class="risk-medioambiental" value="1"> Vivienda en lugar de Riesgo</label>
+                <label><input type="checkbox" class="risk-medioambiental" value="1"> Extrema ruralidad</label>
+            </div>
         </div>
 
         <div class="button-container">
             <button class="btn" onclick="calculateRisk()">Calcular Riesgo</button>
             <button class="btn" onclick="resetForm()">Limpiar</button>
         </div>
-
-     
     </div>
-    <script src="app.js"></script>  
-    <footer class="footer">
-                                Powered by E.U Mandrake.
-                                <a href="mailto:nanox21@gmail.com" target="_blank">📨Contacto</a>
-                            </footer>
+
+    <script>
+        // Función para calcular el riesgo total
+        function calculateRisk() {
+            let totalPoints = 0;
+
+            // Obtener todos los checkboxes seleccionados en las categorías
+            const psicosocialCheckboxes = document.querySelectorAll('.risk-psicosocial:checked');
+            const biomedicoCheckboxes = document.querySelectorAll('.risk-biomedico:checked');
+            const medioambientalCheckboxes = document.querySelectorAll('.risk-medioambiental:checked');
+
+            // Sumar los valores de los checkboxes seleccionados
+            psicosocialCheckboxes.forEach(function(checkbox) {
+                totalPoints += parseInt(checkbox.value);
+            });
+
+            biomedicoCheckboxes.forEach(function(checkbox) {
+                totalPoints += parseInt(checkbox.value);
+            });
+
+            medioambientalCheckboxes.forEach(function(checkbox) {
+                totalPoints += parseInt(checkbox.value);
+            });
+
+            // Mostrar el resultado y la recomendación
+            const resultElement = document.getElementById('result');
+            const riskLevelElement = document.getElementById('risk-level');
+            const recommendationElement = document.getElementById('recommendation');
+
+            let riskLevel = '';
+            let recommendation = '';
+
+            // Determinar el nivel de riesgo basado en el total de puntos
+            if (totalPoints <= 3) {
+                riskLevel = 'Sin riesgo';
+                recommendation = 'No se requiere intervención.';
+                resultElement.classList.add('low-risk');
+                resultElement.classList.remove('intermediate-risk', 'high-risk');
+            } else if (totalPoints <= 6) {
+                riskLevel = 'Riesgo leve';
+                recommendation = 'Recomendación: Consejería individual o familiar (con segumiento). Guías anticipadoras. Otras intervenciones (según necesidad) **Priorizar criterio de equipo .';
+                resultElement.classList.add('intermediate-risk');
+                resultElement.classList.remove('low-risk', 'high-risk');
+            } else if (totalPoints <= 11) {
+                riskLevel = 'Riesgo moderado';
+                recommendation = 'Recomendación: Estudio de familia y plan de intervención familiar consensuado.';
+                resultElement.classList.add('intermediate-risk');
+                resultElement.classList.remove('low-risk', 'high-risk');
+            } else {
+                riskLevel = 'Riesgo grave';
+                recommendation = 'Recomendación: Estudio de familia y plan de intervención familiar consensuado. Derivación a nivel secundario según corresponda. .';
+                resultElement.classList.add('high-risk');
+                resultElement.classList.remove('low-risk', 'intermediate-risk');
+            }
+
+            // Mostrar el nivel de riesgo y la recomendación
+            riskLevelElement.textContent = `Nivel de Riesgo: ${riskLevel}`;
+            recommendationElement.textContent = recommendation;
+            resultElement.style.display = 'block';
+        }
+
+        // Función para limpiar el formulario
+        function resetForm() {
+            // Desmarcar todos los checkboxes
+            document.querySelectorAll('input[type="checkbox"]').forEach(function(checkbox) {
+                checkbox.checked = false;
+            });
+
+            // Ocultar el resultado
+            document.getElementById('result').style.display = 'none';
+        }
+    </script>
+</body>
+<footer class="footer">
+    Powered by E.U Mandrake.
+    <a href="mailto:nanox21@gmail.com" target="_blank">📨Contacto</a>
+</footer>
+
+</html>
