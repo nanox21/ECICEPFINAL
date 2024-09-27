@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluación Cardiovascular</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin-left: 10%;
+            padding: 20px;
+            background-color: #f2f2f2;
+            font-size: 16px;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+            padding: 15px;
+            border-radius: 4px;
+        }
+
+        .low-risk {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .moderate-risk {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .high-risk {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .clear-btn {
+            background-color: #d9534f;
+            margin-left: 10px;
+        }
+
+        .clear-btn:hover {
+            background-color: #c9302c;
+        }
+
+        .fondol {
+            color: rgb(182, 251, 9);
+            background-color: #27374D;
+            border-color: #27374D;
+            border-radius: 54px;
+            font-size: 24px;
+        }
+
+        select {
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Contenedor de Evaluación de Presión Arterial -->
+    <div class="container">
+        <h2>Vía Clínica de Hipertensión Arterial</h2>
+        <form id="evaluacion-form">
+            <div style="text-align: left; margin-bottom: 15px;">
+                <label><b><img src="/img/dm.png" alt="home" style="width: 30px; height: 30px; margin-left: 10px;"> Diabetes mellitus </b></label><br><br>
+                <label>El/la usuario@ tiene diabetes (DM)</label><br>
+                <label>
+                    <input type="radio" name="dm" value="1"> Sí
+                </label>
+                <label>
+                    <input type="radio" name="dm" value="0" checked> No
+                </label>
+            </div>
+            <br><br>
+
+            <div style="text-align: left; margin-bottom: 15px;">
+                <label><b><img src="/img/renal.png" alt="home" style="width: 30px; height: 30px; margin-left: 10px;"> Enfermedad Renal Crónica</b></label><br><br>
+                <label>El/la usuario@ tiene ERC</label><br>
+                <label>
+                    <input type="radio" name="erc" value="1"> Sí
+                </label>
+                <label>
+                    <input type="radio" name="erc" value="0" checked> No
+                </label>
+            </div>
+            <br><br>
+
+            <div style="text-align: left; margin-bottom: 15px;">
+                <label><b><img src="/img/hta.png" alt="home" style="width: 30px; height: 30px; margin-left: 10px;"> Hipertensión Arterial</b></label><br>
+                <label>El/la usuario@ tiene HTA</label><br>
+                <label>
+                    <input type="radio" name="hta" value="1"> Sí
+                </label>
+                <label>
+                    <input type="radio" name="hta" value="0" checked> No
+                </label>
+            </div>
+            <br><br>
+
+            <div style="text-align: left; margin-bottom: 15px;">
+                <label><b><img src="/img/cv.png" alt="home" style="width: 30px; height: 30px; margin-left: 10px;"> Enfermedad Cardiovascular Conocida</b></label><br>
+                <label>El/la usuario@ tiene ECV conocida</label><br>
+                <label>
+                    <input type="radio" name="ecv" value="1"> Sí
+                </label>
+                <label>
+                    <input type="radio" name="ecv" value="0" checked> No
+                </label>
+            </div>
+
+            <button type="button" onclick="calcularMeta()">Calcular Meta PA</button>
+            <button type="button" class="clear-btn" onclick="limpiarFormulario()">Limpiar</button>
+        </form>
+
+        <div class="result" id="resultado"></div>
+    </div>
+
+    <!-- Contenedor de Riesgo Cardiovascular -->
+    <div class="container">
+        <h2>Riesgo Cardiovascular</h2>
+        <div>
+            <label for="rcv-details">Seleccione el nivel de riesgo:</label><br>
+            <select id="rcv-details" name="rcv-details" onchange="mostrarRecomendacion()">
+                <option value="" selected>Selecciona una opción</option>
+                <option value="Bajo">🟢 Bajo</option>
+                <option value="Moderado">🟡 Moderado</option>
+                <option value="Alto">🔴 Alto</option>
+            </select>
+        </div>
+
+        <div class="result" id="rcv-recomendacion"></div>
+    </div>
+
+    <script>
+        // Calcular metas de PA según factores de riesgo
+        function calcularMeta() {
+            // Obtener valores de los síntomas
+            const tieneDM = document.querySelector('input[name="dm"]:checked').value === '1';
+            const tieneERC = document.querySelector('input[name="erc"]:checked').value === '1';
+            const tieneHTA = document.querySelector('input[name="hta"]:checked').value === '1';
+            const tieneECV = document.querySelector('input[name="ecv"]:checked').value === '1';
+
+            // Obtener el elemento de resultado y limpiar contenido previo
+            const resultadoDiv = document.getElementById('resultado');
+            resultadoDiv.innerHTML = ''; // Limpiar resultados previos
+
+            // Evaluar condiciones y mostrar metas de PA
+            if (tieneHTA && !tieneDM && !tieneERC && !tieneECV) {
+                // Solo HTA
+                resultadoDiv.innerHTML = '<strong>Meta PA:</strong> Sistólica < 140 mmHg, Diastólica < 90 mmHg';
+                resultadoDiv.className = 'result low-risk';
+            } else if (tieneHTA && tieneDM && !tieneECV) {
+                // HTA y DM
+                resultadoDiv.innerHTML = `
+                    <strong>Meta PA:</strong> Sistólica < 130 mmHg, Diastólica < 80 mmHg<br>
+                    <strong>Estatinas dosis moderada:</strong> Atorvastatina 20 mg/noche
+                `;
+                resultadoDiv.className = 'result moderate-risk';
+            } else if (tieneHTA && tieneERC && !tieneECV) {
+                // HTA y ERC
+                resultadoDiv.innerHTML = `
+                    <strong>Meta PA:</strong> Sistólica < 130 mmHg, Diastólica < 80 mmHg<br>
+                    <strong>Estatinas dosis moderada:</strong> Atorvastatina 20 mg/noche
+                `;
+                resultadoDiv.className = 'result moderate-risk';
+            } else if (tieneHTA && tieneECV) {
+                // HTA y ECV conocida
+                resultadoDiv.innerHTML = `
+                    <strong>Meta PA:</strong> Sistólica < 130 mmHg, Diastólica < 80 mmHg<br>
+                    <strong>Estatinas dosis alta:</strong> Atorvastatina 40 a 80 mg/día<br>
+                    <strong>Ácido acetilsalicílico:</strong> 100 mg/día
+                `;
+                resultadoDiv.className = 'result high-risk';
+            } else {
+                // Ninguna combinación relevante para HTA
+                resultadoDiv.textContent = 'No se encontraron metas de PA aplicables para la combinación de síntomas seleccionados.';
+                resultadoDiv.className = 'result';
+            }
+        }
+
+        // Función para limpiar el formulario y el resultado
+        function limpiarFormulario() {
+            document.getElementById('evaluacion-form').reset();
+            document.getElementById('resultado').innerHTML = '';
+            document.getElementById('resultado').className = 'result';
+        }
+
+        // Mostrar recomendaciones según nivel de riesgo cardiovascular
+        function mostrarRecomendacion() {
+            const rcvValue = document.getElementById('rcv-details').value;
+            const rcvRecomendacionDiv = document.getElementById('rcv-recomendacion');
+
+            // Limpiar contenido previo
+            rcvRecomendacionDiv.innerHTML = '';
+
+            // Mostrar recomendaciones basadas en el riesgo cardiovascular seleccionado
+            if (rcvValue === 'Bajo') {
+                rcvRecomendacionDiv.innerHTML = `
+                    <strong>Riesgo cardiovascular Bajo</strong><br>
+                    * Se recomienda suministro de medicación para 3 MESES<br>
+                    * Seguimiento mínimo cada 6 MESES
+                `;
+            } else if (rcvValue === 'Moderado') {
+                rcvRecomendacionDiv.innerHTML = `
+                    <strong>Riesgo cardiovascular Moderado</strong><br>
+                    * Se recomienda suministro de medicación para 3 MESES<br>
+                    * Seguimiento mínimo cada 6 MESES
+                `;
+            } else if (rcvValue === 'Alto') {
+                rcvRecomendacionDiv.innerHTML = `
+                    <strong>Riesgo cardiovascular Alto</strong><br>
+                    * Se recomienda suministro de medicación para 3 MESES<br>
+                    * Seguimiento mínimo cada 3 MESES 
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
