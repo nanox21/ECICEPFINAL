@@ -1,9 +1,7 @@
-:root {
- 
- 
- --colorTitulo: #152094;
- --colorFondo:#fffffe;
- --colorForm:#152094;
+ :root {
+ --colorTitulo: hsl(98, 93%, 62%);
+ --colorFondo:#27374D;
+ --colorForm:#DDE6ED;
 }
 
 body {
@@ -19,6 +17,36 @@ body {
     width: 30px;
     align-items: center;
 }
+body.dark-mode {
+    background-color:black;
+    color: white;
+}
+
+.headerMod.dark-mode, .footer.dark-mode {
+    background-color:black;
+}
+
+.resultado.dark-mode, .espacioresultado.dark-mode {
+    background-color: black;
+    color: white;
+}
+
+.button-dark-mode {
+    margin: 10px;
+    padding: 10px;
+    background-color:black;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 60px;
+    font-size: 16px;
+    border-color: #39ff14;
+    border-style: solid;
+}
+
+.button-dark-mode:hover {
+    background-color: #555;
+}
 .bajo { color: #39ff14; background-color: black; }
 .moderado { color: yellow; background-color: black; }
 .alto { color: orange; background-color: black; }
@@ -26,7 +54,6 @@ body {
 
 .logo { 
     margin-left:10%;
-    
     height: 70px;
     position: absolute;
     top: 10px;
@@ -146,8 +173,21 @@ margin-left: 70%;
     
 
 }
+.button1-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    border-radius: 60px;
 
+    }
 
 .button-link:hover {
+    background-color: #0056b3;
+}
+.button1-link:hover {
     background-color: #0056b3;
 }
