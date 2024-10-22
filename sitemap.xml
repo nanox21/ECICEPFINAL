@@ -1,22 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Página principal -->
   <url>
     <loc>https://ecicep.cl/</loc>
     <lastmod>2024-10-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
+
+  <!-- Página de Evaluación Pie Diabético -->
   <url>
-    <loc>https://ecicep.cl/evPieDm/index.html</loc>
+    <loc>https://ecicep.cl/EvPieDm/index.html</loc>
     <lastmod>2024-10-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- Página de SaluFam -->
   <url>
     <loc>https://ecicep.cl/salufam/index.html</loc>
     <lastmod>2024-10-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <!-- Añade aquí más URLs según tu estructura -->
+
+  <!-- Página de contacto -->
+  <url>
+    <loc>https://ecicep.cl/contacto.html</loc>
+    <lastmod>2024-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Página de recomendaciones de riesgo cardiovascular -->
+  <url>
+    <loc>https://ecicep.cl/recomendaciones-riesgo-cardiovascular.html</loc>
+    <lastmod>2024-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Página de metas de presión arterial -->
+  <url>
+    <loc>https://ecicep.cl/metas-presion-arterial.html</loc>
+    <lastmod>2024-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>
