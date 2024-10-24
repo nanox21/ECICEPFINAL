@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan Cuidados</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, select, textarea, table {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        textarea {
+            resize: vertical;
+        }
+        table {
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Plan de cuidados personalizados ECICEP</h2>
+
+<div class="form-group">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" placeholder="Ingresa el nombre">
+</div>
+
+<div class="form-group">
+    <label for="run">RUN:</label>
+    <input type="text" id="run" placeholder="Ingresa el RUN">
+</div>
+
+<div class="form-group">
+    <label for="edad">Edad:</label>
+    <input type="number" id="edad" placeholder="Ingresa la edad">
+</div>
+
+<div class="form-group">
+    <label for="acuerdos">Acuerdos:</label>
+    <textarea id="acuerdos" rows="4" placeholder="Escribe los acuerdos aquí"></textarea>
+</div>
+
+<h3>Plan de Acción</h3>
+
+<table id="planAccion">
+    <thead>
+        <tr>
+            <th>Dimensión del Problema</th>
+            <th>Actividad</th>
+            <th>Metodología</th>
+            <th>Objetivo</th>
+            <th>Plazo</th>
+        </tr>
+    </thead>
+    <tbody id="actionTableBody">
+        <tr>
+            <td><textarea rows="2"></textarea></td>
+            <td><textarea rows="2"></textarea></td>
+            <td><textarea rows="2"></textarea></td>
+            <td><textarea rows="2"></textarea></td>
+            <td><textarea rows="2"></textarea></td>
+        </tr>
+        <tr>
+            <td><textarea rows="2"></textarea></td>
+            <td><textarea rows="2"></textarea></td>
+            <td><textarea rows="2"></textarea></td>
+            <td><textarea rows="2"></textarea></td>
+            <td><textarea rows="2"></textarea></td>
+        </tr>
+        <tr>
+            <td><textarea rows="2"></textarea></td>
+            <td><textarea rows="2"></textarea></td>
+            <td><textarea rows="2"></textarea></td>
+            <td><textarea rows="2"></textarea></td>
+            <td><textarea rows="2"></textarea></td>
+        </tr>
+    </tbody>
+</table>
+
+<button class="button" onclick="agregarFila()">Agregar Fila</button>
+<button class="button" onclick="generarPDF()">Generar PDF</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+    function agregarFila() {
+        const tableBody = document.getElementById('actionTableBody');
+        const newRow = document.createElement('tr');
+
+        newRow.innerHTML = `
+            <td><textarea rows="2"></textarea></td>
+            <td><textarea rows="2"></textarea></td>
+            <td><textarea rows="2"></textarea></td>
+            <td><textarea rows="2"></textarea></td>
+            <td><textarea rows="2"></textarea></td>
+        `;
+
+        tableBody.appendChild(newRow);
+    }
+
+    function generarPDF() {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        // Cargar la imagen y añadirla en el encabezado
+        const imgData = 'logo.png'; // Asegúrate de que la ruta sea correcta
+        const imgWidth = 20; // 2 cm en mm
+        const imgHeight = 20; // Mantener la proporción
+        doc.addImage(imgData, 'PNG', 10, 10, imgWidth, imgHeight); // Coordenadas x=10, y=10
+
+        // Recoger datos del formulario
+        const nombre = document.getElementById("nombre").value;
+        const run = document.getElementById("run").value;
+        const edad = document.getElementById("edad").value;
+        const acuerdos = document.getElementById("acuerdos").value;
+
+        // Añadir datos al PDF
+        doc.text(`Nombre: ${nombre}`, 10, 40);
+        doc.text(`RUN: ${run}`, 10, 50);
+        doc.text(`Edad: ${edad}`, 10, 60);
+        doc.text("Acuerdos:", 10, 80);
+        doc.text(acuerdos, 10, 90);
+
+        // Añadir el título "Plan de Acción" una sola vez
+        const titlePosition = 110; // Posición fija para el título
+        doc.text("Plan de Acción:", 10, titlePosition);
+        
+        // Ajustar la posición inicial para las filas de la tabla
+        let yPosition = titlePosition + 10; // Ajuste para la altura del título
+        const rows = document.querySelectorAll('#planAccion tbody tr');
+        rows.forEach((row) => {
+            const dimensiones = row.children[0].querySelector('textarea').value;
+            const actividad = row.children[1].querySelector('textarea').value;
+            const metodologia = row.children[2].querySelector('textarea').value;
+            const objetivo = row.children[3].querySelector('textarea').value;
+            const plazo = row.children[4].querySelector('textarea').value;
+
+            // Imprimir datos en el PDF
+            doc.text(`Dimensión del Problema: ${dimensiones}`, 10, yPosition);
+            yPosition += 10; // Espacio entre líneas
+            doc.text(`Actividad: ${actividad}`, 10, yPosition);
+            yPosition += 10; // Espacio entre líneas
+            doc.text(`Metodología: ${metodologia}`, 10, yPosition);
+            yPosition += 10; // Espacio entre líneas
+            doc.text(`Objetivo: ${objetivo}`, 10, yPosition);
+            yPosition += 10; // Espacio entre líneas
+            doc.text(`Plazo: ${plazo}`, 10, yPosition);
+            yPosition += 20; // Espacio adicional entre filas
+        });
+
+        // Guardar PDF
+        doc.save('acuerdos_atencion.pdf');
+    }
+</script>
+
+</body>
+</html>
