@@ -28,126 +28,165 @@
     <div class="container">
         <a href="https://nanox21.github.io/ECICEPFINAL/" target="_blank" class="button-link">
             Calculadora ECICEP</a>
-
-        <h2 class="mayor">Riesgos psicosociales</h2>
-        <div id="psicosocial-options">
-            <div class="psicosocial-category">
-                <label><input type="checkbox" class="risk-psicosocial" value="2"> Bebedor(a) problema ¿quién?</label>
-                <label><input type="checkbox" class="risk-psicosocial" value="3"> Jefe hogar cesante</label>
-                <label><input type="checkbox" class="risk-psicosocial" value="2"> Hacinamiento</label>
-                <label><input type="checkbox" class="risk-psicosocial" value="2"> Adolescente Embarazada</label>
-                <label><input type="checkbox" class="risk-psicosocial" value="1"> Deficiente vías de comunicación</label>
-                <label><input type="checkbox" class="risk-psicosocial" value="3"> VIF-Sexual</label>
-                <label><input type="checkbox" class="risk-psicosocial" value="2"> Jefe de hogar solo</label>
-                <label><input type="checkbox" class="risk-psicosocial" value="3"> Delincuencia</label>
-                <label><input type="checkbox" class="risk-psicosocial" value="2"> Duelo reciente</label>
+            <title>Evaluación de Riesgo</title>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    background-color: #121212;
+                    color: white;
+                    text-align: center;
+                    margin: 20px;
+                }
+        
+                .container {
+                    max-width: 800px;
+                    background: #1e1e1e;
+                    padding: 20px;
+                    margin: auto;
+                    border-radius: 10px;
+                    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+                    text-align: left;
+                }
+        
+                h2 {
+                    color: #f5f5f5;
+                    text-align: center;
+                }
+        
+                label {
+                    display: block;
+                    margin: 5px 0;
+                }
+        
+                input[type="checkbox"] {
+                    margin-right: 10px;
+                }
+        
+                .result {
+                    margin-top: 20px;
+                    padding: 15px;
+                    font-size: 18px;
+                    font-weight: bold;
+                    text-align: center;
+                    border-radius: 5px;
+                }
+        
+                .low-risk {
+                    background-color: green;
+                    color: white;
+                }
+        
+                .intermediate-risk {
+                    background-color: yellow;
+                    color: black;
+                }
+        
+                .moderate-risk {
+                    background-color: orange;
+                    color: white;
+                }
+        
+                .high-risk {
+                    background-color: red;
+                    color: white;
+                }
+        
+                .btn {
+                    background: #6200ea;
+                    color: white;
+                    padding: 10px 20px;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    font-size: 16px;
+                    transition: background 0.3s;
+                    display: block;
+                    width: 100%;
+                    margin-top: 10px;
+                }
+        
+                .btn:hover {
+                    background: #3700b3;
+                }
+            </style>
+        </head>
+        <body>
+        
+            <div class="container">
+                <h2>Evaluación de Riesgo Familiar</h2>
+        
+                <h3>Riesgos Psicosociales</h3>
+                <div id="psicosocial-options">
+                    <label><input type="checkbox" class="risk" value="2"> Baja Escolaridad Madre</label>
+                    <label><input type="checkbox" class="risk" value="3"> Jefe Hogar Cesante</label>
+                    <label><input type="checkbox" class="risk" value="2"> Hacinamiento</label>
+                    <label><input type="checkbox" class="risk" value="2"> Adolescente Embarazada</label>
+                    <label><input type="checkbox" class="risk" value="1"> Deficiente Vías de Comunicación</label>
+                </div>
+        
+                <h3>Factores de Riesgo Biomédico</h3>
+                <div id="biomedico-options">
+                    <label><input type="checkbox" class="risk" value="1"> Niño con malnutrición</label>
+                    <label><input type="checkbox" class="risk" value="2"> Niño con retraso DSM</label>
+                    <label><input type="checkbox" class="risk" value="3"> VIH-SIDA</label>
+                    <label><input type="checkbox" class="risk" value="2"> Embarazo no controlado</label>
+                    <label><input type="checkbox" class="risk" value="3"> Consumo de drogas</label>
+                </div>
+        
+                <h3>Factores de Riesgo Medioambientales</h3>
+                <div id="medioambiental-options">
+                    <label><input type="checkbox" class="risk" value="2"> Sin agua potable</label>
+                    <label><input type="checkbox" class="risk" value="1"> Carencia de alcantarillado</label>
+                    <label><input type="checkbox" class="risk" value="2"> Mala calidad vivienda</label>
+                    <label><input type="checkbox" class="risk" value="1"> Vivienda en lugar de riesgo</label>
+                    <label><input type="checkbox" class="risk" value="1"> Extrema ruralidad</label>
+                </div>
+        
+                <button class="btn" onclick="calcularRiesgo()">Calcular Riesgo</button>
+                <button class="btn" onclick="limpiarFormulario()">Limpiar</button>
+        
+                <div id="resultado" class="result" style="display: none;"></div>
             </div>
-        </div>
-
-        <h2 class="biomedico-option">Factores de Riesgo Biomédico</h2>
-        <div id="biomedico-options">
-            <div class="biomedico-category">
-                <label><input type="checkbox" class="risk-biomedico" value="1"> Niño con malnutrición por déficit</label>
-                <label><input type="checkbox" class="risk-biomedico" value="1"> Niño con riesgo DSM</label>
-                <label><input type="checkbox" class="risk-biomedico" value="2"> Niño con retraso DSM</label>
-                <label><input type="checkbox" class="risk-biomedico" value="3"> VIH-SIDA</label>
-                <label><input type="checkbox" class="risk-biomedico" value="2"> Adulto mayor con malnutrición</label>
-                <label><input type="checkbox" class="risk-biomedico" value="1"> Patología Crónica</label>
-                <label><input type="checkbox" class="risk-biomedico" value="3"> PAD y CP /CPU/ Dependencia Severa</label>
-                <label><input type="checkbox" class="risk-biomedico" value="2"> Patología de salud mental</label>
-            </div>
-        </div>
-
-        <h2 class="mediomabientales">Factores de Riesgo Medioambientales</h2>
-        <div id="medioambiental-options">
-            <div class="medioambiental-category">
-                <label><input type="checkbox" class="risk-medioambiental" value="2"> Sin agua potable</label>
-                <label><input type="checkbox" class="risk-medioambiental" value="1"> Carencia de alcantarillado</label>
-                <label><input type="checkbox" class="risk-medioambiental" value="2"> Mala calidad vivienda</label>
-                <label><input type="checkbox" class="risk-medioambiental" value="1"> Vivienda en lugar de Riesgo</label>
-                <label><input type="checkbox" class="risk-medioambiental" value="1"> Extrema ruralidad</label>
-            </div>
-        </div>
-
-        <div class="button-container">
-            <button class="btn" onclick="calculateRisk()">Calcular Riesgo</button>
-            <button class="btn" onclick="resetForm()">Limpiar</button>
-        </div>
-    </div>
-
-    <script>
-        // Función para calcular el riesgo total
-        function calculateRisk() {
-            let totalPoints = 0;
-
-            // Obtener todos los checkboxes seleccionados en las categorías
-            const psicosocialCheckboxes = document.querySelectorAll('.risk-psicosocial:checked');
-            const biomedicoCheckboxes = document.querySelectorAll('.risk-biomedico:checked');
-            const medioambientalCheckboxes = document.querySelectorAll('.risk-medioambiental:checked');
-
-            // Sumar los valores de los checkboxes seleccionados
-            psicosocialCheckboxes.forEach(function(checkbox) {
-                totalPoints += parseInt(checkbox.value);
-            });
-
-            biomedicoCheckboxes.forEach(function(checkbox) {
-                totalPoints += parseInt(checkbox.value);
-            });
-
-            medioambientalCheckboxes.forEach(function(checkbox) {
-                totalPoints += parseInt(checkbox.value);
-            });
-
-            // Mostrar el resultado y la recomendación
-            const resultElement = document.getElementById('result');
-            const riskLevelElement = document.getElementById('risk-level');
-            const recommendationElement = document.getElementById('recommendation');
-
-            let riskLevel = '';
-            let recommendation = '';
-
-            // Determinar el nivel de riesgo basado en el total de puntos
-            if (totalPoints <= 3) {
-                riskLevel = 'Sin riesgo';
-                recommendation = 'No se requiere intervención.';
-                resultElement.classList.add('low-risk');
-                resultElement.classList.remove('intermediate-risk', 'high-risk');
-            } else if (totalPoints <= 6) {
-                riskLevel = 'Riesgo leve';
-                recommendation = 'Recomendación: Consejería individual o familiar (con segumiento). Guías anticipadoras. Otras intervenciones (según necesidad) **Priorizar criterio de equipo .';
-                resultElement.classList.add('intermediate-risk');
-                resultElement.classList.remove('low-risk', 'high-risk');
-            } else if (totalPoints <= 11) {
-                riskLevel = 'Riesgo moderado';
-                recommendation = 'Recomendación: Estudio de familia y plan de intervención familiar consensuado.';
-                resultElement.classList.add('intermediate-risk');
-                resultElement.classList.remove('low-risk', 'high-risk');
-            } else {
-                riskLevel = 'Riesgo grave';
-                recommendation = 'Recomendación: Estudio de familia y plan de intervención familiar consensuado. Derivación a nivel secundario según corresponda. .';
-                resultElement.classList.add('high-risk');
-                resultElement.classList.remove('low-risk', 'intermediate-risk');
-            }
-
-            // Mostrar el nivel de riesgo y la recomendación
-            riskLevelElement.textContent = `Nivel de Riesgo: ${riskLevel}`;
-            recommendationElement.textContent = recommendation;
-            resultElement.style.display = 'block';
-        }
-
-        // Función para limpiar el formulario
-        function resetForm() {
-            // Desmarcar todos los checkboxes
-            document.querySelectorAll('input[type="checkbox"]').forEach(function(checkbox) {
-                checkbox.checked = false;
-            });
-
-            // Ocultar el resultado
-            document.getElementById('result').style.display = 'none';
-        }
-    </script>
-</body>
-<footer class="footer">
+        
+            <script>
+                function calcularRiesgo() {
+                    let totalPuntos = 0;
+                    document.querySelectorAll('.risk:checked').forEach(checkbox => {
+                        totalPuntos += parseInt(checkbox.value);
+                    });
+        
+                    const resultadoDiv = document.getElementById("resultado");
+                    resultadoDiv.style.display = "block";
+        
+                    if (totalPuntos <= 3) {
+                        resultadoDiv.innerHTML = "Sin Riesgo (0-3 puntos)";
+                        resultadoDiv.className = "result low-risk";
+                    } else if (totalPuntos <= 6) {
+                        resultadoDiv.innerHTML = "Riesgo Leve (4-6 puntos)";
+                        resultadoDiv.className = "result intermediate-risk";
+                    } else if (totalPuntos <= 11) {
+                        resultadoDiv.innerHTML = "Riesgo Moderado (7-11 puntos)";
+                        resultadoDiv.className = "result moderate-risk";
+                    } else {
+                        resultadoDiv.innerHTML = "Riesgo Grave (>11 puntos)";
+                        resultadoDiv.className = "result high-risk";
+                    }
+                }
+        
+                function limpiarFormulario() {
+                    // Desmarcar todos los checkboxes
+                    document.querySelectorAll('.risk').forEach(checkbox => {
+                        checkbox.checked = false;
+                    });
+        
+                    // Ocultar el resultado
+                    const resultadoDiv = document.getElementById("resultado");
+                    resultadoDiv.style.display = "none";
+                }
+            </script>
+        
+        </body>
+       
                                 Powered by E.U Hernando Gayoso Navarrete.
 
     <a href="mailto:nanox21@gmail.com" target="_blank">📨Contacto</a>
