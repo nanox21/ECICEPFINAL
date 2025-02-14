@@ -4,74 +4,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matriz de Riesgos Cesfam Los Álamos </title>
+    <title>Matriz de Riesgos Cesfam Los Álamos</title>
     <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="logo.png" type="image/x-icon">
-    <div id="result" class="result">
-        <p id="risk-level"></p>
-        <p id="recommendation"></p>
-    </div>
+    <link rel="icon" href="logo.png" type="image/x-icon">
     <style>
-        /* El estilo es el mismo que en tu ejemplo anterior */
-        /* Aquí puedes mantener el mismo estilo que ya has implementado */
-    </style>
-</head>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center; /* Centra horizontalmente */
+            align-items: center; /* Centra verticalmente */
+            min-height: 100vh; /* Ocupa toda la altura de la pantalla */
+            overflow: hidden; /* Elimina las barras de desplazamiento */
+        }
 
-<body>
-    <header class="headerMod">
-        <img src="logo.png" alt="Logo" class="logo" >
-        <h1>Matriz de Factores de Riesgo Familiar Cesfam Los Álamos <img src="logocesfam.png" alt="logoCesfam" style="width:100px; height:100px;"></h1>
-        <img src="Tux.PNG" alt="tux" class="tux">
-    </header>  Powered by E.U Hernando Gayoso Navarrete.<br>
-    <a href="mailto:nanox21@gmail.com" target="_blank">📨Contacto</a><br>
-                Gonzalo Sepulveda Arriagada    <br>
-    <a href="mailto:sepulvedaarriagadagonzalo@gmail.com" target="_blank">📨Contacto</a>
-    <div class="container">
-        <a href="https://nanox21.github.io/ECICEPFINAL/" target="_blank" class="button-link">
-            Calculadora ECICEP</a>
-            <title>Evaluación de Riesgo</title>
-            <style>
-                body {
-                    font-family: Arial, sans-serif;
-                    background-color: #121212;
-                    color: white;
-                    text-align: center;
-                    margin: 20px;
-                }
-        
-                .container {
-                    max-width: 800px;
-                    background: #1e1e1e;
-                    padding: 20px;
-                    margin: auto;
-                    border-radius: 10px;
-                    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
-                    text-align: left;
-                }
-        
-                h2 {
-                    color: #f5f5f5;
-                    text-align: center;
-                }
-        
-                label {
-                    display: block;
-                    margin: 5px 0;
-                }
-        
-                input[type="checkbox"] {
-                    margin-right: 10px;
-                }
-        
-                .result {
-                    margin-top: 20px;
-                    padding: 15px;
-                    font-size: 18px;
-                    font-weight: bold;
-                    text-align: center;
-                    border-radius: 5px;
-                }
-                .logo {
+        .container {
+            width: 90%; /* Ancho del contenedor */
+            max-width: 800px; /* Ancho máximo */
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+            text-align: left;
+            overflow-y: auto; /* Permite desplazamiento interno si es necesario */
+            max-height: 90vh; /* Altura máxima para evitar desbordamiento */
+        }
+
+        h2 {
+            color: #f5f5f5;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin: 5px 0;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        .low-risk {
+            background-color: green;
+            color: white;
+        }
+
+        .intermediate-risk {
+            background-color: yellow;
+            color: black;
+        }
+
+        .moderate-risk {
+            background-color: orange;
+            color: white;
+        }
+
+        .high-risk {
+            background-color: red;
+            color: white;
+        }
+
+        .btn {
+            background: #6200ea;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background: #3700b3;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+          
+        .logo {
                     width: 100px;
                     height: 100px;
                     border-right: 70%;
@@ -79,143 +107,127 @@
                 .tux {
                     width: 100px;
                     height: 100px;
-                   
                 }
-                .low-risk {
-                    background-color: green;
-                    color: white;
-                }
-    
-                .intermediate-risk {
-                    background-color: yellow;
-                    color: black;
-                }
-        
-                .moderate-risk {
-                    background-color: orange;
-                    color: white;
-                }
-        
-                .high-risk {
-                    background-color: red;
-                    color: white;
-                }
-        
-                .btn {
-                    background: #6200ea;
-                    color: white;
-                    padding: 10px 20px;
-                    border: none;
-                    border-radius: 5px;
-                    cursor: pointer;
-                    font-size: 16px;
-                    transition: background 0.3s;
-                    display: block;
-                    width: 100%;
-                    margin-top: 10px;
-                }
-        
-                .btn:hover {
-                    background: #3700b3;
-                }
-            </style>
-        </head>
-        <body>
-        
-            <div class="container">
-                <h2>Evaluación de Riesgo Familiar</h2>
-        
-                <h3>Riesgos Psicosociales</h3>
-                <div id="psicosocial-options">
-                    <label><input type="checkbox" class="risk" value="2"> Baja Escolaridad Madre</label>
-                    <label><input type="checkbox" class="risk" value="3"> Jefe Hogar Cesante</label>
-                    <label><input type="checkbox" class="risk" value="2"> Hacinamiento</label>
-                    <label><input type="checkbox" class="risk" value="2"> Adolescente Embarazada</label>
-                    <label><input type="checkbox" class="risk" value="1"> Deficiente Vías de Comunicación</label>
-                    <label><input type="checkbox" class="risk" value="2"> VIF -Sexual</label>
-                    <label><input type="checkbox" class="risk" value="2"> Jefe de Hogar Solo</label>
-                    <label><input type="checkbox" class="risk" value="3"> Delincuencia</label>
-                    <label><input type="checkbox" class="risk" value="2"> Duelo Reciente</label>
-                    <label><input type="checkbox" class="risk" value="2"> Sin redes de apoyo</label>
-                    <label><input type="checkbox" class="risk" value="2"> Deserción Escolar</label>
+        header img {
+            vertical-align: middle;
+        }
 
+        header h1 {
+            display: inline-block;
+            margin: 0 10px;
+        }
 
-                </div>
-        
-                <h3>Factores de Riesgo Biomédico</h3>
-                <div id="biomedico-options">
-                    <label><input type="checkbox" class="risk" value="1"> Niño con malnutrición</label>
-                    <label><input type="checkbox" class="risk" value="2"> Niño con retraso DSM</label>
-                    <label><input type="checkbox" class="risk" value="3"> VIH-SIDA</label>
-                    <label><input type="checkbox" class="risk" value="2"> Adulto mayor con malnutrición</label>
-                    <label><input type="checkbox" class="risk" value="1"> Patología Crónica</label>
-                    <label><input type="checkbox" class="risk" value="3"> PAD y CP /CPU/ Dependencia Severa</label>
-                    <label><input type="checkbox" class="risk" value="2"> Patología de salud mental</label>
-                    <label><input type="checkbox" class="risk" value="3"> Consumo de drogas</label>
-                    <label><input type="checkbox" class="risk" value="2"> Embarazo no controlado</label>
-                    <label><input type="checkbox" class="risk" value="1"> Integrante con discapacidad certificada Física</label>
-                    <label><input type="checkbox" class="risk" value="2"> Integrante con discapacidad certificada mental/intelectual</label>
-                    <label><input type="checkbox" class="risk" value="3"> Integrante con discapacidad certificada mental/psíquica</label>
-                    <label><input type="checkbox" class="risk" value="4"> Integrante con discapacidad certificada visual</label>
-                    <label><input type="checkbox" class="risk" value="5"> Integrante con discapacidad certificada Auditiva</label>
-                </div>
-        
-                <h3>Factores de Riesgo Medioambientales</h3>
-                <div id="medioambiental-options">
-                    <label><input type="checkbox" class="risk" value="2"> Sin agua potable</label>
-                    <label><input type="checkbox" class="risk" value="1"> Carencia de alcantarillado</label>
-                    <label><input type="checkbox" class="risk" value="2"> Mala calidad vivienda</label>
-                    <label><input type="checkbox" class="risk" value="1"> Vivienda en lugar de riesgo</label>
-                    <label><input type="checkbox" class="risk" value="1"> Extrema ruralidad</label>
-                </div>
-        
-                <button class="btn" onclick="calcularRiesgo()">Calcular Riesgo</button>
-                <button class="btn" onclick="limpiarFormulario()">Limpiar</button>
-        
-                <div id="resultado" class="result" style="display: none;"></div>
-            </div>
-        
-            <script>
-                function calcularRiesgo() {
-                    let totalPuntos = 0;
-                    document.querySelectorAll('.risk:checked').forEach(checkbox => {
-                        totalPuntos += parseInt(checkbox.value);
-                    });
-        
-                    const resultadoDiv = document.getElementById("resultado");
-                    resultadoDiv.style.display = "block";
-        
-                    if (totalPuntos <= 3) {
-                        resultadoDiv.innerHTML = "Sin Riesgo (0-3 puntos)";
-                        resultadoDiv.className = "result low-risk";
-                    } else if (totalPuntos <= 6) {
-                        resultadoDiv.innerHTML = "Riesgo Leve (4-6 puntos)";
-                        resultadoDiv.className = "result intermediate-risk";
-                    } else if (totalPuntos <= 11) {
-                        resultadoDiv.innerHTML = "Riesgo Moderado (7-11 puntos)";
-                        resultadoDiv.className = "result moderate-risk";
-                    } else {
-                        resultadoDiv.innerHTML = "Riesgo Grave (>11 puntos)";
-                        resultadoDiv.className = "result high-risk";
-                    }
-                }
-        
-                function limpiarFormulario() {
-                    // Desmarcar todos los checkboxes
-                    document.querySelectorAll('.risk').forEach(checkbox => {
-                        checkbox.checked = false;
-                    });
-        
-                    // Ocultar el resultado
-                    const resultadoDiv = document.getElementById("resultado");
-                    resultadoDiv.style.display = "none";
-                }
-            </script>
-        
-        </body>
-    </body>
-       
-  
-</footer>
+        a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <img src="logo.png" alt="Logo" class="logo">
+            <h1>Matriz de Factores de Riesgo Familiar Cesfam Los Álamos <img src="logocesfam.png" alt="logoCesfam" style="width:50px; height:50px;"></h1>
+
+        </header>
+        <p style="text-align: center;">Powered by E.U Hernando Gayoso Navarrete.</p>
+
+        <a href="mailto:nanox21@gmail.com" target="_blank">📨Contacto</a>
+        <a href="https://nanox21.github.io/ECICEPFINAL/" target="_blank" class="button-link">Calculadora ECICEP</a><br>
+        <p style="text-align: center;">Elaborado con Escala riesgo  salud familiar optimizada por Gonzalo Sepulveda.</p>
+
+        <h2>Evaluación de Riesgo Familiar</h2>
+
+        <h3>Riesgos Psicosociales</h3>
+        <div id="psicosocial-options">
+            <label><input type="checkbox" class="risk" value="2"> Baja Escolaridad Madre</label>
+            <label><input type="checkbox" class="risk" value="3"> Jefe Hogar Cesante</label>
+            <label><input type="checkbox" class="risk" value="2"> Hacinamiento</label>
+            <label><input type="checkbox" class="risk" value="2"> Adolescente Embarazada</label>
+            <label><input type="checkbox" class="risk" value="1"> Deficiente Vías de Comunicación</label>
+            <label><input type="checkbox" class="risk" value="2"> VIF -Sexual</label>
+            <label><input type="checkbox" class="risk" value="2"> Jefe de Hogar Solo</label>
+            <label><input type="checkbox" class="risk" value="3"> Delincuencia</label>
+            <label><input type="checkbox" class="risk" value="2"> Duelo Reciente</label>
+            <label><input type="checkbox" class="risk" value="2"> Sin redes de apoyo</label>
+            <label><input type="checkbox" class="risk" value="2"> Deserción Escolar</label>
+        </div>
+
+        <h3>Factores de Riesgo Biomédico</h3>
+        <div id="biomedico-options">
+            <label><input type="checkbox" class="risk" value="1"> Niño con malnutrición</label>
+            <label><input type="checkbox" class="risk" value="2"> Niño con retraso DSM</label>
+            <label><input type="checkbox" class="risk" value="3"> VIH-SIDA</label>
+            <label><input type="checkbox" class="risk" value="2"> Adulto mayor con malnutrición</label>
+            <label><input type="checkbox" class="risk" value="1"> Patología Crónica</label>
+            <label><input type="checkbox" class="risk" value="3"> PAD y CP /CPU/ Dependencia Severa</label>
+            <label><input type="checkbox" class="risk" value="2"> Patología de salud mental</label>
+            <label><input type="checkbox" class="risk" value="3"> Consumo de drogas</label>
+            <label><input type="checkbox" class="risk" value="2"> Embarazo no controlado</label>
+            <label><input type="checkbox" class="risk" value="1"> Integrante con discapacidad certificada Física</label>
+            <label><input type="checkbox" class="risk" value="2"> Integrante con discapacidad certificada mental/intelectual</label>
+            <label><input type="checkbox" class="risk" value="3"> Integrante con discapacidad certificada mental/psíquica</label>
+            <label><input type="checkbox" class="risk" value="4"> Integrante con discapacidad certificada visual</label>
+            <label><input type="checkbox" class="risk" value="5"> Integrante con discapacidad certificada Auditiva</label>
+        </div>
+
+        <h3>Factores de Riesgo Medioambientales</h3>
+        <div id="medioambiental-options">
+            <label><input type="checkbox" class="risk" value="2"> Sin agua potable</label>
+            <label><input type="checkbox" class="risk" value="1"> Carencia de alcantarillado</label>
+            <label><input type="checkbox" class="risk" value="2"> Mala calidad vivienda</label>
+            <label><input type="checkbox" class="risk" value="1"> Vivienda en lugar de riesgo</label>
+            <label><input type="checkbox" class="risk" value="1"> Extrema ruralidad</label>
+        </div>
+
+        <button class="btn" onclick="calcularRiesgo()">Calcular Riesgo</button>
+        <button class="btn" onclick="limpiarFormulario()">Limpiar</button>
+
+        <div id="resultado" class="result" style="display: none;"></div>
+    </div>
+
+    <script>
+        function calcularRiesgo() {
+            let totalPuntos = 0;
+            document.querySelectorAll('.risk:checked').forEach(checkbox => {
+                totalPuntos += parseInt(checkbox.value);
+            });
+
+            const resultadoDiv = document.getElementById("resultado");
+            resultadoDiv.style.display = "block";
+
+            if (totalPuntos <= 3) {
+                resultadoDiv.innerHTML = "Sin Riesgo (0-3 puntos)";
+                resultadoDiv.className = "result low-risk";
+            } else if (totalPuntos <= 6) {
+                resultadoDiv.innerHTML = "Riesgo Leve (4-6 puntos)";
+                resultadoDiv.className = "result intermediate-risk";
+            } else if (totalPuntos <= 11) {
+                resultadoDiv.innerHTML = "Riesgo Moderado (7-11 puntos)";
+                resultadoDiv.className = "result moderate-risk";
+            } else {
+                resultadoDiv.innerHTML = "Riesgo Grave (>11 puntos)";
+                resultadoDiv.className = "result high-risk";
+            }
+        }
+
+        function limpiarFormulario() {
+            // Desmarcar todos los checkboxes
+            document.querySelectorAll('.risk').forEach(checkbox => {
+                checkbox.checked = false;
+            });
+
+            // Ocultar el resultado
+            const resultadoDiv = document.getElementById("resultado");
+            resultadoDiv.style.display = "none";
+        }
+    </script>
+<footer>
+ </footer>
 </body>
-        </html>
+ 
+</html>
