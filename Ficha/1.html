@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha Familiar</title>
+    <!-- Reemplazar las líneas de script existentes -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="headerMod">
+        <img src="logo.png" alt="Logo" class="logo">
+        <h1>Ficha de salud Familiar Cesfam Los Álamos <img src="logocesfam.png" alt="logoCesfam" style="width:100px; height:100px;"></h1>
+        <div>
+        Powered by E.U Hernando Gayoso Navarrete.
+        <a href="https://nanox21.github.io/ECICEPFINAL/" target="_blank" class="button-link">ECICEP</a><br>
+        <a href="mailto:nanox21@gmail.com" target="_blank">📨Contacto</a>
+    </header>
+    <br>
+    <br>
+    <div class="container">
+      
+ <div class="container" style="margin: 0 auto; text-align: center; width: 50%;">
+    <u><h2>Ficha Familiar</h2></u>
+</div>
+
+        <!-- Identificación -->
+        <label for="sector">Sector:</label>
+        <select id="sector" name="sector">
+            <option value=" ingresar">selecciona sector</option>
+            <option value="Azul (Tres Pinos)">Azul (Tres Pinos)</option>
+            <option value="Azul (Antihuala)">Azul (Antihuala)</option>
+            <option value="Rojo">Rojo</option>
+            <option value="Amarillo">Amarillo</option>
+            <option value="Verde (Urbano)">Verde (Urbano)</option>
+            <option value="Verde (Pangue)">Verde (Pangue)</option>
+            <option value="Verde (Ranquilco)">Verde (Ranquilco)</option>
+        </select>
+        <h3>Identificación</h3>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" class="input-largo"> <!-- Alargar el input de nombre -->
+        <br>
+    
+        <label for="edad">Edad:</label>
+        <input type="number" id="edad" class="input-corto"> <!-- Achicar el input de edad -->
+        <br>
+    
+        <label for="direccion">Dirección:</label>
+        <input type="text" id="direccion" style="width: 250px;">
+        <br>
+    
+        <label for="telefono">Teléfono:</label>
+        <input type="text" id="telefono" style="width: 150px;">
+        <br>
+    
+        <label for="fecha_aplicacion">Fecha de Aplicación:</label>
+        <input type="date" id="fecha_aplicacion" name="fecha_aplicacion" class="input-fecha"> <!-- Acortar el input de fecha -->
+        <br>
+    
+        <label for="fecha_actualizacion">Fecha de actualización:</label>
+        <input type="date" id="fecha_actualizacion" name="fecha_actualizacion" class="input-fecha"> <!-- Acortar el input de fecha -->
+        <br>
+    
+        <label for="regsitroSocial">Registro social de hogares:</label>
+        <input type="text" id="registroSocial" name="regsitroSocial" style="width: 200px;">
+        <br>
+    
+        <label for="observaciones">Observaciones:</label>
+        <textarea id="observaciones" name="observaciones" class="textarea-grande"></textarea> <!-- Ampliar el área de observaciones -->
+        <label for="instrumento">VDI Realizada por:</label>
+        <textarea id="instrumento" name="instrumento" class="textarea-grande"></textarea> <!-- Ampliar el área de observaciones -->
+        <br>
+        <br>
+    </body>
+
+        <!-- Tipos de Familia -->
+        <h2>Tipo de Familia </h2>
+        <select id="tiposDeFamilia" name="tiposDeFamilia">
+            <option value=" ingresar">selecciona sector</option>
+            <option value="nuclearSimple">Nuclear Simple</option>
+            <option value="nuclearBiparental">Nuclear Biparental</option>
+            <option value="familia">Familia Extensa</option>
+            <option value="familiaCompuesta">Familia Compuesta</option>
+            <option value="familiuaUnipersonal">Familia Unipersonal</option>
+            <option value="nuclearReconstiuida">Familiar Nuclear Reconsituida</option>
+        </select>
+        <br>
+        <br>
+
+        <h2>Ciclo Vital Familiar</h2>
+        <select id="cicloVitalFamiliar" name="cicloVitalFamiliar">
+            <option value="ingresaCiclo">selecciona ciclo vital familiar</option>
+            <option value="formacion">Fomración / Pareja</option>
+            <option value="crianzaInicial">Crianza Inicial</option>
+            <option value="conPreescolares">Con Hijos Preescolares</option>
+            <option value="conEscolares">Con Hijos Escolares</option>
+            <option value="plataforma">Plataforma de lazamiento</option>
+            <option value="edadMedia">Edad Media</option>
+            <option value="edadAnciana">Edad Anciana</option>
+        </select>
+        <br>
+        <br>
+
+        <!-- Factores Protectores -->
+        <h2>Factores Protectores</h2>
+        <div>
+            <label>¿Cuenta con trabajo estable?</label>
+            <input type="radio" id="trabajo_si" name="trabajo_estable" value="Sí">
+            <label for="trabajo_si">Sí</label>
+            <input type="radio" id="trabajo_no" name="trabajo_estable" value="No">
+            <label for="trabajo_no">No</label>
+        </div>
+        <div>
+            <label>¿Cuenta con vivienda adecuada?</label>
+            <input type="radio" id="vivienda_si" name="vivienda_adecuada" value="Sí">
+            <label for="vivienda_si">Sí</label>
+            <input type="radio" id="vivienda_no" name="vivienda_adecuada" value="No">
+            <label for="vivienda_no">No</label>
+        </div>
+        <div>
+            <label>¿Tiene cubiertas sus necesidades básicas?</label>
+            <input type="radio" id="necesidades_si" name="necesidades_basicas" value="Sí">
+            <label for="necesidades_si">Sí</label>
+            <input type="radio" id="necesidades_no" name="necesidades_basicas" value="No">
+            <label for="necesidades_no">No</label>
+        </div>
+        <div>
+            <label>¿Posee vivienda propia?</label>
+            <input type="radio" id="propia_si" name="vivienda_propia" value="Sí">
+            <label for="propia_si">Sí</label>
+            <input type="radio" id="propia_no" name="vivienda_propia" value="No">
+            <label for="propia_no">No</label>
+        </div>
+        <div>
+            <label>¿Participa en grupos sociales?</label>
+            <input type="radio" id="grupos_si" name="participacion_social" value="Sí">
+            <label for="grupos_si">Sí</label>
+            <input type="radio" id="grupos_no" name="participacion_social" value="No">
+            <label for="grupos_no">No</label>
+        </div>
+        <div>
+            <label>¿Cuenta con comunicación funcional?</label>
+            <input type="radio" id="comunicacion_si" name="comunicacion_funcional" value="Sí">
+            <label for="comunicacion_si">Sí</label>
+            <input type="radio" id="comunicacion_no" name="comunicacion_funcional" value="No">
+            <label for="comunicacion_no">No</label>
+        </div>
+        <br>
+        <br><br>
+        <br>
+ 
+        <!-- Factores de Riesgo -->
+        <h2>Factores de Riesgo</h2>
+        <h3>Riesgos psicosociales</h3>
+        <div id="psicosocial-options">
+            <label><input type="checkbox" class="risk" value="2"> Baja Escolaridad Madre</label><br>
+            <label><input type="checkbox" class="risk" value="3"> Jefe Hogar Cesante</label><br>
+            <label><input type="checkbox" class="risk" value="2"> Hacinamiento</label><br>
+            <label><input type="checkbox" class="risk" value="2"> Adolescente Embarazada</label><br>
+            <label><input type="checkbox" class="risk" value="1"> Deficiente Vías de Comunicación</label><br>
+            <label><input type="checkbox" class="risk" value="2"> VIF -Sexual</label><br>
+            <label><input type="checkbox" class="risk" value="2"> Jefe de Hogar Solo</label><br>
+            <label><input type="checkbox" class="risk" value="3"> Delincuencia</label><br>
+            <label><input type="checkbox" class="risk" value="2"> Duelo Reciente</label><br>
+            <label><input type="checkbox" class="risk" value="2"> Sin redes de apoyo</label><br>
+            <label><input type="checkbox" class="risk" value="2"> Deserción Escolar</label><br>
+        </div>
+        <br>
+        <br>
+        <h3>Riesgos Biomédico</h3>
+        <div id="biomedico-options">
+            <label><input type="checkbox" class="risk" value="1"> Niño con malnutrición</label><br>
+            <label><input type="checkbox" class="risk" value="2"> Niño con retraso DSM</label><br>
+            <label><input type="checkbox" class="risk" value="3"> VIH-SIDA</label><br>
+            <label><input type="checkbox" class="risk" value="2"> Adulto mayor con malnutrición</label><br>
+            <label><input type="checkbox" class="risk" value="1"> Patología Crónica</label><br>
+            <label><input type="checkbox" class="risk" value="3"> PAD y CP /CPU/ Dependencia Severa</label><br>
+            <label><input type="checkbox" class="risk" value="2"> Patología de salud mental</label><br>
+            <label><input type="checkbox" class="risk" value="3"> Consumo de drogas</label><br>
+            <label><input type="checkbox" class="risk" value="2"> Embarazo no controlado</label><br>
+            <label><input type="checkbox" class="risk" value="1"> Integrante con discapacidad certificada Física</label><br>
+            <label><input type="checkbox" class="risk" value="2"> Integrante con discapacidad certificada mental/intelectual</label><br>
+            <label><input type="checkbox" class="risk" value="3"> Integrante con discapacidad certificada mental/psíquica</label><br>
+            <label><input type="checkbox" class="risk" value="4"> Integrante con discapacidad certificada visual</label><br>
+            <label><input type="checkbox" class="risk" value="5"> Integrante con discapacidad certificada Auditiva</label><br>
+        </div>
+        <br>
+        <br>
+        <h3>Riesgos Medioambientales</h3>
+        <div id="medioambiental-options">
+            <label><input type="checkbox" class="risk" value="2"> Sin agua potable</label><br>
+            <label><input type="checkbox" class="risk" value="1"> Carencia de alcantarillado</label><br>
+            <label><input type="checkbox" class="risk" value="2"> Mala calidad vivienda</label><br>
+            <label><input type="checkbox" class="risk" value="1"> Vivienda en lugar de riesgo</label><br>
+            <label><input type="checkbox" class="risk" value="1"> Extrema ruralidad</label><br>
+        </div>
+        <button class="btn" id="calcularRiesgoBtn">Calcular Riesgo</button>
+        <button class="btn" id="limpiarFormularioBtn">Limpiar</button>
+
+        <div id="resultado" class="result"></div>
+        <br>
+        <br>
+        <h2>Tabla de Integrantes de la Familia</h2>
+        <table id="familiaTable">
+            <thead>
+                <tr>
+                    <th>RUN</th>
+                    <th>Nombres</th>
+                    <th>Apellido</th>
+                    <th>Edad</th>
+                    <th>F. Nacimiento</th>
+                    <th>Parentesco</th>
+                    <th>Estado Civil</th>
+                    <th>Escolaridad</th>
+                    <th>Previsión</th>
+                    <th>F. Riesgo</th>
+                    <th>Participación Social</th>
+                    <th>Ingresos</th>
+               
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <button class="btn agregarFilaBtn" data-tabla="familiaTable" data-columnas="12">Agregar Fila</button>
+        
+        <script src="scripts.js"></script>
+
+<!-- Plan de Trabajo -->
+<h2>Plan de Trabajo</h2>
+<table id="planTrabajo">
+    <thead>
+        <tr>
+            <th>Fecha</th><th>Actividad</th><th>Objetivo</th><th>Dirigido A</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+<button class="btn agregarFilaBtn" data-tabla="planTrabajo" data-columnas="4">Agregar Fila</button>
+<button type="button" class="btn" id="generarPDFBtn">Generar Reporte PDF</button>
+
+<button class="btn" id="limpiarFormularioBtn">Limpiar Formulario</button>
+
+<footer class="footer">
+    Powered by E.U Hernando Gayoso Navarrete.
+    <a href="mailto:nanox21@gmail.com" target="_blank">📨Contacto</a>
+</footer>
+</body>
+</html>
