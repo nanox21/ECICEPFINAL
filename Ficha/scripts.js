@@ -201,16 +201,23 @@ function generarPDF() {
     try {
         const { jsPDF } = window.jspdf;
         const doc = new jsPDF({
-            orientation: 'p',
+            orientation: 'landscape',
             unit: 'mm',
             format: 'letter'
         });
 
         const pageWidth = doc.internal.pageSize.getWidth();
         const pageHeight = doc.internal.pageSize.getHeight();
-        let yPos = 50; // Espacio para el encabezado
+        let yPos = 50;
+
+        function addHeaderAndFooter(doc, pageNumber, totalPages) {
+            agregarEncabezado(doc, pageWidth, pageNumber);
+            agregarPiePagina(doc, pageWidth, pageHeight, pageNumber, totalPages);
+        }
 
         // Página 1: Información básica, factores protectores, riesgos y evaluación
+        addHeaderAndFooter(doc, 1, 5); // Encabezado y pie de página para la página 1
+        yPos = 50; // Reiniciar la posición Y después del encabezado
         doc.setFont('helvetica', 'bold');
         doc.setFontSize(14);
         doc.text('1. IDENTIFICACIÓN', 15, yPos);
@@ -262,8 +269,12 @@ function generarPDF() {
             yPos += 7;
         });
 
+        // Página 2: Factores de Riesgo y Evaluación
+        doc.addPage('landscape'); // Añadir nueva página en horizontal
+        addHeaderAndFooter(doc, 2, 5); // Encabezado y pie de página para la página 2
+        yPos = 50; // Reiniciar la posición Y después del encabezado
+
         // Factores de Riesgo
-        yPos += 10;
         doc.setFont('helvetica', 'bold');
         doc.setFontSize(14);
         doc.text('3. FACTORES DE RIESGO IDENTIFICADOS', 15, yPos);
@@ -299,61 +310,106 @@ function generarPDF() {
         doc.setFont('helvetica', 'normal');
         doc.text(resultadoRiesgo, 20, yPos);
 
-        // Página 2: Integrantes de la familia
-        doc.addPage();
-        yPos = 20;
+        // Página 3: Integrantes de la familia
+        doc.addPage('landscape'); // Añadir nueva página en horizontal
+        addHeaderAndFooter(doc, 3, 5); // Encabezado y pie de página para la página 3
+        yPos = 50; // Reiniciar la posición Y después del encabezado
         doc.setFont('helvetica', 'bold');
         doc.setFontSize(14);
         doc.text('5. INTEGRANTES DE LA FAMILIA', 15, yPos);
 
-        // Se baja la tabla 3 cm (30 mm) más: startY = yPos + 40
-        doc.autoTable({
-            html: '#familiaTable',
-            startY: yPos + 40,
-            theme: 'grid',
-            headStyles: {
-                fillColor: [41, 128, 185],
-                textColor: 255,
-                fontSize: 10,
-                fontStyle: 'bold'
-            },
-            styles: {fontSize: 8}
-        });
+        /**
+         * Extracts data from a table, handling input elements.
+         * @param {string} tableId The ID of the table.
+         * @returns {{headers: string[], body: string[][]}} An object containing the table headers and data.
+         */
+        function getTableData(tableId) {
+            const table = document.getElementById(tableId);
+            if (!table) {
+                console.error(`Table ${tableId} not found`);
+                return { headers: [], body: [] };
+            }
 
-        // Página 3: Plan de trabajo
-        doc.addPage();
+            const headers = Array.from(table.querySelectorAll('th')).map(th => th.textContent.trim());
+            const body = [];
+
+            const rows = table.querySelectorAll('tbody tr');
+            rows.forEach(row => {
+                const rowData = [];
+                const cells = row.querySelectorAll('td');
+                cells.forEach(cell => {
+                    // Omitir la celda que contiene el botón eliminar
+                    if (cell.querySelector('button')) return;
+                    let cellValue = '';
+                    // Buscar input o textarea para extraer el valor
+                    const input = cell.querySelector('input, textarea');
+                    if (input) {
+                        cellValue = input.value.trim(); // Extraer valor del input o textarea
+                    } else {
+                        cellValue = cell.textContent.trim(); // Extraer contenido de texto
+                    }
+                    rowData.push(cellValue);
+                });
+                body.push(rowData);
+            });
+
+            return { headers, body };
+        }
+
+        const familiaTableData = getTableData('familiaTable');
+        if (familiaTableData.body.length > 0) {
+            doc.autoTable({
+                head: [familiaTableData.headers],
+                body: familiaTableData.body,
+                startY: yPos + 40,
+                theme: 'grid',
+                headStyles: {
+                    fillColor: [41, 128, 185],
+                    textColor: 255,
+                    fontSize: 10,
+                    fontStyle: 'bold'
+                },
+                styles: { fontSize: 8, textColor: [0, 0, 0] }  // Se agrega textColor para asegurar que el texto se imprima en negro
+            });
+        } else {
+            console.error('No data found in familiaTable');
+        }
+
+        // Página 4: Plan de trabajo
+        doc.addPage('landscape'); // Añadir nueva página en horizontal
+        addHeaderAndFooter(doc, 4, 5); // Encabezado y pie de página para la página 4
+        yPos = 50; // Reiniciar la posición Y después del encabezado
         doc.setFont('helvetica', 'bold');
         doc.setFontSize(14);
         doc.text('6. PLAN DE TRABAJO', 15, 20);
 
-        // Se baja la tabla 3 cm (30 mm) más: startY = 60
-        doc.autoTable({
-            html: '#planTrabajo',
-            startY: 60,
-            theme: 'grid',
-            headStyles: {
-                fillColor: [41, 128, 185],
-                textColor: 255,
-                fontSize: 10,
-                fontStyle: 'bold'
-            },
-            styles: {fontSize: 9}
-        });
+        const planTrabajoData = getTableData('planTrabajo');
+        if (planTrabajoData.body.length > 0) {
+            doc.autoTable({
+                head: [planTrabajoData.headers],
+                body: planTrabajoData.body,
+                startY: 60,
+                theme: 'grid',
+                headStyles: {
+                    fillColor: [41, 128, 185],
+                    textColor: 255,
+                    fontSize: 10,
+                    fontStyle: 'bold'
+                },
+                styles: { fontSize: 9, textColor: [0, 0, 0] }  // Se agrega textColor para asegurar que el texto se imprima en negro
+            });
+        } else {
+            console.error('No data found in planTrabajo');
+        }
 
-        // Página 4: Genograma
-        doc.addPage();
+        // Página 5: Genograma
+        doc.addPage('landscape'); // Añadir nueva página en horizontal
+        addHeaderAndFooter(doc, 5, 5); // Encabezado y pie de página para la página 5
+        yPos = 50; // Reiniciar la posición Y después del encabezado
         // Título "GENOGRAMA" al inicio de la página, bajado 30 mm (es decir, en y = 50)
         doc.setFont('helvetica', 'bold');
         doc.setFontSize(16);
         doc.text('GENOGRAMA', pageWidth/2, 50, { align: 'center' });
-
-        // Agregar encabezados y pies de página a todas las páginas
-        const totalPages = doc.internal.getNumberOfPages();
-        for (let i = 1; i <= totalPages; i++) {
-            doc.setPage(i);
-            agregarEncabezado(doc, pageWidth, i);
-            agregarPiePagina(doc, pageWidth, pageHeight, i, totalPages);
-        }
 
         // Guardar PDF
         const fileName = `Ficha_Familiar_${new Date().toISOString().slice(0,10)}.pdf`;
