@@ -232,6 +232,8 @@ function generarPDF() {
             'Teléfono': document.getElementById('telefono')?.value || '',
             'Fecha Aplicación': document.getElementById('fecha_aplicacion')?.value || '',
             'RSH': document.getElementById('registroSocial')?.value || '',
+            'Observaciones': document.getElementById('observaciones')?.value || '',
+            'VDI Realizada por': document.getElementById('instrumento')?.value || '',
             'Tipo Familia': formatearTexto(document.getElementById('tiposDeFamilia')?.value || ''),
             'Ciclo Vital': formatearTexto(document.getElementById('cicloVitalFamiliar')?.value || '')
         };
