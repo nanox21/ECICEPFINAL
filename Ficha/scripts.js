@@ -193,10 +193,131 @@ function agregarPiePagina(doc, pageWidth, pageHeight, pageNumber, totalPages) {
     doc.text(`Generado el: ${new Date().toLocaleDateString()}`, 15, pageHeight - 10);
     
     doc.setFontSize(6);
-    doc.text('mandrake', pageWidth/2, pageHeight - 5, {align: 'center'});
+    doc.text(' powered by mandrake:nanox21@gmail.com ', pageWidth/2, pageHeight - 5, {align: 'center'});
 }
 
-// Función para generar el PDF
+// Variable global para almacenar la imagen del genograma
+let genogramaDataUrl = null;
+
+// Nueva variable global para almacenar la imagen del ecomapa
+let ecomapaDataUrl = null;
+
+document.addEventListener("DOMContentLoaded", function() {
+    console.log("Inicializando eventos...");
+    
+    // Inicializar elementos de genograma
+    const genogramFile = document.getElementById("genogramFile");
+    const previewGenogramBtn = document.getElementById("previewGenogramBtn");
+    const clearGenogramBtn = document.getElementById("clearGenogramBtn");
+    const previewContainer = document.getElementById("previewContainer");
+    const imagePreview = document.getElementById("imagePreview");
+    
+    // Inicializar elementos de ecomapa (nuevo)
+    const ecomapaFile = document.getElementById("ecomapaFile");
+    const previewEcomapaBtn = document.getElementById("previewEcomapaBtn");
+    const clearEcomapaBtn = document.getElementById("clearEcomapaBtn");
+    const previewEcomapaContainer = document.getElementById("previewEcomapaContainer");
+    const ecomapaPreview = document.getElementById("ecomapaPreview");
+    
+    // Evento para previsualizar el genograma
+    if (previewGenogramBtn) {
+        previewGenogramBtn.addEventListener("click", function() {
+            const file = genogramFile.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    genogramaDataUrl = event.target.result;
+                    imagePreview.src = genogramaDataUrl;
+                    previewContainer.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            } else {
+                alert("Por favor, selecciona una imagen primero.");
+            }
+        });
+    }
+    
+    // Evento para eliminar el genograma
+    if (clearGenogramBtn) {
+        clearGenogramBtn.addEventListener("click", function() {
+            genogramaDataUrl = null;
+            imagePreview.src = "";
+            genogramFile.value = "";
+            previewContainer.style.display = 'none';
+        });
+    }
+    
+    // Evento para previsualizar el ecomapa (nuevo)
+    if (previewEcomapaBtn) {
+        previewEcomapaBtn.addEventListener("click", function() {
+            const file = ecomapaFile.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    ecomapaDataUrl = event.target.result;
+                    ecomapaPreview.src = ecomapaDataUrl;
+                    previewEcomapaContainer.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            } else {
+                alert("Por favor, selecciona una imagen primero.");
+            }
+        });
+    }
+    
+    // Evento para eliminar el ecomapa (nuevo)
+    if (clearEcomapaBtn) {
+        clearEcomapaBtn.addEventListener("click", function() {
+            ecomapaDataUrl = null;
+            ecomapaPreview.src = "";
+            ecomapaFile.value = "";
+            previewEcomapaContainer.style.display = 'none';
+        });
+    }
+    
+    // También puedes reaccionar al cambio del archivo directamente
+    if (genogramFile) {
+        genogramFile.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    genogramaDataUrl = event.target.result;
+                    imagePreview.src = genogramaDataUrl;
+                    previewContainer.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    }
+    
+    // Cambio de archivo del ecomapa (nuevo)
+    if (ecomapaFile) {
+        ecomapaFile.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    ecomapaDataUrl = event.target.result;
+                    ecomapaPreview.src = ecomapaDataUrl;
+                    previewEcomapaContainer.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    }
+    
+    // Asociar el evento al botón de generar PDF
+    const generarPDFBtn = document.getElementById('generarPDFBtn');
+    if (generarPDFBtn) {
+        generarPDFBtn.addEventListener('click', generarPDF);
+        console.log('Evento de generar PDF asociado');
+    } else {
+        console.error('Botón de generar PDF no encontrado');
+    }
+});
+
+// Modificar la función generarPDF para incluir el genograma y el ecomapa
 function generarPDF() {
     try {
         const { jsPDF } = window.jspdf;
@@ -216,7 +337,7 @@ function generarPDF() {
         }
 
         // Página 1: Información básica, factores protectores, riesgos y evaluación
-        addHeaderAndFooter(doc, 1, 5); // Encabezado y pie de página para la página 1
+        addHeaderAndFooter(doc, 1, 6); // Encabezado y pie de página para la página 1
         yPos = 50; // Reiniciar la posición Y después del encabezado
         doc.setFont('helvetica', 'bold');
         doc.setFontSize(14);
@@ -273,7 +394,7 @@ function generarPDF() {
 
         // Página 2: Factores de Riesgo y Evaluación
         doc.addPage('landscape'); // Añadir nueva página en horizontal
-        addHeaderAndFooter(doc, 2, 5); // Encabezado y pie de página para la página 2
+        addHeaderAndFooter(doc, 2, 6); // Encabezado y pie de página para la página 2
         yPos = 50; // Reiniciar la posición Y después del encabezado
 
         // Factores de Riesgo
@@ -314,7 +435,7 @@ function generarPDF() {
 
         // Página 3: Integrantes de la familia
         doc.addPage('landscape'); // Añadir nueva página en horizontal
-        addHeaderAndFooter(doc, 3, 5); // Encabezado y pie de página para la página 3
+        addHeaderAndFooter(doc, 3, 6); // Encabezado y pie de página para la página 3
         yPos = 50; // Reiniciar la posición Y después del encabezado
         doc.setFont('helvetica', 'bold');
         doc.setFontSize(14);
@@ -379,7 +500,7 @@ function generarPDF() {
 
         // Página 4: Plan de trabajo
         doc.addPage('landscape'); // Añadir nueva página en horizontal
-        addHeaderAndFooter(doc, 4, 5); // Encabezado y pie de página para la página 4
+        addHeaderAndFooter(doc, 4, 6); // Encabezado y pie de página para la página 4
         yPos = 50; // Reiniciar la posición Y después del encabezado
         doc.setFont('helvetica', 'bold');
         doc.setFontSize(14);
@@ -406,12 +527,79 @@ function generarPDF() {
 
         // Página 5: Genograma
         doc.addPage('landscape'); // Añadir nueva página en horizontal
-        addHeaderAndFooter(doc, 5, 5); // Encabezado y pie de página para la página 5
+        addHeaderAndFooter(doc, 5, 6); // Encabezado y pie de página para la página 5
         yPos = 50; // Reiniciar la posición Y después del encabezado
         // Título "GENOGRAMA" al inicio de la página, bajado 30 mm (es decir, en y = 50)
         doc.setFont('helvetica', 'bold');
         doc.setFontSize(16);
         doc.text('GENOGRAMA', pageWidth/2, 50, { align: 'center' });
+
+        // Agregar la imagen del genograma si existe
+        if (genogramaDataUrl) {
+            try {
+                // Calcular dimensiones para que la imagen se ajuste a la página
+                const maxWidth = pageWidth - 40; // Margen de 20mm a cada lado
+                const maxHeight = pageHeight - 80; // Espacio para título y pie de página
+                
+                doc.addImage(
+                    genogramaDataUrl, 
+                    'JPEG', 
+                    20, // X position
+                    60, // Y position (debajo del título)
+                    maxWidth, 
+                    maxHeight, 
+                    undefined, 
+                    'FAST'
+                );
+            } catch (error) {
+                console.error('Error al añadir imagen del genograma al PDF:', error);
+                doc.setFont('helvetica', 'normal');
+                doc.setFontSize(12);
+                doc.text('Error al cargar la imagen del genograma', pageWidth/2, 100, { align: 'center' });
+            }
+        } else {
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(12);
+            doc.text('No se ha cargado ninguna imagen de genograma', pageWidth/2, 100, { align: 'center' });
+        }
+
+        // Página 6: Ecomapa
+        doc.addPage('landscape'); // Añadir nueva página en horizontal
+        addHeaderAndFooter(doc, 6, 6); // Encabezado y pie de página para la página 6
+        yPos = 50; // Reiniciar la posición Y después del encabezado
+        // Título "ECOMAPA" al inicio de la página, bajado 30 mm (es decir, en y = 50)
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(16);
+        doc.text('ECOMAPA', pageWidth/2, 50, { align: 'center' });
+
+        // Agregar la imagen del ecomapa si existe
+        if (ecomapaDataUrl) {
+            try {
+                // Calcular dimensiones para que la imagen se ajuste a la página
+                const maxWidth = pageWidth - 40; // Margen de 20mm a cada lado
+                const maxHeight = pageHeight - 80; // Espacio para título y pie de página
+                
+                doc.addImage(
+                    ecomapaDataUrl, 
+                    'JPEG', 
+                    20, // X position
+                    60, // Y position (debajo del título)
+                    maxWidth, 
+                    maxHeight, 
+                    undefined, 
+                    'FAST'
+                );
+            } catch (error) {
+                console.error('Error al añadir imagen del ecomapa al PDF:', error);
+                doc.setFont('helvetica', 'normal');
+                doc.setFontSize(12);
+                doc.text('Error al cargar la imagen del ecomapa', pageWidth/2, 100, { align: 'center' });
+            }
+        } else {
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(12);
+            doc.text('No se ha cargado ninguna imagen de ecomapa', pageWidth/2, 100, { align: 'center' });
+        }
 
         // Guardar PDF
         const fileName = `Ficha_Familiar_${new Date().toISOString().slice(0,10)}.pdf`;
@@ -423,17 +611,6 @@ function generarPDF() {
         alert('Error al generar el PDF: ' + error.message);
     }
 }
-
-// Asegurar que el evento está correctamente asociado
-document.addEventListener('DOMContentLoaded', function() {
-    const generarPDFBtn = document.getElementById('generarPDFBtn');
-    if (generarPDFBtn) {
-        generarPDFBtn.addEventListener('click', generarPDF);
-        console.log('Evento de generar PDF asociado');
-    } else {
-        console.error('Botón de generar PDF no encontrado');
-    }
-});
 
 function formatearTexto(texto) {
     const mapeo = {
