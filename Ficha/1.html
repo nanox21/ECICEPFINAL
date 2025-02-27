@@ -9,6 +9,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .upload-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 2px dashed #ccc;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .preview-container {
+            margin-top: 20px;
+            display: none;
+        }
+        #imagePreview {
+            max-width: 100%;
+            max-height: 300px;
+        }
+    </style>
 </head>
 <body>
     <header class="headerMod">
@@ -18,9 +36,12 @@
         Powered by E.U Hernando Gayoso Navarrete.
         <a href="https://nanox21.github.io/ECICEPFINAL/" target="_blank" class="button-link">ECICEP</a><br>
         <a href="mailto:nanox21@gmail.com" target="_blank">📨Contacto</a>
+        <br></div>
+    
+<div><p><b><u>Esta página no guarda almacena datos, respetando confidencialidad de nuestro usuarios😊</p></b></u></div>
     </header>
-    <br>
-    <br>
+   
+
     <div class="container">
       
  <div class="container" style="margin: 0 auto; text-align: center; width: 50%;">
@@ -245,9 +266,80 @@
 
 <button class="btn" id="limpiarFormularioBtn">Limpiar Formulario</button>
 
+<div class="upload-container">
+    <h2>Subir Genograma</h2>
+    <form id="genogramForm">
+        <input type="file" id="genogramFile" accept="image/*" required>
+        <p>Arrastra una imagen o haz clic para seleccionar</p>
+        <button type="button" id="previewGenogramBtn" class="btn">Previsualizar</button>
+        <button type="button" id="clearGenogramBtn" class="btn">Eliminar genograma</button>
+    </form>
+    <div class="preview-container" id="previewContainer">
+        <h3>Vista previa del genograma:</h3>
+        <img id="imagePreview" src="" alt="Vista previa del genograma">
+    </div>
+</div>
+
+<div class="upload-container">
+    <h2>Subir Ecomapa</h2>
+    <form id="ecomapaForm">
+        <input type="file" id="ecomapaFile" accept="image/*" required>
+        <p>Arrastra una imagen o haz clic para seleccionar</p>
+        <button type="button" id="previewEcomapaBtn" class="btn">Previsualizar</button>
+        <button type="button" id="clearEcomapaBtn" class="btn">Eliminar ecomapa</button>
+    </form>
+    <div class="preview-container" id="previewEcomapaContainer">
+        <h3>Vista previa del ecomapa:</h3>
+        <img id="ecomapaPreview" src="" alt="Vista previa del ecomapa">
+    </div>
+</div>
+
+<script>
+    document.getElementById('genogramFile').addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const previewContainer = document.getElementById('previewContainer');
+                const imagePreview = document.getElementById('imagePreview');
+                imagePreview.src = event.target.result;
+                previewContainer.style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    document.getElementById('genogramForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const formData = new FormData();
+        const fileField = document.getElementById('genogramFile');
+        
+        if (fileField.files[0]) {
+            formData.append('genogram', fileField.files[0]);
+            
+            fetch('/upload-genogram', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Genograma subido correctamente');
+                } else {
+                    alert('Error al subir el genograma: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error al subir el genograma');
+            });
+        }
+    });
+</script>
+
 <footer class="footer">
     Powered by E.U Hernando Gayoso Navarrete.
-    <a href="mailto:nanox21@gmail.com" target="_blank">📨Contacto</a>
+    <a href="mailto:nanox21@gmail.com" target="__blank">📨Contacto</a>
 </footer>
 </body>
 </html>
