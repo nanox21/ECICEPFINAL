@@ -65,6 +65,36 @@
     </footer>
 
     <script src="app.js"></script>
+
+<script>
+    // Contraseña establecida (¡No lo hagas en producción!)
+    const PASSWORD = "nasa3866";
+
+    function verificarPassword() {
+        let intentos = 3;
+
+        while (intentos > 0) {
+            let claveIngresada = prompt("Ingrese la contraseña:");
+
+            if (claveIngresada === PASSWORD) {
+                localStorage.setItem("accesoPermitido", "true"); // Guarda el acceso
+                alert("Acceso concedido");
+                return;
+            } else {
+                intentos--;
+                alert(`Contraseña incorrecta. Intentos restantes: ${intentos}`);
+            }
+        }
+
+        alert("Acceso denegado");
+        window.location.href = "https://google.com"; // Redirigir si falla
+    }
+
+    // Verificar si ya ingresó la contraseña antes
+    if (localStorage.getItem("accesoPermitido") !== "true") {
+        verificarPassword();
+    }
+</script>
      
  </body>
 </html>
