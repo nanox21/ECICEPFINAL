@@ -55,6 +55,30 @@
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        img {
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+            pointer-events: none;
+        }
+        .footer {
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            width: 100%;
+        }
+        .footer a {
+            color: #fff;
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -106,5 +130,9 @@
             <p class="image-text">Se espera tener comunicación recíproca entre equipo ECICEP y usuarios, a través de seguimientos telemáticos (por teléfono)</p>
         </div>
     </div>
+    <footer class="footer">
+        Powered by E.U Hernando Gayoso Navarrete.<br>
+        <a href="mailto:nanox21@gmail.com" target="_blank">📨 Contacto</a>
+    </footer>
 </body>
 </html>
