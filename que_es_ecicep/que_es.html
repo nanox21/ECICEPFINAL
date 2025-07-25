@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Qué es ECICEP?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+        .image-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            align-items: center;
+        }
+        .image-wrapper {
+            max-width: 800px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .image-text {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 1.1em;
+            line-height: 1.4;
+            animation: colorChange 3s infinite;
+            font-weight: bold;
+            opacity: 0;
+            animation: colorChange 3s infinite, fadeIn 1s forwards;
+        }
+        @keyframes colorChange {
+            0% { color: #2c3e50; }
+            50% { color: #e74c3c; }
+            100% { color: #2c3e50; }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <h1>¿Qué es ECICEP?</h1>
+    <div class="image-container">
+        <div class="image-wrapper">
+            <img src="1.png" alt="ECICEP imagen 1">
+        </div>
+        <div class="image-wrapper">
+            <img src="2.png" alt="ECICEP imagen 2">
+            <p class="image-text">USTED ES PROTAGONISTA DE SU SALUD Y CUIDADO</p>
+        </div>
+        <div class="image-wrapper">
+            <img src="3.png" alt="ECICEP imagen 3">
+        </div>
+        <div class="image-wrapper">
+            <img src="4.png" alt="ECICEP imagen 4">
+            <p class="image-text">Para ver diversas enfermedades había muchos programas y muchas derivaciones.</p>
+        </div>
+        <div class="image-wrapper">
+            <img src="5.png" alt="ECICEP imagen 5">
+            <p class="image-text">Se priorizaba el problema que el profesional creía se debía resolver, sin considerar la opinión del usuario.</p>
+        </div>
+        <div class="image-wrapper">
+            <img src="6.png" alt="ECICEP imagen 6">
+        </div>
+        <div class="image-wrapper">
+            <img src="7.png" alt="ECICEP imagen 7">
+        </div>
+        <div class="image-wrapper">
+            <img src="8.png" alt="ECICEP imagen 8">
+            <p class="image-text">El usuario (paciente) es el protagonista, el que decide como cuidarse.</p>
+        </div>
+        <div class="image-wrapper">
+            <img src="9.png" alt="ECICEP imagen 9">
+        </div>
+        <div class="image-wrapper">
+            <img src="10.png" alt="ECICEP imagen 10">
+            <p class="image-text">Como hay algunas enfermedades o condiciones más complejas que otras, la categorización se realiza de acuerdo a puntaje obtenido y sólo de acuerdo al número de enfermedades.</p>
+        </div>
+        <div class="image-wrapper">
+            <img src="11.png" alt="ECICEP imagen 11">
+        </div>
+        <div class="image-wrapper">
+            <img src="12.png" alt="ECICEP imagen 12">
+        </div>
+        <div class="image-wrapper">
+            <img src="13.png" alt="ECICEP imagen 13">
+            <p class="image-text">Se espera tener comunicación recíproca entre equipo ECICEP y usuarios, a través de seguimientos telemáticos (por teléfono)</p>
+        </div>
+    </div>
+</body>
+</html>
