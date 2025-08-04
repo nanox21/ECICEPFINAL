@@ -1,206 +1,515 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
+    
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Caso</title>
-    <link rel="stylesheet" href="style.css">
-            <link rel="icon" href="logo.png" type="image/x-icon">
-
-  
-
-
- 
-    
+    <title>Manual Gestión del Acompañamiento </title>
+    <link rel="icon" href="logo.png" type="image/x-icon">
     <style>
-    
         body {
-            font-family: 'Georgia', serif;
+            font-family: Arial, sans-serif;
             line-height: 1.8;
             margin: 0;
-            padding: 0;
-            background-color: #27374D;
-            color: #DDE6ED;
+            background-color: #1a1a1a;
+            color: #e6e6e6;
+            padding-left: 40px;
+            padding-right: 40px;
         }
-   
+
         header {
             background-color: #2c3e50;
             color: white;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px 40px;
+            text-align: left;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
-        h1 {
-            font-size: 2.2rem;
-            margin: 0;
+
+        .logo {
+            width: 70px;
+            float: right;
         }
-        p {
-            text-align: justify;
-            padding: 0 15px;
-            font-size: 1.1rem;
-        }
-        h2 {
-            color: #DDE6ED;
-            font-size: 1.6rem;
-            margin-top: 40px;
-            padding: 0 15px;
-            border-bottom: 2px solid #bdc3c7;
-        }
-        ul {
-            list-style-type: none;
-            padding-left: 15px;
-        }
-        ul li {
-            position: relative;
-            padding-left: 25px;
-            margin-bottom: 10px;
-            font-size: 1.05rem;
-        }
-        ul li::before {
-            content: "\2022";
-            color: #DDE6ED;
-            font-weight: bold;
-            display: inline-block;
-            width: 20px;
-            margin-left: -20px;
-            font-size: 1.5rem;
-        }
-        ul ul {
-            margin-left: 20px;
-        }
-        b {
-            color: #2980b9;
-        }
-        footer {
-            background-color: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            margin-top: 40px;
-            font-size: 0.9rem;
-        }
-        .highlight {
-            font-style: italic;
-            color: #16a085;
-        }
+  
+           
         
-        @media (min-width: 768px) {
-            body {
-                padding: 0 50px;
-            }
-            p, h2 {
-                padding: 0 30px;
-            }
+
+        h1, h2 {
+            color: #4a9eff;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        h5 {
+            color: #4a9eff;
+            margin-top: 20px;
+        }
+
+        p {
+            margin: 15px 0;
+            padding: 5px 0;
+            text-align: justify;
+            max-width: 900px;
+        }
+
+        ul, ol {
+            text-align: left;
+            margin: 15px 0;
+            padding-left: 40px;
+            max-width: 850px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 16px;
+        }
+
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #3498db;
+            color: white;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #333333;
+        }
+
+        table tr:hover {
+            background-color: #404040;
+        }
+
+        table td {
+            color: #e6e6e6;
+        }
+
+        table td {
+            vertical-align: top;
+        }
+
+        figure {
+            margin: 20px 0;
+            text-align: center;
+            width: 100%;
+        }
+
+        figure img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        figcaption {
+            margin-top: 10px;
+            font-style: italic;
+            color: #666;
+        }
+
+        .section-title {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .content-section {
+            background-color: #2c2c2c;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            margin: 20px 0;
+        }
+
+        .highlight {
+            color: #66b3ff;
+            font-weight: bold;
+        }
+
+        .button-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px 0;
+            transition: background-color 0.3s;
+        }
+
+        .button-link:hover {
+            background-color: #2980b9;
+        }
+
+        section {
+            background-color: #2c2c2c;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
     </style>
 </head>
+
 <body>
-     
-  
- 
 
     <header>
-        <h1>  <img src="logo.png" alt="logoCesfam" style="width:100px; height:100px;"> Gestión de Caso <img src="gestion.png" alt="logogestion" style="width:100px; height:100px;"></h1>
-    </header>
+        <img src="logo.png" alt="Logo" class="logo">
+        <p class="titulo">Manual Gestión del Acompañamiento</p>
+        <link rel="stylesheet" href="style.css">
 
-    <div>
-        <a href="../index.html" target="_blank" class="button-link">Calculadora ECICEP</a>
-    </div>
-    <p>La Gestión de Caso es una prestación clínica orientada al seguimiento y acompañamiento personalizado de personas en situación de multimorbilidad compleja, principalmente del grupo G2 y G3. Su objetivo es:
-        <li>Facilitar el acceso oportuno a la red de salud.</li>
-        <li>Aumentar la adherencia terapéutica.</li>
-        <li>Reducir las hospitalizaciones evitables.</li>
-        <li>Mejorar la calidad de vida y autonomía de las personas.</li>
-    <br>
-    <br>
-    Esta prestación implica la elaboración de planificación, coordinación, activación de recursos, facilitación de accesos y registro estructurado del cuidado, en base a un Plan de Cuidados consensuado. Tiene  una duración menor a seis meses, desarrollándose a través de controles presenciales, seguimientos remotos y coordinación intersectorial.
-  Las prestaciones tienen un rendimiento   <b>  de 20 a 30  minutos</b>, pudiendo ser realizada por cualquier técnico o profesional del sector involucrado en el cuidado o pertinente a la condición del usuario. Vale decir, no se limita al equipo cabecera, pudiendo intervenir: podólogas, matronas, dentistas, psicólogas, kinesiólogos, etc. Además, cualquier funcionario puede iniciar la gestión del cuidado.
-</p>    
-<h2>👤 ¿Quién es el Gestor de Caso?</h2>
-	 Existe un gestor de caso a nivel de cada sector cuyo objetivo es supervisar y coordinar el cumplimiento del plan de gestión de caso. 
-
-     <h2>👤 ¿ Gestor de caso comunal?</h2>
-Enfermero Gestor del cuidado cuyo rol   es    monitorear el plan de cuidado, realizar seguimientos presenciales o remotos, gestionar derivaciones y activar la red comunitaria y de especialidades, en conjunto con los gestores de cada sector.
-
-<h2>👤 ¿Quién inicia una  Gestión de Caso?</h2>
-
-	•	Es un profesional o técnico del CESFAM, asignado por el equipo de sector.
-	•	Puede ser enfermer@, médic@, trabajador(a) social, psicólog@, matron@, dentista, kinesiólog@, podólog@, entre otros.
+<div>
 
 
+  <h1>Manual de Gestión del acompañamiento - ECICEP 2025</h1>
 
-
-    <h2>Ingresos consideran a prestación Gestión de Caso:</h2>
-    <ul>
-        <li>Usuarios <b>G3</b> descompensados</li>
-        <li>Atención en <b>3 o más especialidades</b> en el nivel secundario.</li>
-        <li>Dos o más consultas en <b>servicios de urgencia hospitalarios, por descompensación</b> de su condición de cronicidad, en los últimos <b>seis meses</b>.</li>
-        <li>Dos o más hospitalizaciones por descompensación de su condición de cronicidad en los últimos seis meses.</li>
-        <li>Atención en servicios de urgencia hospitalaria y/o hospitalización por ❤️‍🩹IAM, 🧠ACV, ❤️ICC, 🫁EPOC <b>descompensado y/o insuficiencia renal y/o 🦶🏻 pie diabético infectado.</b></li>
-        <li>Criterios a definir por el equipo.</li>
-    </ul>
-
-    <h2>✅ Egreso, si quienes están en el plan de cuidados presentan los siguientes hitos:</h2>
-    <ul>
-        <li>Acciones acordadas en el plan, que deriven en procesos de cambio significativos, referidos por la persona como experiencias de bienestar.</li>
-        <li>Mantenimiento en el cambio al momento de su reevaluación a los 6 meses, referido por la persona en la descripción de sus acciones cotidianas de automanejo y cuidado de su salud.</li>
-        <li>Claridad respecto de su esquema de fármacos, lo que se distinguirá a partir de su relato sobre su administración.</li>
-        <li>Mantenimiento en el cambio
-
-
-
-            <h2>🛠️ Actividades Clave</h2>
-
-            <b>1. Ingreso a Gestión de Caso</b>
-                <li>Cada ficha consigna información respecto de: plan gestion de casos, con sus respectivos objetivos, actividedes y plazos.</li>
-                <li>acciones interdisciplinarias, gestión de cartera de prestaciones, evaluación, s﻿eguimiento, entre otros.</li>
-                    <li>Diagnóstico actualizado.</li>
-                        <li>Actividad Rayen: Gestión de casos – Ingreso (riesgo alto o moderado).</li>
-            
-                <b> 2. Seguimiento de Gestión de Caso</b>
-                <li>presentación del caso en reunión de equipo de sector,</li>
-                    <li>Evaluación periódica del cumplimiento del plan.</li>
-                        <li>	Revisión de adherencia, ajustes, derivaciones, red de apoyo.</li>
-                            <li>Duración: 30 minutos.</li>
-                                <li>Actividad Rayen: AG_Seguimiento gestión de casos.</li>
-            
-              
-             
-             
-            
-</body>
-
-    
-    <script>
-        document.addEventListener('copy', function(e) {
-            e.preventDefault();
-         });
-    </script>
-<footer class="footer">
-  <img src="yo.png" alt="Avatar estilo Simpson" width="100" height="100">
   <div>
-    Powered by E.U Hernando Gayoso Navarrete.<br>
-    <a href="mailto:nanox21@gmail.com" target="_blank">📨 Contacto</a>
+     <a href="https://nanox21.github.io/ECICEPFINAL/" target="_blank" class="button-link">Calculadora ECICEP</a>
+  </div>
+ 
+  <section>
+    <h2>1. Introducción</h2>
+ <br>
+<br>
+<br>
+En el contexto de la multimorbilidad y el avance de las enfermedades crónicas en
+Chile, la Estrategia de Cuidado Integral Centrado en las Personas (ECICEP)
+redefine la manera en que se organiza y entrega el cuidado, pasando de un modelo
+reactivo a uno proactivo, integrador y centrado en la persona, su familia y la
+comunidad.
+<br>
+<br>
+<br>
+
+<h2>2. Definición de Gestión del Cuidado</h2>
+<br>
+<br>
+
+La gestión de acompañamiento se refiere al seguimiento y acompañamiento a las
+personas en su proceso de cambio, manteniendo un contacto cercano y periódico
+que permita conocer su experiencia en el desarrollo de acciones para su
+automonitoreo y cuidado, así como para mantenerse disponibles para el apoyo que
+se requiera. Está dirigido a algunas personas de la población de riesgo alto (G3) y
+moderado (G2), que necesita de un abordaje individualizado y por un tiempo
+definido y reevaluable. Las personas que ingresan a Gestión de acompañamiento
+cuentan con un profesional gestor, que forma parte de su sector en el centro de
+salud. Este profesional lo apoyará, durante un tiempo definido y reevaluable, en el
+avance hacia el logro de sus objetivos y propiciará la activación coordinada de la
+Red, para favorecer su acceso oportuno a las atenciones y prestaciones requeridas,
+resguardando la calidad y confidencialidad de la atención. Este proceso implica
+movilizar tanto a los servicios disponibles en la Red de salud, como la oferta
+intersectorial con la que se cuente. (1)
+<br>
+<br>
+La gestión del cuidado es compuesta por prestaciones clínicas y sociales
+destinadas al acompañamiento personalizado, seguimiento y coordinación de
+recursos para personas en situación de multimorbilidad compleja.
+En este marco, la colaboración y el acompañamiento cercano contribuyen al
+cumplimiento de los objetivos definidos en el plan de cuidado integral consensuado,
+entendiéndose como actividades complementarias que fortalecen su
+implementación. Dependiendo de las necesidades del caso, podrá requerirse la
+incorporación de otros profesionales como trabajadores sociales, psicólogos,
+matronas, entre otros, así como la utilización del intersector a través de
+instituciones, agrupaciones así como también la utilización de los de activos
+comunitarios.
+<br>
+<br>
+<b>No es necesario formular un nuevo plan</b> ,sin embargo, dependiendo de su
+nivel de complejidad puede ser necesario presentar en reuniones de sector.
+La gestión de acompañamiento es una actividad programada y que debe contar
+con agendamiento separado.
+<br>
+<br>
+<p>La definición del ingreso o no a gestión de acompañamiento, se debe realizar
+durante el ingreso integral de personas con riesgo alto (G3) y moderado (G2).
+Si se define que la persona no requiere acompañamiento, se debe reevaluar
+permanentemente durante los controles integrales y otros contactos posteriores.
+    </p>
+
+
+  <p> La gestión del acompañamiento es,<b> en esencia, una actividad bidireccional.</b> Las
+personas ingresadas podrán llamar a sus gestoras/es y/o comunicarse vía mail u
+otros, para realizar consultas, aclarar dudas y recibir orientación frente a los posibles
+escenarios que se les presenten.</p> 
+<br>
+<br>
+
+ <figure>
+    <img src="./pagina4_img1.png" alt="Índice">
+    <figcaption>Circunstancias de ingreso gestión del acompañamiento </figcaption>
+  </figure>
+<br>
+<br>
+<li><b>Roles y Prestadores Involucrados</b>
+• Dupla Gestora del cuidado: compuesta por un profesional más un TENS ,
+cuya función es velar por el cumplimiento y seguimiento del plan de cuidados.
+Dentro de las funciones del tens :</li>
+<br>
+<br>
+<li><b>TENS </b> en el acompañamiento hacia el cambio, como parte del equipo gestor
+desde tiene una función clínica significativa. Su cercanía con las personas y
+su capacidad de respuesta frente a sus necesidades pueden favorecer una
+intervención oportuna por parte del sistema de salud.</li>
+<br>
+<br>
+<li> Desempeñando <b>rol educación, coordinación y nexo entre profesionales y
+clínicos que favorecen la continuidad del cuidado.</b>
+<br>
+<br>
+<li><b>Gestor de cuidado Sectorial:</b> Profesional que supervisa y coordina el
+cumplimiento del plan del cuidado a nivel de sector. Interacciona con los
+diferentes prestadores de salud en pro del bienestar y cumplimiento del plan
+de cuidados.</li>
+<br>
+<br>
+<li><b>Gestor Comunal</b>: Enfermero gestor del cuidado , encargado del monitoreo,
+seguimiento y articulación con la red comunitaria y de especialidades.
+Otra actividad relevante en la Gestión de acompañamiento, que propicia la
+continuidad del cuidado, es la coordinación con PDE en el nivel secundario y
+terciario, quien será un referente de apoyo a los equipos de APS para la transmisión
+de información actualizada y oportuna sobre las personas que ingresen a servicios
+de urgencia y hospitalización, considerando planes de cuidado, evolución y alta;
+derivaciones y atención por especialidad; exámenes y procedimientos requeridos;
+diagnósticos y fármacos indicados.</li>
+<br>
+<br>
+<br>
+<li><b>Equipo de Salud sector</b> : Profesionales y técnicos (médico/a, enfermero/a, TENS,
+trabajador(a) social, psicólogo/a, matrona, dentista, kinesiólogo/a, podólogo/a, entre
+otros) que pueden iniciar o participar en la gestión del cuidado.
+Red de Especialidad y Hospitalaria: Recibe derivaciones y colabora en la gestión
+del cuidado complejos.</li>
+<br>
+<br>
+<br>
+<li><b> Activo comunitario</b>: se refiere a cualquier recurso o fortaleza que exista dentro de
+una comunidad y que pueda contribuir a la mejora del bienestar y la calidad de vida
+de sus miembros. Estos activos pueden ser físicos (como espacios verdes,
+infraestructuras), humanos (como habilidades, conocimientos), sociales (como
+organizaciones comunitarias, redes de apoyo), o institucionales (como instituciones
+públicas, empresas locales).</li>
+
+<br>
+<br>
+<br><br>
+<br>
+<br>
+<li> <b>Criterios de Ingreso y Egreso</li></b>
+<b>Ingreso a Gestión del cuidado:</b>
+<li>Usuarios G3 descompensados.</li>
+<li> Atención en 3 o más especialidades en nivel secundario.</li>
+<li>Dos o más consultas en servicios de urgencia hospitalarios en los últimos
+6 meses.</li>
+<li>Dos o más hospitalizaciones en los últimos 6 meses.</li>
+<li>Criterios especiales: IAM, ACV, ICC, EPOC descompensado, insuficiencia</li>
+renal, pie diabético infectado, etc.</li>
+<li>Criterios definidos localmente por el equipo.</li>
+<br>
+<br>
+<br>
+<br>
+<b><li></li>Criterios de Egreso:</b></li>
+
+<li>Cumplimiento de hitos de cambio: automanejo, mantenimiento del cambio,
+claridad en el esquema de fármacos, etc.</li>
+<li>Derivación por complejidad o cambio de condiciones.</li>
+<br>
+<br>
+<u>Prestadores involucrados:</u>
+<br>
+<li>Gestor sectorial, gestor comunal, equipo CESFAM (enfermería, medicina, TENS,
+trabajador social, etc.), especialistas y red hospitalaria según requerimientos.</li>
+<br>
+<br>
+<u><li><b>Temporalidad:</b></li></u>
+<br>
+<li> Ingreso inmediato tras identificación.</li>
+<li>Se derivará a SOME para Gestionar Hora de Ingreso, pudiendo ser apoyado por
+TENS cardiovascular y/o ECICEP.</li>
+<li>Seguimiento frecuente durante máximo 6 meses (prorrogable).</li>
+<li>Registro sistemático en cada contacto.</li>
+
+   
+
+  <section>
+<p>Una vez que se define que la persona ingresará a gestión de acompañamiento, se
+asigna una dupla gestora (profesional gestor y TENS) que estará a cargo del apoyo
+durante un periodo acotado previamente definido y reevaluable.
+Objetivos de la gestión del cuidado</p>
+<li>> Facilitar el acceso oportuno a la red de salud.</li>
+<li> Mejorar la adherencia terapéutica.</li>
+<li>Reducir hospitalizaciones evitables.</li>
+<li>Mejorar calidad de vida y autonomía.</li>
+<br>
+<br>
+ La intervención suele durar 20 a 30 minutos por prestación y tiene una
+temporalidad menor a seis meses, pudiendo prorrogarse según evaluación.
+<br>
+Se debe registrar en la ficha clínica durante el ingreso a gestión de
+acompañamiento:
+<li>    Objetivos para la gestión del acompañamiento (gestión del cuidado) de cada
+persona en particular.</li>
+<li>Qué acciones interdisciplinarias están vinculadas con esta persona.</li>
+<li> Seguimiento (frecuencia, responsables)</li>
+<li>Evaluación (responsables, cómo se realizará)v
+Definir si la persona se presentará en reunión de equipo de sector. En caso
+necesario.</li></p>
+    
+      <li><b>Dupla gestora:</b> Profesional y TENS</li>
+      <li><b>Gestor sectorial:</b> Profesional a cargo del plan de cuidado por sector</li>
+      <li><b>Gestor comunal:</b> Enfermero/a gestor con articulación comunitaria y especializada</li>
+      <li><b>Equipo sector:</b> Médicos, TENS, matronas, psicólogos, dentistas, etc.</li>
+      <li><b>Red especializada y hospitalaria:</b> Soporte y derivación</li>
+      <li><b>Activos comunitarios:</b> Recursos humanos, sociales e institucionales</li>
+    </ul>
+    
+  </section>
+
+  <section>
+    <h2>4. Criterios de Ingreso</h2>
+    <ul>
+      <li>Usuarios G3 descompensados</li>
+      <li>3+ especialidades en nivel secundario</li>
+      <li>2+ consultas urgencia hospitalaria en 6 meses</li>
+      <li>2+ hospitalizaciones en 6 meses</li>
+      <li>Casos con IAM, ACV, ICC, EPOC, IR, pie diabético infectado</li>
+      <li>Criterios locales definidos por equipo</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Criterios de Egreso</h2>
+    <ul>
+      <li>Cumplimiento de hitos de cambio</li>
+      <li>Derivación por complejidad o condición</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>5. Actividades Clave del Gestor</h2>
+    <ol>
+      <li>Ingreso y evaluación inicial</li>
+      <li>Planificación consensuada</li>
+      <li>Coordinación de recursos</li>
+      <li>Seguimiento y reevaluación</li>
+      <li>Registro y monitoreo</li>
+      <li>Egreso con verificación de hitos</li>
+    </ol>
+   
+  </section>
+
+    <h2>6. Registro y Seguimiento</h2>
+    <ul>
+      <li>Registrar actividades, tiempos, participantes</li>
+      <li>Consensuar y mantener trazabilidad del plan de cuidados</li>
+    </ul>
+<h2>Ingreso Gestión del cuidado G3 y G2</h2>
+    <figure>
+      <img src="./pagina8_img1.png" alt="Roles de la dupla gestora">
+      <figcaption>Registro actividad ingreso plataforma rayen</figcaption>
+    </figure>
+    <ul>
+    <h2>Documentar Seguimiento</h2>
+        <figure>
+      <img src="./pagina8_img2.png" alt="Función del TENS">
+      <figcaption>Resgistro de actividad de segumiento </figcaption>
+    </figure>
+    <H2>Egreso del gestión del cuidado</H2>
+ <figure>
+      <img src="./pagina9_img1.png" alt="Coordinación con PDE">
+     </figure>
+  <section>
+     <h2>Flujograma</h2>
+
+    <figure>
+      <img src="./pagina11_img1.png" alt="Actividades clave">
+      <figcaption>Flujograma de gestión del cuidado - CESFAM Los Álamos</figcaption>
+    </figure>
+   
+  <section>
+    <figure>
+      <img src="./pagina11_img2.png" alt="Registros REM">
+      <figcaption>Registros REM asociados a la gestión de casos</figcaption>
+    </figure>
+  </section>
+
+    <h2>7. Observaciones</h2>
+    <p>Los seguimientos telefónicos forman parte del plan de cuidado y no generan nuevas prestaciones adicionales.</p>
+    <figure>
+      <img src="./pagina12_img1.png" alt="Flujograma">
+    </figure>
+  </section>
+<footer class="footer">
+  <img src="yo.png" alt="Avatar estilo Simpson">
+  <div>
+    <strong>Desarrollado por:</strong><br>
+    E.U Hernando Gayoso Navarrete<br>
+    <a href="mailto:nanox21@gmail.com" target="_blank">📨 Contactar por correo</a>
   </div>
 </footer>
 <style>.footer {
-  background-color: #000;
-  color: #fff;
+  background-color: #2c3e50;
+  color: #e6e6e6;
   text-align: center;
-  padding: 20px;
+  padding: 30px;
+  margin-top: 50px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+  gap: 20px;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
 }
 
 .footer img {
-  width: 100px;
-  height: 100px;
-  border-radius: 12px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid #3498db;
+  transition: transform 0.3s ease;
+}
+
+.footer img:hover {
+  transform: scale(1.1);
+}
+
+.footer div {
+  text-align: left;
+  line-height: 1.6;
 }
 
 .footer a {
-  color: #fff;
+  color: #4a9eff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: inline-block;
+  margin-top: 5px;
+}
+
+.footer a:hover {
+  color: #66b3ff;
   text-decoration: underline;
 }</style>
+
+    <script src="app.js"></script>
+
+
+ </body>
+</html>
+</body>
+
+</html>
