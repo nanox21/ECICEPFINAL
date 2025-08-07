@@ -137,9 +137,27 @@
       <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px;">
         <img src="logo.png" alt="Logo" class="logo" />
         <h1 style="margin: 0; text-align: center;">Matriz de Factores de Riesgo Familiar Cesfam Los Álamos</h1>
+  <div>
   <a href="https://nanox21.github.io/ECICEPFINAL/" target="_blank">
-    <img src="calculadoraecicep.png" alt="Calculadora ECICEP" title="Calculadora ECICEP 🧮" style="width: 100px; height: 100px; object-fit: contain;">
-</a>       </div>
+    <img src="calculadoraecicep.png" alt="Calculadora ECICEP" title="Calculadora ECICEP 🧮"
+         class="zoom-hover">
+  </a>
+
+  <style>
+    /* Estilo para aplicar zoom al pasar el mouse sobre la imagen dentro del enlace */
+    .zoom-hover {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+
+    .zoom-hover:hover {
+      transform: scale(1.2);
+      cursor: pointer;
+    }
+  </style>
+</div>    
     </header>
 
     <p style="text-align: center;">Powered by E.U Hernando Gayoso Navarrete.</p>
