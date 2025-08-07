@@ -3,8 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-    
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Patologías</title>
     <link rel="icon" href="logo.png" type="image/x-icon">
@@ -28,11 +26,9 @@
             width: 70px;
             float: right;
         }
-  
-           
-        
 
-        h1, h5 {
+        h1,
+        h5 {
             text-align: center;
             color: #333;
         }
@@ -49,7 +45,8 @@
             font-size: 16px;
         }
 
-        table th, table td {
+        table th,
+        table td {
             border: 1px solid #ddd;
             padding: 12px;
             text-align: left;
@@ -82,73 +79,77 @@
             font-size: 18px;
         }
 
+        .highlight {
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        .zoom-hover {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .zoom-hover:hover {
+            transform: scale(1.2);
+            cursor: pointer;
+        }
+
         .content-section {
             background-color: white;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 20px 0;
         }
 
-        .highlight {
-            font-style: italic;
-            font-weight: bold;
+        .form-section {
+            background-color: white;
+            padding: 20px;
+            margin: 40px auto;
+            max-width: 900px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer {
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .footer a {
+            color: #fff;
+            text-decoration: underline;
         }
     </style>
 </head>
 
 <body>
-
     <header>
         <img src="logo.png" alt="Logo" class="logo">
         <p class="titulo">Pautas de Ingreso y Control de Usuarios ECICEP</p>
-        <link rel="stylesheet" href="style.css">
-
-<div>
-
-
-     
-    </div>
     </header>
-  
+
     <div class="content-section">
-       <div class="content-section">
-  <a href="https://nanox21.github.io/ECICEPFINAL/" target="_blank">
-    <img src="calculadoraecicep.png" alt="Calculadora ECICEP" title="Calculadora ECICEP 🧮" class="zoom-hover">
-  </a>
+        <a href="https://nanox21.github.io/ECICEPFINAL/" target="_blank">
+            <img src="calculadoraecicep.png" alt="Calculadora ECICEP" title="Calculadora ECICEP 🧲" class="zoom-hover">
+        </a>
+        <a href="/EvPieDm/index.html" target="_blank">
+            <img src="evaluacionpiedm.png" alt="Evaluación Pie DM" title="Evaluación Pie DM" class="zoom-hover">
+        </a>
+        <a href="https://nanox21.github.io/ECICEPFINAL/PDF/index.html" target="_blank">
+            <img src="formatoacuerdos.png" alt="Formato Acuerdos" title="Formato Acuerdos" class="zoom-hover">
+        </a>
+    </div>
 
-  <a href="/EvPieDm/index.html" target="_blank">
-    <img src="evaluacionpiedm.png" alt="Evaluación Pie DM" title="Evaluación Pie DM" class="zoom-hover">
-  </a>
-
-  <a href="https://nanox21.github.io/ECICEPFINAL/PDF/index.html" target="_blank">
-    <img src="formatoacuerdos.png" alt="Formato Acuerdos" title="Formato Acuerdos" class="zoom-hover">
-  </a>
-</div>
-
-<style>
-  .zoom-hover {
-    width: 100px;
-    height: 100px;
-    object-fit: contain;
-    transition: transform 0.3s ease;
-  }
-
-  .zoom-hover:hover {
-    transform: scale(1.2);
-    cursor: pointer;
-  }
-
-  .content-section {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: 20px 0;
-  }
-</style>
-<br>
-<br>
-<div>        
+    <section class="form-section">
         <h1>INGRESO INTEGRAL</h1>
         <h5>VALORACIÓN INTEGRAL</h5>
 
@@ -215,7 +216,6 @@
         <p>Polifarmacia: _______</p>
 
         <p class="section-title">Exámenes de Laboratorio</p>
-
         <p class="section-title">Exploración Física</p>
         <p>PA: _______</p>
         <p>FC: _______</p>
@@ -305,12 +305,11 @@
                 <td>Acciones incluyen plazos y responsables</td>
             </tr>
         </table>
-    </div>
-
+    </section>
 </body>
-  <footer class="footer">
-                                Powered by E.U Hernando Gayoso Navarrete./Dr.Benjamin Herrera.
 
+<footer class="footer">
+    Powered by E.U Hernando Gayoso Navarrete./Dr.Benjamin Herrera.<br>
     <a href="mailto:nanox21@gmail.com" target="_blank">📨Contacto</a>
 </footer>
 
