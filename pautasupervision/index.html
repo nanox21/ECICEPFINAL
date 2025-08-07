@@ -61,9 +61,27 @@
 <body>
 
 <div style="display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 20px;">
-    <a href="https://nanox21.github.io/ECICEPFINAL/" target="_blank">
-        <img src="cacluladoraecicep.png" alt="Calculadora ECICEP" title="Calculadora ECICEP 🧮" style="width: 100px; height: 100px; object-fit: contain;">
-    </a>
+<div>
+  <a href="https://nanox21.github.io/ECICEPFINAL/" target="_blank">
+    <img src="calculadoraecicep.png" alt="Calculadora ECICEP" title="Calculadora ECICEP 🧮"
+         class="zoom-hover">
+  </a>
+
+  <style>
+    /* Estilo para aplicar zoom al pasar el mouse sobre la imagen dentro del enlace */
+    .zoom-hover {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+
+    .zoom-hover:hover {
+      transform: scale(1.2);
+      cursor: pointer;
+    }
+  </style>
+</div>
     <h1>PAUTA REQUISITOS MINIMOS PARA REGISTRO EN INGRESOS, CONTROLES Y SEGUIMIENTOS ECICEP</h1>
 </div>
 
