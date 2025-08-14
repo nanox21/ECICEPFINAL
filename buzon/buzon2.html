@@ -13,10 +13,10 @@
   select, select option { font-size: 18px; }
   button { background: #28a745; color: white; padding: 12px; border: none; cursor: pointer; margin-top: 16px; width: 100%; font-size: 16px; border-radius: 6px; }
   button:hover { background: #218838; }
-  .hidden { display:none !important; visibility:hidden; }
-  .alerta { background:#ffecec; border:1px solid #f5a9a9; color:#a94442; padding:10px; margin-top:10px; border-radius:6px; text-align:left;}
-  .ok { background:#eaffea; border:1px solid #a1e3a1; color:#2e7d32;}
-  .ayuda { font-size: 12px; color:#666; text-align:left; margin-top:4px;}
+  .hidden { display:none!important; visibility:hidden; }
+  .alerta { background:#ffecec; border:1px solid #f5a9a9; color:#a94442; padding:10px; margin-top:10px; border-radius:6px; text-align:left; }
+  .ok { background:#eaffea; border:1px solid #a1e3a1; color:#2e7d32; }
+  .ayuda { font-size: 12px; color:#666; text-align:left; margin-top:4px; }
 </style>
 </head>
 <body>
@@ -24,12 +24,12 @@
 <img src="logo.png" alt="Logo ECICEP" class="logo" />
 <h2>Crear Consulta Usuarios ECICEP Cesfam Los Álamos</h2>
 
-<div id="msg" class="alerta hidden" role="alert"></div>
+<div id="msg" class="alerta hidden"></div>
 
 <form id="formECICEP" action="https://formsubmit.co/eciceplosalamos@gmail.com" method="POST" novalidate>
   <!-- Config FormSubmit -->
   <input type="hidden" name="_captcha" value="false" />
-  <input type="hidden" name="_next" value="https://ecicep.cl/gracias.html" />
+  <input type="hidden" name="_next" value="https://ecicep.cl/buzon/gracias.html" />
   <input type="hidden" name="_subject" value="Nueva consulta pública ECICEP" />
   <input type="hidden" name="_template" value="table" />
 
@@ -40,12 +40,11 @@
   </div>
 
   <label for="run">RUN Usuario</label>
-  <input type="text" name="RUN Usuario" id="run" placeholder="Ej: 12.345.678-9" maxlength="12" required
-         inputmode="text" autocomplete="off" autocapitalize="characters" />
+  <input type="text" name="RUN Usuario" id="run" placeholder="Ej: 12.345.678-9" maxlength="12" required inputmode="latin" autocomplete="off" autocapitalize="characters" />
   <div class="ayuda">Escribe el RUN y el sistema aplicará el formato y validará el dígito verificador.</div>
 
   <label for="nombre_usuario">Nombre Usuario ECICEP</label>
-  <input type="text" name="Nombre Usuario ECICEP" id="nombre_usuario" required autocomplete="name" />
+  <input type="text" name="Nombre Usuario ECICEP" id="nombre_usuario" required />
 
   <label for="sector">Sector</label>
   <select name="Sector" id="sector" required>
@@ -69,19 +68,19 @@
   <input type="text" name="Parentesco" id="parentesco" required />
 
   <label for="fono">Teléfono</label>
-  <input type="tel" name="Teléfono" id="fono" required inputmode="tel" autocomplete="tel" />
+  <input type="tel" name="Teléfono" id="fono" required />
 
   <label for="mail">Correo electrónico</label>
-  <input type="email" name="email" id="mail" placeholder="nombre@correo.cl" required autocomplete="email" />
+  <input type="email" name="email" id="mail" placeholder="nombre@correo.cl" required />
 
   <button type="submit" id="btnEnviar">Enviar Consulta</button>
 </form>
 
 <script>
-  // ========= (0) Producción: API en HTTPS detrás de Cloudflare =========
+  // ========= (0) URL de API en producción =========
   const API_BASE = "https://api.ecicep.org";
 
-  // ========= (1) Máscara RUN (12.345.678-9 mientras escribe) =========
+  // ========= (1) Máscara RUN =========
   const runInput = document.getElementById('run');
   runInput.addEventListener('input', function(e) {
     let v = e.target.value.replace(/[^0-9kK]/g, '').toUpperCase();
@@ -94,14 +93,14 @@
     }
   });
 
-  // ========= (2) Normalizar para API: 12345678-9 (sin puntos) =========
+  // ========= (2) Normalizar para API (12345678-9) =========
   function normalizarRun(s) {
     s = (s || "").toUpperCase().replace(/[^0-9K]/g, '');
     if (s.length < 2) return s;
     return s.slice(0, -1) + '-' + s.slice(-1);
   }
 
-  // ========= (3) Validador de DV en el front (UX) =========
+  // ========= (3) Validador DV =========
   function dvValido(runNorm) {
     const m = /^(\d{7,8})-([\dK])$/.exec(runNorm);
     if (!m) return false;
@@ -116,7 +115,7 @@
     return dv === dvCalc;
   }
 
-  // ========= (4) Interceptar envío, consultar API y decidir =========
+  // ========= (4) Interceptar envío =========
   const form = document.getElementById('formECICEP');
   const msg = document.getElementById('msg');
   const btn = document.getElementById('btnEnviar');
@@ -141,7 +140,6 @@
     btn.textContent = "Verificando…";
 
     const runCanonico = normalizarRun(runInput.value);
-
     if (!dvValido(runCanonico)) {
       setMsg("RUN inválido (revise el dígito verificador).");
       btn.disabled = false; btn.textContent = oldText;
@@ -150,7 +148,6 @@
 
     try {
       const url = `${API_BASE}/api/verificar_run?run=${encodeURIComponent(runCanonico)}`;
-      // cache: 'no-store' para evitar caches intermedios/CDN
       const res = await fetch(url, { method: 'GET', mode: 'cors', cache: 'no-store' });
       if (!res.ok) throw new Error("HTTP " + res.status);
       const data = await res.json();
@@ -166,15 +163,10 @@
         return;
       }
 
-      // Si existe y no llenaron nombre, lo prellenamos
-      if (data.nombre && !nombreInput.value) {
-        nombreInput.value = data.nombre;
-      }
+      if (data.nombre && !nombreInput.value) nombreInput.value = data.nombre;
 
-      // Todo ok → enviamos a FormSubmit
       btn.textContent = "Enviando…";
       form.submit();
-
     } catch (err) {
       setMsg("No se pudo contactar al verificador. Revise conexión.");
       console.error("Fetch error:", err);
