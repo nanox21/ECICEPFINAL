@@ -12,57 +12,34 @@
     padding: 20px; 
     text-align: center;
   }
-  img.logo {
-    max-width: 150px;
-    margin-bottom: 15px;
-  }
-  h2 {
-    color: #0056b3;
-    margin-bottom: 20px;
-  }
-  label { 
-    font-weight: bold; 
-    display: block; 
-    margin-top: 10px; 
-    text-align: left;
-    font-size: 16px;
-  }
-  input, select, textarea { 
-    width: 100%; 
-    padding: 8px; 
-    margin-top: 5px; 
-    font-size: 16px;
-  }
-  /* 🔹 Opciones del desplegable más grandes */
-  select, select option {
-    font-size: 18px;
-  }
-  button { 
-    background: #28a745; 
-    color: white; 
-    padding: 10px; 
-    border: none; 
-    cursor: pointer; 
-    margin-top: 15px; 
-    width: 100%;
-    font-size: 16px;
-    border-radius: 5px;
-  }
+  img.logo { max-width: 150px; margin-bottom: 15px; }
+  h2 { color: #0056b3; margin-bottom: 20px; }
+  label { font-weight: bold; display: block; margin-top: 10px; text-align: left; font-size: 16px; }
+  input, select, textarea { width: 100%; padding: 8px; margin-top: 5px; font-size: 16px; }
+  select, select option { font-size: 18px; }
+  button { background: #28a745; color: white; padding: 10px; border: none; cursor: pointer; margin-top: 15px; width: 100%; font-size: 16px; border-radius: 5px; }
   button:hover { background: #218838; }
+  .hidden { display:none !important; visibility:hidden; }
 </style>
 </head>
 <body>
 
-<!-- Logo -->
 <img src="logo.png" alt="Logo ECICEP" class="logo">
-
 <h2>Crear Consulta Usuarios ECICEP Cesfam Los Álamos</h2>
 
-<form action="https://formsubmit.co/eciceploslamos@gmail.com" method="POST">
-  
-  <!-- Configuración oculta -->
+<form action="https://formsubmit.co/eciceplosalamos@gmail.com" method="POST">
+
+  <!-- Configuración FormSubmit -->
   <input type="hidden" name="_captcha" value="false">
   <input type="hidden" name="_next" value="https://ecicep.cl/gracias.html">
+  <input type="hidden" name="_subject" value="Nueva consulta pública ECICEP">
+  <input type="hidden" name="_template" value="table">
+
+  <!-- Honeypot anti-bots -->
+  <div class="hidden">
+    <label>Dejar en blanco</label>
+    <input type="text" name="_honey">
+  </div>
 
   <label for="run">RUN Usuario</label>
   <input type="text" name="RUN Usuario" id="run" placeholder="Ej: 12.345.678-9" required>
@@ -95,7 +72,7 @@
   <input type="tel" name="Teléfono" id="fono" required>
 
   <label for="mail">Correo electrónico</label>
-  <input type="email" name="Correo electrónico" id="mail" required>
+  <input type="email" name="email" id="mail" placeholder="nombre@correo.cl" required>
 
   <button type="submit">Enviar Consulta</button>
 </form>
