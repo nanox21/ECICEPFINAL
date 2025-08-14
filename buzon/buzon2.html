@@ -1,47 +1,51 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8" />
 <title>Crear Consulta Usuarios - ECICEP</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <style>
-  body { font-family: Arial, sans-serif; max-width: 600px; margin: auto; background: #f7f7f7; padding: 20px; text-align: center; }
-  img.logo { max-width: 150px; margin-bottom: 15px; }
+  body { font-family: Arial, sans-serif; max-width: 640px; margin: auto; background: #f7f7f7; padding: 20px; text-align: center; }
+  img.logo { max-width: 160px; margin-bottom: 15px; }
   h2 { color: #0056b3; margin-bottom: 20px; }
   label { font-weight: bold; display: block; margin-top: 10px; text-align: left; font-size: 16px; }
-  input, select, textarea { width: 100%; padding: 8px; margin-top: 5px; font-size: 16px; }
+  input, select, textarea { width: 100%; padding: 10px; margin-top: 5px; font-size: 16px; border-radius: 6px; border: 1px solid #ddd; background: #fff; }
   select, select option { font-size: 18px; }
-  button { background: #28a745; color: white; padding: 10px; border: none; cursor: pointer; margin-top: 15px; width: 100%; font-size: 16px; border-radius: 5px; }
+  button { background: #28a745; color: white; padding: 12px; border: none; cursor: pointer; margin-top: 16px; width: 100%; font-size: 16px; border-radius: 6px; }
   button:hover { background: #218838; }
   .hidden { display:none !important; visibility:hidden; }
   .alerta { background:#ffecec; border:1px solid #f5a9a9; color:#a94442; padding:10px; margin-top:10px; border-radius:6px; text-align:left;}
   .ok { background:#eaffea; border:1px solid #a1e3a1; color:#2e7d32;}
+  .ayuda { font-size: 12px; color:#666; text-align:left; margin-top:4px;}
 </style>
 </head>
 <body>
 
-<img src="logo.png" alt="Logo ECICEP" class="logo">
+<img src="logo.png" alt="Logo ECICEP" class="logo" />
 <h2>Crear Consulta Usuarios ECICEP Cesfam Los Álamos</h2>
 
-<div id="msg" class="alerta hidden"></div>
+<div id="msg" class="alerta hidden" role="alert"></div>
 
-<form id="formECICEP" action="https://formsubmit.co/eciceplosalamos@gmail.com" method="POST">
+<form id="formECICEP" action="https://formsubmit.co/eciceplosalamos@gmail.com" method="POST" novalidate>
   <!-- Config FormSubmit -->
-  <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_next" value="https://ecicep.cl/gracias.html">
-  <input type="hidden" name="_subject" value="Nueva consulta pública ECICEP">
-  <input type="hidden" name="_template" value="table">
+  <input type="hidden" name="_captcha" value="false" />
+  <input type="hidden" name="_next" value="https://ecicep.cl/gracias.html" />
+  <input type="hidden" name="_subject" value="Nueva consulta pública ECICEP" />
+  <input type="hidden" name="_template" value="table" />
 
   <!-- honeypot -->
-  <div class="hidden">
+  <div class="hidden" aria-hidden="true">
     <label>Dejar en blanco</label>
-    <input type="text" name="_honey">
+    <input type="text" name="_honey" tabindex="-1" autocomplete="off" />
   </div>
 
   <label for="run">RUN Usuario</label>
-  <input type="text" name="RUN Usuario" id="run" placeholder="Ej: 12.345.678-9" maxlength="12" required>
+  <input type="text" name="RUN Usuario" id="run" placeholder="Ej: 12.345.678-9" maxlength="12" required
+         inputmode="text" autocomplete="off" autocapitalize="characters" />
+  <div class="ayuda">Escribe el RUN y el sistema aplicará el formato y validará el dígito verificador.</div>
 
   <label for="nombre_usuario">Nombre Usuario ECICEP</label>
-  <input type="text" name="Nombre Usuario ECICEP" id="nombre_usuario" required>
+  <input type="text" name="Nombre Usuario ECICEP" id="nombre_usuario" required autocomplete="name" />
 
   <label for="sector">Sector</label>
   <select name="Sector" id="sector" required>
@@ -59,107 +63,124 @@
   <textarea name="Consulta" id="consulta" rows="4" required></textarea>
 
   <label for="quien">Quién consulta</label>
-  <input type="text" name="Quién consulta" id="quien" required>
+  <input type="text" name="Quién consulta" id="quien" required />
 
   <label for="parentesco">Parentesco o relación con el usuario</label>
-  <input type="text" name="Parentesco" id="parentesco" required>
+  <input type="text" name="Parentesco" id="parentesco" required />
 
   <label for="fono">Teléfono</label>
-  <input type="tel" name="Teléfono" id="fono" required>
+  <input type="tel" name="Teléfono" id="fono" required inputmode="tel" autocomplete="tel" />
 
   <label for="mail">Correo electrónico</label>
-  <input type="email" name="email" id="mail" placeholder="nombre@correo.cl" required>
+  <input type="email" name="email" id="mail" placeholder="nombre@correo.cl" required autocomplete="email" />
 
   <button type="submit" id="btnEnviar">Enviar Consulta</button>
 </form>
 
 <script>
-// ========= (1) Máscara RUN =========
-const runInput = document.getElementById('run');
-runInput.addEventListener('input', function(e) {
-  let v = e.target.value.replace(/[^0-9kK]/g, '').toUpperCase();
-  if (v.length > 1) {
-    const cuerpo = v.slice(0, -1).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-    const dv = v.slice(-1);
-    e.target.value = cuerpo + '-' + dv;
-  } else {
-    e.target.value = v;
-  }
-});
+  // ========= (0) Producción: API en HTTPS detrás de Cloudflare =========
+  const API_BASE = "https://api.ecicep.org";
 
-// ========= (2) Normalizar para API =========
-function normalizarRun(s) {
-  s = (s || "").toUpperCase().replace(/[^0-9K]/g, '');
-  if (s.length < 2) return s;
-  return s.slice(0, -1) + '-' + s.slice(-1);
-}
-
-// ========= (3) Validador de DV en el front (UX) =========
-function dvValido(runNorm) {
-  const m = /^(\d{7,8})-([\dK])$/.exec(runNorm);
-  if (!m) return false;
-  const cuerpo = m[1], dv = m[2];
-  const factores = [2,3,4,5,6,7];
-  let s = 0;
-  for (let i = 0; i < cuerpo.length; i++) {
-    s += parseInt(cuerpo[cuerpo.length - 1 - i], 10) * factores[i % factores.length];
-  }
-  const resto = 11 - (s % 11);
-  const dvCalc = (resto === 11) ? '0' : (resto === 10) ? 'K' : String(resto);
-  return dv === dvCalc;
-}
-
-// ========= (4) Interceptar envío, consultar API y decidir =========
-const API_BASE = "http://100.69.49.58:5055"; // tu API
-const form = document.getElementById('formECICEP');
-const msg = document.getElementById('msg');
-const btn = document.getElementById('btnEnviar');
-
-form.addEventListener('submit', async (ev) => {
-  ev.preventDefault();
-  msg.classList.add('hidden');
-  msg.classList.remove('ok');
-  btn.disabled = true; btn.textContent = "Verificando…";
-
-  const runCanonico = normalizarRun(runInput.value);
-  if (!dvValido(runCanonico)) {
-    msg.textContent = "RUN inválido (revise el dígito verificador).";
-    msg.classList.remove('hidden');
-    btn.disabled = false; btn.textContent = "Enviar Consulta";
-    return;
-  }
-
-  try {
-    const url = `${API_BASE}/api/verificar_run?run=${encodeURIComponent(runCanonico)}`;
-    const res = await fetch(url, { method: 'GET' });
-    const data = await res.json();
-
-    if (!data.ok) {
-      msg.textContent = "Error al verificar RUN. Intente nuevamente.";
-      msg.classList.remove('hidden');
-      btn.disabled = false; btn.textContent = "Enviar Consulta";
-      return;
+  // ========= (1) Máscara RUN (12.345.678-9 mientras escribe) =========
+  const runInput = document.getElementById('run');
+  runInput.addEventListener('input', function(e) {
+    let v = e.target.value.replace(/[^0-9kK]/g, '').toUpperCase();
+    if (v.length > 1) {
+      const cuerpo = v.slice(0, -1).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+      const dv = v.slice(-1);
+      e.target.value = cuerpo + '-' + dv;
+    } else {
+      e.target.value = v;
     }
-    if (!data.existe) {
-      msg.innerHTML = "Usuario <strong>no ingresado</strong> en Estrategia ECICEP.";
-      msg.classList.remove('hidden');
-      btn.disabled = false; btn.textContent = "Enviar Consulta";
+  });
+
+  // ========= (2) Normalizar para API: 12345678-9 (sin puntos) =========
+  function normalizarRun(s) {
+    s = (s || "").toUpperCase().replace(/[^0-9K]/g, '');
+    if (s.length < 2) return s;
+    return s.slice(0, -1) + '-' + s.slice(-1);
+  }
+
+  // ========= (3) Validador de DV en el front (UX) =========
+  function dvValido(runNorm) {
+    const m = /^(\d{7,8})-([\dK])$/.exec(runNorm);
+    if (!m) return false;
+    const cuerpo = m[1], dv = m[2];
+    const factores = [2,3,4,5,6,7];
+    let s = 0;
+    for (let i = 0; i < cuerpo.length; i++) {
+      s += parseInt(cuerpo[cuerpo.length - 1 - i], 10) * factores[i % factores.length];
+    }
+    const resto = 11 - (s % 11);
+    const dvCalc = (resto === 11) ? '0' : (resto === 10) ? 'K' : String(resto);
+    return dv === dvCalc;
+  }
+
+  // ========= (4) Interceptar envío, consultar API y decidir =========
+  const form = document.getElementById('formECICEP');
+  const msg = document.getElementById('msg');
+  const btn = document.getElementById('btnEnviar');
+  const nombreInput = document.getElementById('nombre_usuario');
+
+  function setMsg(texto, ok=false) {
+    msg.textContent = texto;
+    msg.classList.remove('hidden', 'ok');
+    if (ok) msg.classList.add('ok');
+  }
+  function clearMsg() {
+    msg.classList.add('hidden');
+    msg.classList.remove('ok');
+    msg.textContent = '';
+  }
+
+  form.addEventListener('submit', async (ev) => {
+    ev.preventDefault();
+    clearMsg();
+    btn.disabled = true; 
+    const oldText = btn.textContent;
+    btn.textContent = "Verificando…";
+
+    const runCanonico = normalizarRun(runInput.value);
+
+    if (!dvValido(runCanonico)) {
+      setMsg("RUN inválido (revise el dígito verificador).");
+      btn.disabled = false; btn.textContent = oldText;
       return;
     }
 
-    // Si existe y no llenaron nombre, lo prellenamos
-    if (data.nombre && !document.getElementById('nombre_usuario').value) {
-      document.getElementById('nombre_usuario').value = data.nombre;
-    }
+    try {
+      const url = `${API_BASE}/api/verificar_run?run=${encodeURIComponent(runCanonico)}`;
+      // cache: 'no-store' para evitar caches intermedios/CDN
+      const res = await fetch(url, { method: 'GET', mode: 'cors', cache: 'no-store' });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      const data = await res.json();
 
-    // Ahora sí enviamos realmente a FormSubmit
-    form.submit();
-  } catch (err) {
-    msg.textContent = "No se pudo contactar al verificador. Revise conexión.";
-    msg.classList.remove('hidden');
-    btn.disabled = false; btn.textContent = "Enviar Consulta";
-  }
-});
+      if (!data.ok) {
+        setMsg("Error al verificar RUN. Intente nuevamente.");
+        btn.disabled = false; btn.textContent = oldText;
+        return;
+      }
+      if (!data.existe) {
+        setMsg("Usuario no ingresado en Estrategia ECICEP.");
+        btn.disabled = false; btn.textContent = oldText;
+        return;
+      }
+
+      // Si existe y no llenaron nombre, lo prellenamos
+      if (data.nombre && !nombreInput.value) {
+        nombreInput.value = data.nombre;
+      }
+
+      // Todo ok → enviamos a FormSubmit
+      btn.textContent = "Enviando…";
+      form.submit();
+
+    } catch (err) {
+      setMsg("No se pudo contactar al verificador. Revise conexión.");
+      console.error("Fetch error:", err);
+      btn.disabled = false; btn.textContent = oldText;
+    }
+  });
 </script>
 
 </body>
