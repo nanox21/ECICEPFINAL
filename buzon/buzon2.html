@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Crear Consulta Usuarios - ECICEP</title>
+<style>
+  body { 
+    font-family: Arial, sans-serif; 
+    max-width: 600px; 
+    margin: auto; 
+    background: #f7f7f7; 
+    padding: 20px; 
+    text-align: center;
+  }
+  img.logo {
+    max-width: 150px;
+    margin-bottom: 15px;
+  }
+  h2 {
+    color: #0056b3;
+    margin-bottom: 20px;
+  }
+  label { 
+    font-weight: bold; 
+    display: block; 
+    margin-top: 10px; 
+    text-align: left;
+    font-size: 16px;
+  }
+  input, select, textarea { 
+    width: 100%; 
+    padding: 8px; 
+    margin-top: 5px; 
+    font-size: 16px;
+  }
+  /* 🔹 Opciones del desplegable más grandes */
+  select, select option {
+    font-size: 48px;
+  }
+  button { 
+    background: #28a745; 
+    color: white; 
+    padding: 10px; 
+    border: none; 
+    cursor: pointer; 
+    margin-top: 15px; 
+    width: 100%;
+    font-size: 16px;
+    border-radius: 5px;
+  }
+  button:hover { background: #218838; }
+</style>
+</head>
+<body>
+
+<!-- Logo -->
+<img src="logo.png" alt="Logo ECICEP" class="logo">
+
+<h2>Crear Consulta Usuarios ECICEP Cesfam Los Álamos</h2>
+
+<form action="https://formsubmit.co/eciceploslamos@gmail.com" method="POST">
+  
+  <!-- Configuración oculta -->
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_next" value="https://ecicep.cl/gracias.html">
+
+  <label for="run">RUN Usuario</label>
+  <input type="text" name="RUN Usuario" id="run" placeholder="Ej: 12.345.678-9" required>
+
+  <label for="nombre_usuario">Nombre Usuario ECICEP</label>
+  <input type="text" name="Nombre Usuario ECICEP" id="nombre_usuario" required>
+
+  <label for="sector">Sector</label>
+  <select name="Sector" id="sector" required>
+    <option value="">Seleccione...</option>
+    <option>Tres Pinos</option>
+    <option>Antihuala</option>
+    <option>Verde</option>
+    <option>Amarillo</option>
+    <option>Rojo</option>
+    <option>Ranquilco</option>
+    <option>Pangue</option>
+  </select>
+
+  <label for="consulta">Consulta</label>
+  <textarea name="Consulta" id="consulta" rows="4" required></textarea>
+
+  <label for="quien">Quién consulta</label>
+  <input type="text" name="Quién consulta" id="quien" required>
+
+  <label for="parentesco">Parentesco o relación con el usuario</label>
+  <input type="text" name="Parentesco" id="parentesco" required>
+
+  <label for="fono">Teléfono</label>
+  <input type="tel" name="Teléfono" id="fono" required>
+
+  <label for="mail">Correo electrónico</label>
+  <input type="email" name="Correo electrónico" id="mail" required>
+
+  <button type="submit">Enviar Consulta</button>
+</form>
+
+</body>
+</html>

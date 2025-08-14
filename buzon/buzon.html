@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Crear Ticket - Peppermint</title>
+<style>
+  body { font-family: Arial, sans-serif; max-width: 600px; margin: auto; background: #f7f7f7; padding: 20px; }
+  label { font-weight: bold; display: block; margin-top: 10px; }
+  input, select, textarea { width: 100%; padding: 8px; margin-top: 5px; }
+  button { background: #28a745; color: white; padding: 10px; border: none; cursor: pointer; margin-top: 15px; }
+  button:hover { background: #218838; }
+</style>
+</head>
+<body>
+
+<h2>Crear Ticket Público</h2>
+<form action="enviar_ticket.php" method="POST">
+  <label for="run">RUN Usuario</label>
+  <input type="text" name="run" id="run" placeholder="Ej: 12.345.678-9" required>
+
+  <label for="nombre_usuario">Nombre Usuario ECICEP</label>
+  <input type="text" name="nombre_usuario" id="nombre_usuario" required>
+
+  <label for="sector">Sector</label>
+  <select name="sector" id="sector" required>
+    <option value="">Seleccione...</option>
+    <option>Tres Pinos</option>
+    <option>Antihuala</option>
+    <option>Verde</option>
+    <option>Amarillo</option>
+    <option>Rojo</option>
+    <option>Ranquilco</option>
+    <option>Pangue</option>
+  </select>
+
+  <label for="consulta">Consulta</label>
+  <textarea name="consulta" id="consulta" rows="4" required></textarea>
+
+  <label for="quien">Quién consulta</label>
+  <input type="text" name="quien" id="quien" required>
+
+  <label for="parentesco">Parentesco o relación con el usuario</label>
+  <input type="text" name="parentesco" id="parentesco" required>
+
+  <label for="fono">Teléfono</label>
+  <input type="tel" name="fono" id="fono" required>
+
+  <label for="mail">Correo electrónico</label>
+  <input type="email" name="mail" id="mail" required>
+
+  <button type="submit">Enviar Ticket</button>
+</form>
+
+</body>
+</html>
