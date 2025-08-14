@@ -61,11 +61,24 @@
   <label for="consulta">Consulta</label>
   <textarea name="Consulta" id="consulta" rows="4" required></textarea>
 
-  <label for="quien">Quién consulta</label>
+  <label for="quien">Nombre de quien realiza la consulta</label>
   <input type="text" name="Quién consulta" id="quien" required />
 
+  <!-- Parentesco: select + campo "Otro" obligatorio solo si se elige "Otro" -->
   <label for="parentesco">Parentesco o relación con el usuario</label>
-  <input type="text" name="Parentesco" id="parentesco" required />
+  <select name="Parentesco" id="parentesco" required>
+    <option value="">Seleccione...</option>
+    <option value="Madre">Madre</option>
+    <option value="Padre">Padre</option>
+    <option value="Hija/o">Hija/o</option>
+    <option value="Cuidador">Cuidador</option>
+    <option value="Otro">Otro</option>
+  </select>
+
+  <div id="parentesco_otro_div" class="hidden">
+    <label for="parentesco_otro">Especifique:</label>
+    <input type="text" name="Parentesco_Otro" id="parentesco_otro" />
+  </div>
 
   <label for="fono">Teléfono</label>
   <input type="tel" name="Teléfono" id="fono" required />
@@ -114,6 +127,22 @@
     const dvCalc = (resto === 11) ? '0' : (resto === 10) ? 'K' : String(resto);
     return dv === dvCalc;
   }
+
+  // ========= (3.5) Mostrar/ocultar "Otro" en Parentesco =========
+  const parentescoSelect = document.getElementById('parentesco');
+  const parentescoOtroDiv = document.getElementById('parentesco_otro_div');
+  const parentescoOtroInput = document.getElementById('parentesco_otro');
+
+  parentescoSelect.addEventListener('change', () => {
+    if (parentescoSelect.value === 'Otro') {
+      parentescoOtroDiv.classList.remove('hidden');
+      parentescoOtroInput.required = true;
+    } else {
+      parentescoOtroDiv.classList.add('hidden');
+      parentescoOtroInput.required = false;
+      parentescoOtroInput.value = '';
+    }
+  });
 
   // ========= (4) Interceptar envío =========
   const form = document.getElementById('formECICEP');
