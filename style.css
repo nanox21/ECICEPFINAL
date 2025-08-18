@@ -38,9 +38,9 @@ body {
 #total.spancss {
     display: block;
     text-align: center;
-    font-size: 24px;
+    font-size: 48px;
     margin: 15px auto;
-    color: hsl(98, 93%, 62%);
+    color: hsl(0, 0%, 0%);
 }
 
 .boton {
