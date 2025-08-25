@@ -26,28 +26,26 @@
 
 <div id="msg" class="alerta hidden"></div>
 
-<form id="formECICEP" action="https://formsubmit.co/eciceplosalamos@gmail.com" method="POST" novalidate>
-  <!-- Config FormSubmit -->
-  <input type="hidden" name="_captcha" value="false" />
-  <input type="hidden" name="_next" value="https://ecicep.cl/buzon/gracias.html" />
-  <input type="hidden" name="_subject" value="Nueva consulta pública ECICEP" />
-  <input type="hidden" name="_template" value="table" />
-
-  <!-- honeypot -->
+<!-- Enviará a tu backend PHP -->
+<form id="formECICEP" action="/buzon/submit.php" method="POST" novalidate>
+  <!-- honeypot anti-spam (el backend lo ignorará si no lo usa) -->
   <div class="hidden" aria-hidden="true">
     <label>Dejar en blanco</label>
     <input type="text" name="_honey" tabindex="-1" autocomplete="off" />
   </div>
 
   <label for="run">RUN Usuario</label>
-  <input type="text" name="RUN Usuario" id="run" placeholder="Ej: 12.345.678-9" maxlength="12" required inputmode="latin" autocomplete="off" autocapitalize="characters" />
-  <div class="ayuda">Escribe el RUN y el sistema aplicará el formato y validará el dígito verificador.</div>
+  <!-- name=usuario_run (lo espera submit.php) -->
+  <input type="text" name="usuario_run" id="run" placeholder="Ej: 12.345.678-5" maxlength="12" required autocomplete="off" autocapitalize="characters" />
+  <div class="ayuda">Escribe el RUN; se normaliza y valida el dígito verificador.</div>
 
   <label for="nombre_usuario">Nombre Usuario ECICEP</label>
-  <input type="text" name="Nombre Usuario ECICEP" id="nombre_usuario" required />
+  <!-- name=usuario_nombre -->
+  <input type="text" name="usuario_nombre" id="nombre_usuario" required />
 
   <label for="sector">Sector</label>
-  <select name="Sector" id="sector" required>
+  <!-- Enviamos el NOMBRE del sector; el backend lo mapea a id (sector_nombre) -->
+  <select name="sector_nombre" id="sector" required>
     <option value="">Seleccione...</option>
     <option>Tres Pinos</option>
     <option>Antihuala</option>
@@ -59,14 +57,17 @@
   </select>
 
   <label for="consulta">Consulta</label>
-  <textarea name="Consulta" id="consulta" rows="4" required></textarea>
+  <!-- name=consulta_texto -->
+  <textarea name="consulta_texto" id="consulta" rows="4" required></textarea>
 
   <label for="quien">Nombre de quien realiza la consulta</label>
-  <input type="text" name="Quién consulta" id="quien" required />
+  <!-- name=quien_pregunta -->
+  <input type="text" name="quien_pregunta" id="quien" required />
 
-  <!-- Parentesco: select + campo "Otro" obligatorio solo si se elige "Otro" -->
+  <!-- Parentesco: select + "Otro" -->
   <label for="parentesco">Parentesco o relación con el usuario</label>
-  <select name="Parentesco" id="parentesco" required>
+  <!-- name=parentesco -->
+  <select name="parentesco" id="parentesco" required>
     <option value="">Seleccione...</option>
     <option value="Madre">Madre</option>
     <option value="Padre">Padre</option>
@@ -77,14 +78,18 @@
 
   <div id="parentesco_otro_div" class="hidden">
     <label for="parentesco_otro">Especifique:</label>
-    <input type="text" name="Parentesco_Otro" id="parentesco_otro" />
+    <!-- name=parentesco_otro -->
+    <input type="text" name="parentesco_otro" id="parentesco_otro" />
   </div>
 
   <label for="fono">Teléfono</label>
-  <input type="tel" name="Teléfono" id="fono" required />
+  <!-- name=contacto_celular -->
+  <input type="tel" name="contacto_celular" id="fono" placeholder="+56 9 12345678" required />
 
   <label for="mail">Correo electrónico</label>
-  <input type="email" name="email" id="mail" placeholder="nombre@correo.cl" required />
+  <!-- Email es opcional en la BD: no ponemos required -->
+  <!-- name=contacto_email -->
+  <input type="email" name="contacto_email" id="mail" placeholder="nombre@correo.cl" />
 
   <button type="submit" id="btnEnviar">Enviar Consulta</button>
 </form>
@@ -164,7 +169,7 @@
   form.addEventListener('submit', async (ev) => {
     ev.preventDefault();
     clearMsg();
-    btn.disabled = true; 
+    btn.disabled = true;
     const oldText = btn.textContent;
     btn.textContent = "Verificando…";
 
@@ -195,7 +200,7 @@
       if (data.nombre && !nombreInput.value) nombreInput.value = data.nombre;
 
       btn.textContent = "Enviando…";
-      form.submit();
+      form.submit(); // ahora va a /buzon/submit.php
     } catch (err) {
       setMsg("No se pudo contactar al verificador. Revise conexión.");
       console.error("Fetch error:", err);
