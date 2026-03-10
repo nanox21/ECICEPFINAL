@@ -369,3 +369,30 @@ body {
 }
 
 
+
+
+/* Nav horizontal */
+nav.nav {
+  display: flex;
+  justify-content: center;
+  margin: 10px auto;
+}
+
+nav.nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navulli {
+  list-style: none;
+}
+
+.navulli img {
+  display: block;
+  max-width: 70px;
+  height: auto;
+}
