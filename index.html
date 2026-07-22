@@ -14,9 +14,106 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>ECICEP</title>
         <link rel="icon" href="logo.png" type="image/x-icon">
+        <style>
+            .walltech-access-overlay {
+                position: fixed;
+                inset: 0;
+                z-index: 99999;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 24px;
+                background: rgba(2, 10, 32, 0.92);
+                backdrop-filter: blur(8px);
+            }
+
+            .walltech-access-card {
+                width: min(100%, 420px);
+                padding: 28px;
+                border-radius: 24px;
+                background: #ffffff;
+                box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+                text-align: center;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            .walltech-access-card img {
+                width: 170px;
+                max-width: 100%;
+                margin-bottom: 16px;
+            }
+
+            .walltech-access-card h2 {
+                margin: 0 0 10px;
+                color: #03134f;
+                font-size: 28px;
+            }
+
+            .walltech-access-card p {
+                margin: 0 0 10px;
+                color: #334155;
+                line-height: 1.5;
+            }
+
+            .walltech-access-owner {
+                font-weight: 700;
+                color: #1b63f0;
+            }
+
+            .walltech-access-form {
+                margin-top: 20px;
+            }
+
+            .walltech-access-form input {
+                width: 100%;
+                padding: 14px 16px;
+                border: 1px solid #cbd5e1;
+                border-radius: 12px;
+                font-size: 16px;
+                box-sizing: border-box;
+            }
+
+            .walltech-access-form button {
+                width: 100%;
+                margin-top: 12px;
+                padding: 14px 16px;
+                border: none;
+                border-radius: 12px;
+                background: linear-gradient(135deg, #1d72f2, #17c4f8);
+                color: #ffffff;
+                font-size: 16px;
+                font-weight: 700;
+                cursor: pointer;
+            }
+
+            .walltech-access-error {
+                min-height: 20px;
+                margin-top: 12px;
+                color: #dc2626;
+                font-size: 14px;
+            }
+
+            .walltech-page-locked {
+                overflow: hidden;
+            }
+        </style>
 
     </head>
 </div>
+
+    <div id="walltech-access-overlay" class="walltech-access-overlay">
+        <div class="walltech-access-card">
+            <img src="walltech-logo.svg" alt="Logo WallTech">
+            <p class="walltech-access-owner">Propiedad de WallTech Ltda</p>
+            <h2>Acceso Protegido</h2>
+            <p>Ingrese la contrasena para continuar.</p>
+            <form id="walltech-access-form" class="walltech-access-form">
+                <input id="walltech-password-input" type="password" placeholder="Contrasena" autocomplete="current-password" required>
+                <button type="submit">Ingresar</button>
+                <div id="walltech-access-error" class="walltech-access-error" aria-live="polite"></div>
+            </form>
+        </div>
+    </div>
 
     <header class="headerMod">
 
@@ -1988,3 +2085,57 @@
                     </div>
                 </div>
         </div>
+        <script>
+            (function () {
+                var overlay = document.getElementById('walltech-access-overlay');
+                var form = document.getElementById('walltech-access-form');
+                var passwordInput = document.getElementById('walltech-password-input');
+                var errorBox = document.getElementById('walltech-access-error');
+                var sessionKey = 'walltechAccessGranted';
+                var accessPassword = 'Nubecita21..';
+
+                if (!overlay || !form || !passwordInput || !errorBox) {
+                    return;
+                }
+
+                function lockPage() {
+                    document.documentElement.classList.add('walltech-page-locked');
+                    overlay.style.display = 'flex';
+                    window.setTimeout(function () {
+                        passwordInput.focus();
+                    }, 50);
+                }
+
+                function unlockPage() {
+                    document.documentElement.classList.remove('walltech-page-locked');
+                    overlay.style.display = 'none';
+                    try {
+                        sessionStorage.setItem(sessionKey, 'true');
+                    } catch (error) {
+                    }
+                }
+
+                try {
+                    if (sessionStorage.getItem(sessionKey) === 'true') {
+                        unlockPage();
+                        return;
+                    }
+                } catch (error) {
+                }
+
+                lockPage();
+
+                form.addEventListener('submit', function (event) {
+                    event.preventDefault();
+
+                    if (passwordInput.value === accessPassword) {
+                        errorBox.textContent = '';
+                        unlockPage();
+                        return;
+                    }
+
+                    errorBox.textContent = 'Contrasena incorrecta. Intente nuevamente.';
+                    passwordInput.select();
+                });
+            })();
+        </script>
